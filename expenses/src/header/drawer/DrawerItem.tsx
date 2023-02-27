@@ -3,13 +3,11 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import { DrawerItemProps } from "./types";
 
-export function DrawerItem({ index, text, open }: DrawerItemProps) {
+export function DrawerItem({ item, open }: DrawerItemProps) {
   return (
-    <ListItem key={text} disablePadding sx={{ display: "block" }}>
+    <ListItem key={item.name} disablePadding sx={{ display: "block" }}>
       <ListItemButton
         sx={{
           minHeight: 48,
@@ -24,9 +22,9 @@ export function DrawerItem({ index, text, open }: DrawerItemProps) {
             justifyContent: "center"
           }}
         >
-          {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+          {item.icon}
         </ListItemIcon>
-        <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+        <ListItemText primary={item.name} sx={{ opacity: open ? 1 : 0 }} />
       </ListItemButton>
     </ListItem>
   );

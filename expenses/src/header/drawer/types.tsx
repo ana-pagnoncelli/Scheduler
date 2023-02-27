@@ -8,9 +8,13 @@ export type DrawerProps = {
   handleDrawerClose: () => void;
 };
 
+export type DrawerItemInfo = {
+  name: string;
+  icon: JSX.Element;
+};
+
 export type DrawerItemProps = {
-  index: number;
-  text: string;
+  item: DrawerItemInfo;
   open: boolean;
 };
 
