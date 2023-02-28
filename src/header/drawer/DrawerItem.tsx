@@ -14,7 +14,6 @@ export function DrawerItem({ item, open }: DrawerItemProps) {
 
   return (
     <ListItem
-      key={item.name}
       disablePadding
       sx={{ display: "block" }}
       onClick={redirectToItemPath}
