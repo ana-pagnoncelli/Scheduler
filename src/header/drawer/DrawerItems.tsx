@@ -44,13 +44,13 @@ const secondaryItems: DrawerItemInfo[] = [
 export function DrawerItems({ open }: DrawerItemsProps) {
   return (
     <>
-      <List>
+      <List key='primary-items'>
         {items.map((item) => (
           <DrawerItem item={item} open={open} />
         ))}
       </List>
       <Divider />
-      <List>
+      <List key='secondary-items'>
         {secondaryItems.map((item) => (
           <DrawerItem item={item} open={open} />
         ))}

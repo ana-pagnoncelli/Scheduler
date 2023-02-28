@@ -4,7 +4,7 @@ import { Typography } from "@mui/material";
 export function Expenses() {
   return (
     <>
-      <h1>This is the expenses page text</h1>
+      <h1>This is the expenses page</h1>
       <Typography paragraph>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus

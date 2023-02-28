@@ -1,6 +1,6 @@
 import React from "react";
-import { Link as RouterLink } from "react-router-dom";
-import { Box, Button, Typography, Container } from "@mui/material";
+// import { Link as RouterLink } from "react-router-dom";
+import { Box, Typography, Container } from "@mui/material";
 
 export function NotFound() {
   return (
@@ -19,9 +19,9 @@ export function NotFound() {
           sx={{ height: 260, mx: "auto", my: { xs: 5, sm: 10 } }}
         />
 
-        <Button to='/' size='large' variant='contained' component={RouterLink}>
+        {/* <Button to='/' size='large' variant='contained' component={RouterLink}>
           Go to Home
-        </Button>
+        </Button> */}
       </Box>
     </Container>
   );

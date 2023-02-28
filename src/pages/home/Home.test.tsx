@@ -1,9 +1,9 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import App from "./App";
+import { Home } from "./Home";
 
 test("renders home page", () => {
-  render(<App />);
+  render(<Home />);
   const linkElement = screen.getByText("This is the home page");
   expect(linkElement).toBeInTheDocument();
 });
