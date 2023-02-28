@@ -11,6 +11,7 @@ export type DrawerProps = {
 export type DrawerItemInfo = {
   name: string;
   icon: JSX.Element;
+  path: string;
 };
 
 export type DrawerItemProps = {

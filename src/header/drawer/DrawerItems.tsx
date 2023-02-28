@@ -8,30 +8,36 @@ import { DrawerItemsProps, DrawerItemInfo } from "./types";
 const items: DrawerItemInfo[] = [
   {
     name: "Expenses",
-    icon: <InboxIcon />
+    icon: <InboxIcon />,
+    path: "/expenses"
   },
   {
     name: "Plannings",
-    icon: <InboxIcon />
+    icon: <InboxIcon />,
+    path: "/plannings"
   },
   {
     name: "Graphs",
-    icon: <InboxIcon />
+    icon: <InboxIcon />,
+    path: "/graphs"
   }
 ];
 
 const secondaryItems: DrawerItemInfo[] = [
   {
     name: "Profile",
-    icon: <InboxIcon />
+    icon: <InboxIcon />,
+    path: "/profile"
   },
   {
     name: "Settings",
-    icon: <InboxIcon />
+    icon: <InboxIcon />,
+    path: "/settings"
   },
   {
     name: "Help",
-    icon: <InboxIcon />
+    icon: <InboxIcon />,
+    path: "/help"
   }
 ];
 

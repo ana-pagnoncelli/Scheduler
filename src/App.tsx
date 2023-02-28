@@ -7,15 +7,15 @@ import Router from "./routes";
 function App() {
   return (
     <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <Header />
+      <BrowserRouter>
+        <CssBaseline />
+        <Header />
 
-      <Box component='main' sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
-        <BrowserRouter>
+        <Box component='main' sx={{ flexGrow: 1, p: 3 }}>
+          <DrawerHeader />
           <Router />
-        </BrowserRouter>
-      </Box>
+        </Box>
+      </BrowserRouter>
     </Box>
   );
 }

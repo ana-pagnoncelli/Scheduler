@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useNavigate } from "react-router-dom";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -6,8 +7,18 @@ import ListItemText from "@mui/material/ListItemText";
 import { DrawerItemProps } from "./types";
 
 export function DrawerItem({ item, open }: DrawerItemProps) {
+  const navigate = useNavigate();
+  const redirectToItemPath = () => {
+    navigate(item.path);
+  };
+
   return (
-    <ListItem key={item.name} disablePadding sx={{ display: "block" }}>
+    <ListItem
+      key={item.name}
+      disablePadding
+      sx={{ display: "block" }}
+      onClick={redirectToItemPath}
+    >
       <ListItemButton
         sx={{
           minHeight: 48,
