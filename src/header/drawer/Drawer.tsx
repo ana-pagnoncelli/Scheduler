@@ -12,7 +12,7 @@ export function Drawer({ open, handleDrawerClose }: DrawerProps) {
   const theme = useTheme();
 
   return (
-    <DrawerStyle variant='permanent' open={open}>
+    <DrawerStyle variant='permanent' open={open} data-testid='Drawer'>
       <DrawerHeader>
         <IconButton onClick={handleDrawerClose}>
           {theme.direction === "rtl" ? (
