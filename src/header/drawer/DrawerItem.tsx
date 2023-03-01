@@ -24,6 +24,7 @@ export function DrawerItem({ item, open }: DrawerItemProps) {
           justifyContent: open ? "initial" : "center",
           px: 2.5
         }}
+        data-cy={item.name}
       >
         <ListItemIcon
           sx={{
