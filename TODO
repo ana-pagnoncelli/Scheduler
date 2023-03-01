@@ -3,7 +3,7 @@ Technical Frontend:
     - run all tests without open the chrome browser
     - open cypress
 - install storybook
-- install husky
+- enhance husky -> create a commit pattern maybe
 - check if it is possible to use a visual regression test (lambda test?)
 - pipeline
 
@@ -16,3 +16,8 @@ System:
 - Plannings -> User can add items that he plans to purchase
 - Graphs -> Graphs showing the total money spent per month, graphs showing money spend per category in the last month
 
+
+
+
+Done:
+- install husky
