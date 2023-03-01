@@ -40,7 +40,8 @@
         "no-duplicate-imports": "error",
         "import/extensions": "off",
         "react/jsx-filename-extension": "off",
-        "import/prefer-default-export": "off"
+        "import/prefer-default-export": "off",
+        "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
       }
     }
   ]
