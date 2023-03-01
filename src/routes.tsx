@@ -1,12 +1,13 @@
 import React from "react";
 import { Navigate, useRoutes } from "react-router-dom";
-import { Home, NotFound, Expenses } from "./pages";
+import { Home, NotFound, Schedule } from "./pages";
 
 export default function Router() {
   const routes = useRoutes([
     { path: "/", element: <Home /> },
-    { path: "expenses", element: <Expenses /> },
-    { path: "/", element: <Navigate to='/expenses' /> },
+    { path: "schedule-class", element: <Schedule /> },
+    { path: "home", element: <Home /> },
+    { path: "/", element: <Navigate to='/home' /> },
     { path: "404", element: <NotFound /> },
     { path: "*", element: <Navigate to='/404' /> }
   ]);

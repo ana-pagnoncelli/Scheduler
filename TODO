@@ -14,7 +14,7 @@ Technical Backend -> waiting until frontend is more concrete
 System:
 - User Login
 - User Profile -> Income, how much he intends to save
-- Expenses -> User can add expenses with price, date and category
+- Scheduler -> User can add scheduler with price, date and category
 - Plannings -> User can add items that he plans to purchase
 - Graphs -> Graphs showing the total money spent per month, graphs showing money spend per category in the last month
 

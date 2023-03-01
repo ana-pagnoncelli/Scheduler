@@ -25,7 +25,7 @@ export function Header() {
             handleDrawerOpen={handleDrawerOpen}
           />
           <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
-            Expenses Header
+            Scheduler Header
           </Typography>
           <Button color='inherit'>Login</Button>
         </Toolbar>
