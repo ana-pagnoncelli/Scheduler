@@ -1,0 +1,18 @@
+Technical Frontend:
+- create scripts to cypress: 
+    - run all tests without open the chrome browser
+    - open cypress
+- install storybook
+- install husky
+- check if it is possible to use a visual regression test (lambda test?)
+- pipeline
+
+Technical Backend -> waiting until frontend is more concrete
+
+System:
+- User Login
+- User Profile -> Income, how much he intends to save
+- Expenses -> User can add expenses with price, date and category
+- Plannings -> User can add items that he plans to purchase
+- Graphs -> Graphs showing the total money spent per month, graphs showing money spend per category in the last month
+

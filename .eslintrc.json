@@ -4,9 +4,10 @@
     "prettier",
     "plugin:prettier/recommended",
     "plugin:jest/recommended",
-    "plugin:import/typescript"
+    "plugin:import/typescript",
+    "plugin:cypress/recommended"
   ],
-  "plugins": ["prettier", "jest", "@typescript-eslint"],
+  "plugins": ["cypress", "prettier", "jest", "@typescript-eslint"],
   "parserOptions": {
     "sourceType": "module",
     "ecmaFeatures": {
@@ -16,7 +17,11 @@
   "env": {
     "es6": true,
     "browser": true,
-    "jest": true
+    "jest": true,
+    "cypress/globals": true
+  },
+  "globals": {
+    "cy": true
   },
   "settings": {
     "import/parsers": {
@@ -41,7 +46,11 @@
         "import/extensions": "off",
         "react/jsx-filename-extension": "off",
         "import/prefer-default-export": "off",
-        "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+        "import/no-extraneous-dependencies": [
+          "error",
+          { "devDependencies": true }
+        ],
+        "jest/expect-expect": "off"
       }
     }
   ]
