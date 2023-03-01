@@ -24,6 +24,6 @@
       "@types/jest"
     ]
   },
-  "include": ["src/**/*", "node_modules/cypress", "cypress/support/*.ts"],
+  "include": ["src/**/*", "node_modules/cypress", "cypress/**/*"],
   "exclude": ["node_modules", "build"]
 }

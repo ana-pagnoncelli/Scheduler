@@ -2,10 +2,12 @@ Technical Frontend:
 - create scripts to cypress: 
     - run all tests without open the chrome browser
     - open cypress
-- install storybook
 - enhance husky -> create a commit pattern maybe
 - check if it is possible to use a visual regression test (lambda test?)
 - pipeline
+- create storybook for other components
+- create a shared context for storybook so we don't have to call all the providers and dependencies before the component. Ex: Routes.
+- update the readme
 
 Technical Backend -> waiting until frontend is more concrete
 
@@ -21,3 +23,4 @@ System:
 
 Done:
 - install husky
+- install storybook

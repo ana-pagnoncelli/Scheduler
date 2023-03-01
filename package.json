@@ -32,7 +32,8 @@
     "lint": "eslint \"src/**/*\"",
     "prepare": "husky install",
     "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "cy": "node_modules\\.bin\\cypress run"
   },
   "browserslist": {
     "production": [
