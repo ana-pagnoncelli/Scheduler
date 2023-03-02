@@ -182,6 +182,28 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 ### Cypress
 
+Remember to run the project in another terminal before running these commands. We need to do this because the e2e tests are done by accessing the website in the browser by the url.
+- To run the tests hiding the browser:
+    ```sh
+    npm run cy 
+    ```
+  
+    It is only going to run in your terminal and not open anything else.
+  
+
+- To run the tests displaying the browser:
+    ```sh
+    npm run cy:headed
+    ```
+  
+    It is going to open the browser displaying all the tests.
+
+- To open the cypress:
+    ```sh
+    npm run cy:open
+    ```
+    Opens Cypress and runs it until you finish the process. Here you have a lot of functionalities, like checking all the tests you have and running specific tests however many times you like.
+
 ### Storybook
 
 ### Husky
