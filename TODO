@@ -1,26 +1,30 @@
 Technical Frontend:
-- create scripts to cypress: 
-    - run all tests without open the chrome browser
-    - open cypress
 - enhance husky -> create a commit pattern maybe
 - check if it is possible to use a visual regression test (lambda test?)
 - pipeline
 - create storybook for other components
 - create a shared context for storybook so we don't have to call all the providers and dependencies before the component. Ex: Routes.
-- update the readme
 
 Technical Backend -> waiting until frontend is more concrete
 
+General ->
+- Update readme with storybook info
+- Update readme with husky info
+- Update readme with project info
+
 System:
 - User Login
-- User Profile -> Income, how much he intends to save
-- Scheduler -> User can add scheduler with price, date and category
-- Plannings -> User can add items that he plans to purchase
-- Graphs -> Graphs showing the total money spent per month, graphs showing money spend per category in the last month
-
+- User Profile -> What is the plan the user is currently assigned
+- Schedule -> User can schedule a free time
+- Admin is a user that can add the times for students to pick
+- Available Plans -> User can update its plan. Like two hours per week and prices or hire a plan.
 
 
 
 Done:
 - install husky
 - install storybook
+- added a readme template
+- create scripts to cypress: 
+    - run all tests without open the chrome browser
+    - open cypress
