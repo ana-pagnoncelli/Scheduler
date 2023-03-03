@@ -4,6 +4,6 @@ import { Login } from "./Login";
 
 test("renders scheduler page", () => {
   render(<Login />);
-  const linkElement = screen.getByText("This is the login page");
+  const linkElement = screen.getByText("User Registration");
   expect(linkElement).toBeInTheDocument();
 });

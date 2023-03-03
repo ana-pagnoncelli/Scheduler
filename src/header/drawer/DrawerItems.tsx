@@ -35,6 +35,11 @@ const secondaryItems: DrawerItemInfo[] = [
     path: "/profile"
   },
   {
+    name: "Login",
+    icon: <InboxIcon />,
+    path: "/login"
+  },
+  {
     name: "Help",
     icon: <InboxIcon />,
     path: "/help"
