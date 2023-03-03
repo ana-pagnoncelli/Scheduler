@@ -10,7 +10,7 @@ describe("Redirect to login page", () => {
 });
 
 describe("User registration", () => {
-  it("should register the user successfully when the data was filled", () => {
+  it("should register the user successfully when the data is filled", () => {
     cy.visit("http://localhost:3000/login");
 
     cy.contains("Name").type("test name");

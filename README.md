@@ -114,12 +114,11 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+This is a list things you need to use the software and how to install them.
 
 - node v17.8.0
   ```sh
@@ -149,7 +148,7 @@ _Below is an example of how you can instruct your audience on installing and set
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Here you are going to find some tools/features the project has and how to use them.
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
@@ -228,9 +227,9 @@ See the [open issues](https://github.com/othneildrew/Best-README-Template/issues
 
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Ana Pagnoncelli - [Likedin](https://www.linkedin.com/in/ana-carolina-pagnoncelli/) - ana.carol.p@hotmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/Ana2877/Expenses](https://github.com/Ana2877/Expenses)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
