@@ -11,25 +11,63 @@ describe("Login", () => {
     expect(linkElement).toBeInTheDocument();
   });
 
-  describe("user fill the form to user registration", () => {
-    it("should show success message if all the data was filled", () => {
-      const inputName = screen.getByLabelText("Name");
-      fireEvent.change(inputName, { target: { value: "test name" } });
+  describe("registration form", () => {
+    describe("user fill a field from the form", () => {
+      it("should have the right name value", () => {
+        const testName = "test name";
+        const inputName = screen.getByLabelText("Name");
+        fireEvent.change(inputName, { target: { value: testName } });
+        expect(inputName).toHaveValue(testName);
+      });
+      it("should have the right email value", () => {
+        const testEmail = "test email";
+        const inputEmail = screen.getByLabelText("Name");
+        fireEvent.change(inputEmail, { target: { value: testEmail } });
+        expect(inputEmail).toHaveValue(testEmail);
+      });
+      it("should have the right password value", () => {
+        const testPassword = "test password";
+        const inputPassword = screen.getByLabelText("Name");
+        fireEvent.change(inputPassword, { target: { value: testPassword } });
+        expect(inputPassword).toHaveValue(testPassword);
+      });
+    });
 
-      const inputEmail = screen.getByLabelText("Email");
-      fireEvent.change(inputEmail, { target: { value: "test email" } });
+    describe("user fill the form and submit", () => {
+      it("should show success message if all the data was filled", () => {
+        const inputName = screen.getByLabelText("Name");
+        fireEvent.change(inputName, { target: { value: "test name" } });
 
-      const inputPassword = screen.getByLabelText("Password");
-      fireEvent.change(inputPassword, { target: { value: "test password" } });
+        const inputEmail = screen.getByLabelText("Email");
+        fireEvent.change(inputEmail, { target: { value: "test email" } });
 
-      const submitButton = screen.getByRole("button", { name: "Submit" });
-      fireEvent.click(submitButton);
+        const inputPassword = screen.getByLabelText("Password");
+        fireEvent.change(inputPassword, { target: { value: "test password" } });
 
-      const successMessage = screen.queryByText(
-        "User test name successfully registered!!"
-      );
+        const submitButton = screen.getByRole("button", { name: "Submit" });
+        fireEvent.click(submitButton);
 
-      expect(successMessage).toBeVisible();
+        const successMessage = screen.queryByText(
+          "User test name successfully registered!!"
+        );
+
+        expect(successMessage).toBeVisible();
+      });
+
+      it("should show error message if there is a missing field", () => {
+        const inputName = screen.getByLabelText("Name");
+        fireEvent.change(inputName, { target: { value: "test name" } });
+
+        const inputEmail = screen.getByLabelText("Email");
+        fireEvent.change(inputEmail, { target: { value: "test email" } });
+
+        const submitButton = screen.getByRole("button", { name: "Submit" });
+        fireEvent.click(submitButton);
+
+        const errorMessage = screen.queryByText("Please enter all the fields");
+
+        expect(errorMessage).toBeVisible();
+      });
     });
   });
 });
