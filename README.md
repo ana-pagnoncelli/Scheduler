@@ -36,7 +36,7 @@
   <h3 align="center">Welcome to the Scheduler</h3>
 
   <p align="center">
-    This is an awesome platform to use in your business to schedule/cancel classes, show your products, and share important messages with the students.
+    This is an awesome platform to use in your business to schedule classes or appointments, show your products, and share important messages with the clients.
     <br />
     <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
     <br />
@@ -87,23 +87,16 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-There are many great README templates available on GitHub; however, I didn't find one that really suited my needs so I created this enhanced one. I want to create a README template so amazing that it'll be the last one you ever need -- I think this is it.
+Clinics, pilates studios, beauty salons, and other businesses that rely on appointments and class schedules can greatly benefit from a platform like Scheduler. With Scheduler, businesses can manage their schedules more efficiently, freeing up time to focus on other important tasks.
 
-Here's why:
+For example, a pilates studio could use Scheduler to manage its class schedules, allow clients to book, change, or cancel appointments online, post notices or announcements, and send automated notifications to clients. Another interesting feature is the product showcase, where you can display classes, clothes, and accessories.
 
-- Your time should be focused on creating something amazing. A project that solves a problem and helps others
-- You shouldn't be doing the same tasks over and over like creating a README from scratch
-- You should implement DRY principles to the rest of your life :smile:
+By using a platform like Scheduler, businesses can save time and reduce the risk of scheduling errors or missed appointments. They can also provide a more convenient and flexible experience for their clients, who can book and manage appointments on their own time. Overall, Scheduler can be a valuable tool for businesses of all types that rely on appointments and schedules to manage their operations.
 
-Of course, no one template will serve all projects since your needs may be different. So I'll be adding more in the near future. You may also suggest changes by forking this repo and creating a pull request or opening an issue. Thanks to all the people have contributed to expanding this template!
-
-Use the `BLANK_README.md` to get started.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
-
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
 - [![React][React.js]][React-url]
 - [![Typescript][Typescript]][Typescript-url]
@@ -118,7 +111,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is a list things you need to use the software and how to install them.
+This is a list of things you need to use the software and how to install them.
 
 - node v17.8.0
   ```sh
@@ -131,7 +124,7 @@ This is a list things you need to use the software and how to install them.
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+This is how you clone the repository and add all the dependencies.
 
 1. Clone the repo
    ```sh
@@ -149,8 +142,6 @@ _Below is an example of how you can instruct your audience on installing and set
 ## Usage
 
 Here you are going to find some tools/features the project has and how to use them.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -219,8 +210,6 @@ Remember to run the project in another terminal before running these commands. W
   - [ ] Chinese
   - [ ] Spanish
 
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTACT -->
@@ -229,7 +218,7 @@ See the [open issues](https://github.com/othneildrew/Best-README-Template/issues
 
 Ana Pagnoncelli - [Likedin](https://www.linkedin.com/in/ana-carolina-pagnoncelli/) - ana.carol.p@hotmail.com
 
-Project Link: [https://github.com/Ana2877/Expenses](https://github.com/Ana2877/Expenses)
+Project Link: [https://github.com/Ana2877/Scheduler](https://github.com/Ana2877/Scheduler)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -237,16 +226,11 @@ Project Link: [https://github.com/Ana2877/Expenses](https://github.com/Ana2877/E
 
 ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
+This space lists resources that I find helpful and would like to give credit to. 
 
 - [Choose an Open Source License](https://choosealicense.com)
 - [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-- [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-- [Malven's Grid Cheatsheet](https://grid.malven.co/)
-- [Img Shields](https://shields.io)
-- [GitHub Pages](https://pages.github.com)
-- [Font Awesome](https://fontawesome.com)
-- [React Icons](https://react-icons.github.io/react-icons/search)
+- [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -254,13 +238,13 @@ Use this space to list resources you find helpful and would like to give credit 
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
+[contributors-url]: https://github.com/Ana2877/Scheduler/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
+[forks-url]: https://github.com/Ana2877/Scheduler/network/members
 [stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
+[stars-url]: https://github.com/Ana2877/Scheduler/stargazers
 [issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
+[issues-url]: https://github.com/Ana2877/Scheduler/issues
 [license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
