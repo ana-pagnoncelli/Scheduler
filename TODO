@@ -4,27 +4,26 @@ Technical Frontend:
 - pipeline
 - create storybook for other components
 - create a shared context for storybook so we don't have to call all the providers and dependencies before the component. Ex: Routes.
+- create integration tests in App.test.ts to test the routes when clicking in the drawer items
+- create login component
+- create jest tests for login component
+- create jest tests for loginOrSingUp component
+- create cypress tests to cover all the functionalities of loginOrSignUp
 
-Technical Backend -> waiting until frontend is more concrete
+Technical Backend ->
+- create a backend using node
+- create a database using Firebase
+- Try to use GraphQL: https://medium.com/mehak-vohra/using-graphql-to-query-your-firebase-realtime-database-a6e6cbd6aa3a
+- User creation
+- User login
 
 General ->
 - Update readme with storybook info
 - Update readme with husky info
-- Update readme with project info
 
-System:
+System ->
 - User Login
 - User Profile -> What is the plan the user is currently assigned
 - Schedule -> User can schedule a free time
 - Admin is a user that can add the times for students to pick
 - Available Plans -> User can update its plan. Like two hours per week and prices or hire a plan.
-
-
-
-Done:
-- install husky
-- install storybook
-- added a readme template
-- create scripts to cypress: 
-    - run all tests without open the chrome browser
-    - open cypress
