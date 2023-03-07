@@ -27,4 +27,13 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm test
-    - run: npm run cy
+
+    - name: Cypress run
+      uses: cypress-io/github-action@v3
+      with:
+        project: ./scheduler
+        command: npm run cy
+        browser: chrome
+        build: npm build
+        start: npm start
+        wait-on: "http://localhost:3000"
