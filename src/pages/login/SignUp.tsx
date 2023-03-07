@@ -63,7 +63,7 @@ export function SignUp({ setUserHasAccountToTrue }: SignUpProps) {
   return (
     <div className='form'>
       <div>
-        <h1>User Registration</h1>
+        <h1>Sing Up</h1>
       </div>
 
       <form>

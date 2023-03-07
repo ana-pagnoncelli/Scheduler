@@ -6,6 +6,6 @@ const setUserHasAccountToFalse = () => {};
 
 test("renders login form", () => {
   render(<Login setUserHasAccountToFalse={setUserHasAccountToFalse} />);
-  const linkElement = screen.getByText("This is the Login form component");
+  const linkElement = screen.getByText("Login");
   expect(linkElement).toBeInTheDocument();
 });

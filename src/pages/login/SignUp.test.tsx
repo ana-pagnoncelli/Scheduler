@@ -9,11 +9,11 @@ describe("SignUp", () => {
     render(<SignUp setUserHasAccountToTrue={setUserHasAccountToTrue} />);
   });
   it("renders Login page", () => {
-    const linkElement = screen.getByText("User Registration");
+    const linkElement = screen.getByText("Sing Up");
     expect(linkElement).toBeInTheDocument();
   });
 
-  describe("registration form", () => {
+  describe("Sing Up form", () => {
     describe("user fill a field from the form", () => {
       it("should have the right name value", () => {
         const testName = "test name";
