@@ -13,6 +13,8 @@ describe("User registration", () => {
   it("should register the user successfully when the data is filled", () => {
     cy.visit("http://localhost:3000/login");
 
+    cy.contains("button", "Do not have an account? Register here.").click();
+
     cy.contains("Name").type("test name");
     cy.contains("Email").type("test email");
     cy.contains("Password").type("test password");
@@ -24,6 +26,8 @@ describe("User registration", () => {
 
   it("should fail to register the user when there is missing data", () => {
     cy.visit("http://localhost:3000/login");
+
+    cy.contains("button", "Do not have an account? Register here.").click();
 
     cy.contains("Email").type("test email");
     cy.contains("Password").type("test password");
