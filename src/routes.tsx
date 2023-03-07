@@ -5,7 +5,7 @@ import {
   NotFound,
   Schedule,
   AvailablePlans,
-  Login,
+  LoginOrSignUp,
   Profile
 } from "./pages";
 
@@ -14,7 +14,7 @@ export default function Router() {
     { path: "/", element: <Home /> },
     { path: "schedule-class", element: <Schedule /> },
     { path: "available-plans", element: <AvailablePlans /> },
-    { path: "login", element: <Login /> },
+    { path: "login", element: <LoginOrSignUp /> },
     { path: "home", element: <Home /> },
     { path: "profile", element: <Profile /> },
     { path: "/", element: <Navigate to='/home' /> },

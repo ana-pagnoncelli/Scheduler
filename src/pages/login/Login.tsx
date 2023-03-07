@@ -1,104 +1,50 @@
-import React, { useState } from "react";
-import { Label, Input, SubmitButton, Message } from "./styles";
+import React from "react";
+import { Typography } from "@mui/material";
+import { HasAccountButton } from "./styles";
 
-export function Login() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+type LoginProps = {
+  setUserHasAccountToFalse: () => void;
+};
 
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(false);
-
-  const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
-    setSubmitted(false);
-  };
-
-  const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-    setSubmitted(false);
-  };
-
-  const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-    setSubmitted(false);
-  };
-
-  const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-    if (name === "" || email === "" || password === "") {
-      setError(true);
-    } else {
-      setSubmitted(true);
-      setError(false);
-    }
-  };
-
-  const successMessage = () => {
-    return (
-      <Message showMessage={submitted}>
-        <span>User {name} successfully registered!!</span>
-      </Message>
-    );
-  };
-
-  const errorMessage = () => {
-    return (
-      <Message showMessage={error}>
-        <span>Please enter all the fields</span>
-      </Message>
-    );
-  };
-
+export function Login({ setUserHasAccountToFalse }: LoginProps) {
   return (
-    <div className='form'>
-      <div>
-        <h1>User Registration</h1>
-      </div>
-
-      <form>
-        <Label className='label' htmlFor='name'>
-          Name
-          <Input
-            onChange={handleName}
-            className='input'
-            value={name}
-            type='text'
-            id='name'
-          />
-        </Label>
-
-        <Label className='label' htmlFor='email'>
-          Email
-          <Input
-            onChange={handleEmail}
-            className='input'
-            value={email}
-            type='email'
-            id='email'
-          />
-        </Label>
-
-        <Label className='label' htmlFor='password'>
-          Password
-          <Input
-            onChange={handlePassword}
-            className='input'
-            value={password}
-            type='password'
-            id='password'
-          />
-        </Label>
-
-        <div className='messages'>
-          {errorMessage()}
-          {successMessage()}
-        </div>
-
-        <SubmitButton onClick={handleSubmit} className='btn' type='submit'>
-          Submit
-        </SubmitButton>
-      </form>
-    </div>
+    <>
+      <h1>This is the Login form component</h1>
+      <Typography paragraph>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus
+        non enim praesent elementum facilisis leo vel. Risus at ultrices mi
+        tempus imperdiet. Semper risus in hendrerit gravida rutrum quisque non
+        tellus. Convallis convallis tellus id interdum velit laoreet id donec
+        ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl
+        suscipit adipiscing bibendum est ultricies integer quis. Cursus euismod
+        quis viverra nibh cras. Metus vulputate eu scelerisque felis imperdiet
+        proin fermentum leo. Mauris commodo quis imperdiet massa tincidunt. Cras
+        tincidunt lobortis feugiat vivamus at augue. At augue eget arcu dictum
+        varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt.
+        Lorem donec massa sapien faucibus et molestie ac.
+      </Typography>
+      <Typography paragraph>
+        Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
+        ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar elementum
+        integer enim neque volutpat ac tincidunt. Ornare suspendisse sed nisi
+        lacus sed viverra tellus. Purus sit amet volutpat consequat mauris.
+        Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed
+        vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra
+        accumsan in. In hendrerit gravida rutrum quisque non tellus orci ac.
+        Pellentesque nec nam aliquam sem et tortor. Habitant morbi tristique
+        senectus et. Adipiscing elit duis tristique sollicitudin nibh sit.
+        Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra
+        maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin
+        aliquam ultrices sagittis orci a.
+      </Typography>
+      <HasAccountButton
+        onClick={setUserHasAccountToFalse}
+        className='btn'
+        type='submit'
+      >
+        Do not have an account? Register here.
+      </HasAccountButton>
+    </>
   );
 }
