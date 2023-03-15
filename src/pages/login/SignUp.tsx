@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import {
   Label,
@@ -34,8 +35,27 @@ export function SignUp({ setUserHasAccountToTrue }: SignUpProps) {
     setSubmitted(false);
   };
 
+  const createUser = () => {
+    const user = {
+      name,
+      email,
+      password
+    };
+
+    axios
+      .post("/users", user)
+      .then((response) => {
+        console.log(response.data);
+        // Handle data
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
+    createUser();
     if (name === "" || email === "" || password === "") {
       setError(true);
     } else {

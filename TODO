@@ -16,10 +16,12 @@ Technical Backend ->
 - Try to use GraphQL: https://medium.com/mehak-vohra/using-graphql-to-query-your-firebase-realtime-database-a6e6cbd6aa3a
 - User creation
 - User login
+- Swagger
 
 General ->
 - Update readme with storybook info
 - Update readme with husky info
+- Put everything on AWS
 
 System ->
 - User Login

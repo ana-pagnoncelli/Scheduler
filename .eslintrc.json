@@ -65,6 +65,12 @@
         "jest/valid-expect": "off",
         "jest/no-export": "off"
       }
+    },
+    {
+      "files": ["**/*.stories.*"],
+      "rules": {
+        "import/no-anonymous-default-export": "off"
+      }
     }
   ]
 }
