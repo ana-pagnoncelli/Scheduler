@@ -22,6 +22,7 @@ General ->
 - Update readme with storybook info
 - Update readme with husky info
 - Put everything on AWS
+- Dockeriza tudo
 
 System ->
 - User Login

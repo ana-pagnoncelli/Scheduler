@@ -6,6 +6,7 @@ import {
   Message,
   SubmitButton
 } from "./styles";
+import { missingFields } from "./messages";
 
 type LoginProps = {
   setUserHasAccountToFalse: () => void;
@@ -15,44 +16,35 @@ export function Login({ setUserHasAccountToFalse }: LoginProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
-    setSubmitted(false);
   };
 
   const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
-    setSubmitted(false);
+  };
+
+  const userLogin = () => {};
+
+  const messageDisplay = () => {
+    return (
+      <Message>
+        <span>{message}</span>
+      </Message>
+    );
   };
 
   const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     if (email === "" || password === "") {
-      setError(true);
+      setMessage(missingFields);
     } else {
-      setSubmitted(true);
-      setError(false);
+      userLogin();
     }
   };
 
-  const successMessage = () => {
-    return (
-      <Message showMessage={submitted}>
-        <span>User name successfully login!!</span>
-      </Message>
-    );
-  };
-
-  const errorMessage = () => {
-    return (
-      <Message showMessage={error}>
-        <span>Please enter all the fields</span>
-      </Message>
-    );
-  };
   return (
     <div className='form'>
       <div>
@@ -82,10 +74,7 @@ export function Login({ setUserHasAccountToFalse }: LoginProps) {
           />
         </Label>
 
-        <div className='messages'>
-          {errorMessage()}
-          {successMessage()}
-        </div>
+        {messageDisplay()}
 
         <SubmitButton onClick={handleSubmit} className='btn' type='submit'>
           Submit

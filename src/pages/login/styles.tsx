@@ -36,8 +36,7 @@ export const HasAccountButton = styled("button")(() => ({
   margin: "5px"
 }));
 
-export const Message = styled("div")<{ showMessage: boolean }>((props) => ({
-  display: props.showMessage ? "" : "none",
+export const Message = styled("div")(() => ({
   color: "red",
   fontSize: "medium",
   padding: "5px",

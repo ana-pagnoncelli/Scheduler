@@ -1,12 +1,14 @@
-import axios from "axios";
 import React, { useState } from "react";
 import {
   Label,
   Input,
   SubmitButton,
-  Message,
-  HasAccountButton
+  HasAccountButton,
+  Message
 } from "./styles";
+import { missingFields } from "./messages";
+import { createUserRequest } from "./requests";
+import { User } from "./types";
 
 type SignUpProps = {
   setUserHasAccountToTrue: () => void;
@@ -17,67 +19,40 @@ export function SignUp({ setUserHasAccountToTrue }: SignUpProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState(false);
+  const [message, setMessage] = useState("");
 
   const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
-    setSubmitted(false);
   };
 
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
-    setSubmitted(false);
   };
 
   const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
-    setSubmitted(false);
   };
 
-  const createUser = () => {
-    const user = {
-      name,
-      email,
-      password
-    };
-
-    axios
-      .post("/users", user)
-      .then((response) => {
-        console.log(response.data);
-        // Handle data
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  const messageDisplay = () => {
+    return (
+      <Message>
+        <span>{message}</span>
+      </Message>
+    );
   };
 
   const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
-    createUser();
     if (name === "" || email === "" || password === "") {
-      setError(true);
+      setMessage(missingFields);
     } else {
-      setSubmitted(true);
-      setError(false);
+      const user: User = {
+        name,
+        email,
+        password
+      };
+      createUserRequest(user);
     }
-  };
-
-  const successMessage = () => {
-    return (
-      <Message showMessage={submitted}>
-        <span>User {name} successfully registered!!</span>
-      </Message>
-    );
-  };
-
-  const errorMessage = () => {
-    return (
-      <Message showMessage={error}>
-        <span>Please enter all the fields</span>
-      </Message>
-    );
   };
 
   return (
@@ -120,10 +95,7 @@ export function SignUp({ setUserHasAccountToTrue }: SignUpProps) {
           />
         </Label>
 
-        <div className='messages'>
-          {errorMessage()}
-          {successMessage()}
-        </div>
+        {messageDisplay()}
 
         <SubmitButton onClick={handleSubmit} className='btn' type='submit'>
           Submit

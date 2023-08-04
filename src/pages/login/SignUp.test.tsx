@@ -1,6 +1,9 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { SignUp } from "./SignUp";
+import { createUserRequest } from "./requests";
+
+jest.mock("./requests");
 
 const setUserHasAccountToTrue = () => {};
 
@@ -49,11 +52,7 @@ describe("SignUp", () => {
         const submitButton = screen.getByRole("button", { name: "Submit" });
         fireEvent.click(submitButton);
 
-        const successMessage = screen.queryByText(
-          "User test name successfully registered!!"
-        );
-
-        expect(successMessage).toBeVisible();
+        expect(createUserRequest).toHaveBeenCalled();
       });
 
       it("should show error message if there is a missing field", () => {
