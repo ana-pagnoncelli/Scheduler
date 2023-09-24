@@ -11,7 +11,7 @@ describe("SignUp", () => {
   beforeEach(() => {
     render(<SignUp setUserHasAccountToTrue={setUserHasAccountToTrue} />);
   });
-  it("renders Login page", () => {
+  it("renders signUp page", () => {
     const linkElement = screen.getByText("Sing Up");
     expect(linkElement).toBeInTheDocument();
   });
