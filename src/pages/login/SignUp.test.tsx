@@ -39,7 +39,7 @@ describe("SignUp", () => {
     });
 
     describe("user fill the form and submit", () => {
-      it("should show success message if all the data was filled", () => {
+      it("should create user if all the data was filled", () => {
         const inputName = screen.getByLabelText("Name");
         fireEvent.change(inputName, { target: { value: "test name" } });
 
