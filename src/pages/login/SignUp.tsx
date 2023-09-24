@@ -51,7 +51,7 @@ export function SignUp({ setUserHasAccountToTrue }: SignUpProps) {
         email,
         password
       };
-      createUserRequest(user);
+      setMessage(createUserRequest(user));
     }
   };
 

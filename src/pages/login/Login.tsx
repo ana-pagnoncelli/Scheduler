@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   HasAccountButton,
   Input,
@@ -6,13 +7,16 @@ import {
   Message,
   SubmitButton
 } from "./styles";
-import { missingFields } from "./messages";
+import { loginError, missingFields } from "./messages";
+import { loginRequest } from "./requests";
 
 type LoginProps = {
   setUserHasAccountToFalse: () => void;
 };
 
 export function Login({ setUserHasAccountToFalse }: LoginProps) {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -26,14 +30,25 @@ export function Login({ setUserHasAccountToFalse }: LoginProps) {
     setPassword(e.target.value);
   };
 
-  const userLogin = () => {};
-
   const messageDisplay = () => {
     return (
       <Message>
         <span>{message}</span>
       </Message>
     );
+  };
+
+  const redirectToHome = () => {
+    navigate("/home");
+  };
+
+  const userLogin = async () => {
+    const success = await loginRequest(email, password);
+    if (success) {
+      redirectToHome();
+    } else {
+      setMessage(loginError);
+    }
   };
 
   const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
