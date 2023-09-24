@@ -1,10 +1,12 @@
 import * as React from "react";
 import { Toolbar, Typography, Button, Box, CssBaseline } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import AppBar from "./styles";
 
 import { DrawerButton, Drawer } from "./drawer";
 
 export function Header() {
+  const navigate = useNavigate();
   const [isDrawerOpen, setDrawerOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
@@ -13,6 +15,14 @@ export function Header() {
 
   const handleDrawerClose = () => {
     setDrawerOpen(false);
+  };
+
+  const redirectToLoginPage = () => {
+    navigate("/login");
+  };
+
+  const redirectToHomePage = () => {
+    navigate("/home");
   };
 
   return (
@@ -24,10 +34,17 @@ export function Header() {
             open={isDrawerOpen}
             handleDrawerOpen={handleDrawerOpen}
           />
-          <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
+          <Typography
+            variant='h6'
+            component='div'
+            onClick={redirectToHomePage}
+            sx={{ flexGrow: 1 }}
+          >
             Scheduler Header
           </Typography>
-          <Button color='inherit'>Login</Button>
+          <Button color='inherit' onClick={redirectToLoginPage}>
+            Login
+          </Button>
         </Toolbar>
       </AppBar>
       <Drawer open={isDrawerOpen} handleDrawerClose={handleDrawerClose} />
