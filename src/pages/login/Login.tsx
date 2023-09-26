@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { HasAccountButton, Message } from "./styles";
 import { loginError, missingFields } from "./messages";
 import { loginRequest } from "./requests";
-import { SubmitButton } from "../../components/SubmitButton";
-import { InputField } from "../../components/InputField";
+import { InputField, SubmitButton } from "../../components";
 
 type LoginProps = {
   setUserHasAccountToFalse: () => void;

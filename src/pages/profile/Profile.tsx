@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Grid } from "@mui/material";
-import { ProfileField } from "./ProfileField";
-import { SubmitButton } from "../../components/SubmitButton";
+import { InputField, SubmitButton } from "../../components";
 
 export function Profile() {
   const [email, setEmail] = useState("");
@@ -35,37 +34,49 @@ export function Profile() {
       <h1>Profile Page</h1>
       <Grid container spacing={1}>
         <Grid container item xs={12} spacing={1}>
-          <ProfileField
-            fieldName='Name'
-            fieldValue={name}
-            onChange={handleName}
-          />
-          <ProfileField
-            fieldName='Email'
-            fieldValue={email}
-            onChange={handleEmail}
+          <Grid item xs={4}>
+            <InputField
+              fieldName='Name'
+              fieldValue={name}
+              onChange={handleName}
+            />
+          </Grid>
+          <Grid item xs={4}>
+            <InputField
+              fieldName='Email'
+              fieldValue={email}
+              onChange={handleEmail}
+            />
+          </Grid>
+        </Grid>
+      </Grid>
+      <Grid container item xs={12} spacing={1}>
+        <Grid item xs={4}>
+          <InputField fieldName='Age' fieldValue={age} onChange={handleAge} />
+        </Grid>
+        <Grid item xs={4}>
+          <InputField
+            fieldName='Phone'
+            fieldValue={phone}
+            onChange={handlePhone}
           />
         </Grid>
       </Grid>
       <Grid container item xs={12} spacing={1}>
-        <ProfileField fieldName='Age' fieldValue={age} onChange={handleAge} />
-        <ProfileField
-          fieldName='Phone'
-          fieldValue={phone}
-          onChange={handlePhone}
-        />
-      </Grid>
-      <Grid container item xs={12} spacing={1}>
-        <ProfileField
-          fieldName='Gender'
-          fieldValue={gender}
-          onChange={handleGender}
-        />
-        <ProfileField
-          fieldName='Plan'
-          fieldValue={email}
-          onChange={handleEmail}
-        />
+        <Grid item xs={4}>
+          <InputField
+            fieldName='Gender'
+            fieldValue={gender}
+            onChange={handleGender}
+          />
+        </Grid>
+        <Grid item xs={4}>
+          <InputField
+            fieldName='Plan'
+            fieldValue={email}
+            onChange={handleEmail}
+          />
+        </Grid>
       </Grid>
       <SubmitButton className='btn' type='submit'>
         Submit Changes

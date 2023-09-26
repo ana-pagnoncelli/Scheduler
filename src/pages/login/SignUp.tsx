@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Label, Input, HasAccountButton, Message } from "./styles";
+import { HasAccountButton, Message } from "./styles";
 import { missingFields } from "./messages";
 import { createUserRequest } from "./requests";
 import { User } from "./types";
-import { SubmitButton } from "../../components/SubmitButton";
+import { InputField, SubmitButton } from "../../components";
 
 type SignUpProps = {
   setUserHasAccountToTrue: () => void;
@@ -57,38 +57,19 @@ export function SignUp({ setUserHasAccountToTrue }: SignUpProps) {
       </div>
 
       <form>
-        <Label className='label' htmlFor='name'>
-          Name
-          <Input
-            onChange={handleName}
-            className='input'
-            value={name}
-            type='text'
-            id='name'
-          />
-        </Label>
+        <InputField fieldName='Name' fieldValue={name} onChange={handleName} />
 
-        <Label className='label' htmlFor='email'>
-          Email
-          <Input
-            onChange={handleEmail}
-            className='input'
-            value={email}
-            type='email'
-            id='email'
-          />
-        </Label>
+        <InputField
+          fieldName='Email'
+          fieldValue={email}
+          onChange={handleEmail}
+        />
 
-        <Label className='label' htmlFor='password'>
-          Password
-          <Input
-            onChange={handlePassword}
-            className='input'
-            value={password}
-            type='password'
-            id='password'
-          />
-        </Label>
+        <InputField
+          fieldName='Password'
+          fieldValue={password}
+          onChange={handlePassword}
+        />
 
         {messageDisplay()}
 
