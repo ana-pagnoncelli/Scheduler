@@ -1,18 +1,7 @@
 import React, { useState } from "react";
-import { Grid, styled } from "@mui/material";
+import { Grid } from "@mui/material";
 import { ProfileField } from "./ProfileField";
-import { BASE_COLOR } from "../../styles";
-
-export const SubmitButton = styled("button")(() => ({
-  color: "white",
-  backgroundColor: BASE_COLOR,
-  borderColor: BASE_COLOR,
-  borderRadius: "5px",
-  fontSize: "medium",
-  display: "block",
-  padding: "5px",
-  margin: "5px"
-}));
+import { SubmitButton } from "../../components/SubmitButton";
 
 export function Profile() {
   const [email, setEmail] = useState("");
