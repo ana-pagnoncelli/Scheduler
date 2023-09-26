@@ -24,10 +24,3 @@ export const HasAccountButton = styled("button")(() => ({
   padding: "5px",
   margin: "5px"
 }));
-
-export const Message = styled("div")(() => ({
-  color: "red",
-  fontSize: "medium",
-  padding: "5px",
-  margin: "2px"
-}));

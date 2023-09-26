@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { HasAccountButton, Message } from "./styles";
-import { missingFields } from "./messages";
+import { HasAccountButton } from "./styles";
+import { missingFields } from "../../messages";
 import { createUserRequest } from "./requests";
 import { User } from "./types";
 import { InputField, SubmitButton } from "../../components";
+import { MessageDisplay } from "../../components/MessageDisplay";
 
 type SignUpProps = {
   setUserHasAccountToTrue: () => void;
@@ -26,14 +27,6 @@ export function SignUp({ setUserHasAccountToTrue }: SignUpProps) {
 
   const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
-  };
-
-  const messageDisplay = () => {
-    return (
-      <Message>
-        <span>{message}</span>
-      </Message>
-    );
   };
 
   const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
@@ -71,12 +64,13 @@ export function SignUp({ setUserHasAccountToTrue }: SignUpProps) {
           onChange={handlePassword}
         />
 
-        {messageDisplay()}
+        <MessageDisplay message={message} />
 
         <SubmitButton onClick={handleSubmit} className='btn' type='submit'>
           Submit
         </SubmitButton>
       </form>
+
       <HasAccountButton
         onClick={setUserHasAccountToTrue}
         className='btn'

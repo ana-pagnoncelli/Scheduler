@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { HasAccountButton, Message } from "./styles";
-import { loginError, missingFields } from "./messages";
+import { HasAccountButton } from "./styles";
+import { loginError, missingFields } from "../../messages";
 import { loginRequest } from "./requests";
 import { InputField, SubmitButton } from "../../components";
+import { MessageDisplay } from "../../components/MessageDisplay";
 
 type LoginProps = {
   setUserHasAccountToFalse: () => void;
@@ -23,14 +24,6 @@ export function Login({ setUserHasAccountToFalse }: LoginProps) {
 
   const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
-  };
-
-  const messageDisplay = () => {
-    return (
-      <Message>
-        <span>{message}</span>
-      </Message>
-    );
   };
 
   const redirectToHome = () => {
@@ -74,7 +67,7 @@ export function Login({ setUserHasAccountToFalse }: LoginProps) {
           onChange={handlePassword}
         />
 
-        {messageDisplay()}
+        <MessageDisplay message={message} />
 
         <SubmitButton onClick={handleSubmit} className='btn' type='submit'>
           Submit

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { singUpSuccess, singUpErrorCreatingUser } from "./messages";
+import { singUpSuccess, singUpErrorCreatingUser } from "../../messages";
 import { User } from "./types";
 
 export const createUserRequest = (user: User) => {

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Grid } from "@mui/material";
 import { InputField, SubmitButton } from "../../components";
+// import { missingFields } from "../../messages";
 
 export function Profile() {
   const [email, setEmail] = useState("");
@@ -8,6 +9,7 @@ export function Profile() {
   const [phone, setPhone] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
+  // const [message, setMessage] = useState("");
 
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -27,6 +29,15 @@ export function Profile() {
 
   const handleGender = (e: React.ChangeEvent<HTMLInputElement>) => {
     setGender(e.target.value);
+  };
+
+  const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    if (email === "" || name === "") {
+      // setMessage(missingFields);
+    } else {
+      // updateProfile();
+    }
   };
 
   return (
@@ -78,7 +89,7 @@ export function Profile() {
           />
         </Grid>
       </Grid>
-      <SubmitButton className='btn' type='submit'>
+      <SubmitButton onClick={handleSubmit} className='btn' type='submit'>
         Submit Changes
       </SubmitButton>
     </div>
