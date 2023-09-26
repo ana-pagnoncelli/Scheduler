@@ -14,17 +14,6 @@ export const Input = styled("input")(() => ({
   margin: "2px"
 }));
 
-export const SubmitButton = styled("button")(() => ({
-  color: "white",
-  backgroundColor: BASE_COLOR,
-  borderColor: BASE_COLOR,
-  borderRadius: "5px",
-  fontSize: "medium",
-  display: "block",
-  padding: "5px",
-  margin: "5px"
-}));
-
 export const HasAccountButton = styled("button")(() => ({
   color: BASE_COLOR,
   backgroundColor: "white",

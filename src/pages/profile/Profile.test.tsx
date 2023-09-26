@@ -4,6 +4,6 @@ import { Profile } from "./Profile";
 
 test("renders scheduler page", () => {
   render(<Profile />);
-  const linkElement = screen.getByText("This is the profile page");
+  const linkElement = screen.getByText("Profile Page");
   expect(linkElement).toBeInTheDocument();
 });

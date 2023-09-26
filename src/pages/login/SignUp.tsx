@@ -1,14 +1,9 @@
 import React, { useState } from "react";
-import {
-  Label,
-  Input,
-  SubmitButton,
-  HasAccountButton,
-  Message
-} from "./styles";
+import { Label, Input, HasAccountButton, Message } from "./styles";
 import { missingFields } from "./messages";
 import { createUserRequest } from "./requests";
 import { User } from "./types";
+import { SubmitButton } from "../../components/SubmitButton";
 
 type SignUpProps = {
   setUserHasAccountToTrue: () => void;
