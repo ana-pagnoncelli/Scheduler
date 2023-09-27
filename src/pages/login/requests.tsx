@@ -1,19 +1,27 @@
 import axios from "axios";
 import { singUpSuccess, singUpErrorCreatingUser } from "../../messages";
 import { User } from "./types";
+import {
+  FAIL_MESSAGE,
+  MessageDisplayType,
+  SUCCESS_MESSAGE
+} from "../../components";
 
 export const createUserRequest = (user: User) => {
-  let message = "";
+  let message: MessageDisplayType = {
+    text: "",
+    type: SUCCESS_MESSAGE
+  };
 
   axios
     .post("/users", user)
     .then((response) => {
       const successMessage = singUpSuccess(user.name);
-      message = successMessage;
+      message = { text: successMessage, type: SUCCESS_MESSAGE };
       console.log(response.data);
     })
     .catch((err) => {
-      message = singUpErrorCreatingUser;
+      message = { text: singUpErrorCreatingUser, type: FAIL_MESSAGE };
       console.log(err);
     });
 

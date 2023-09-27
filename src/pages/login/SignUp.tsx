@@ -3,8 +3,14 @@ import { HasAccountButton } from "./styles";
 import { missingFields } from "../../messages";
 import { createUserRequest } from "./requests";
 import { User } from "./types";
-import { InputField, SubmitButton } from "../../components";
-import { MessageDisplay } from "../../components/MessageDisplay";
+import {
+  InputField,
+  SubmitButton,
+  MessageDisplay,
+  MessageDisplayType,
+  SUCCESS_MESSAGE,
+  FAIL_MESSAGE
+} from "../../components";
 
 type SignUpProps = {
   setUserHasAccountToTrue: () => void;
@@ -15,7 +21,10 @@ export function SignUp({ setUserHasAccountToTrue }: SignUpProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState<MessageDisplayType>({
+    text: "",
+    type: SUCCESS_MESSAGE
+  });
 
   const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -31,8 +40,9 @@ export function SignUp({ setUserHasAccountToTrue }: SignUpProps) {
 
   const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
+    console.log(message);
     if (name === "" || email === "" || password === "") {
-      setMessage(missingFields);
+      setMessage({ text: missingFields, type: FAIL_MESSAGE });
     } else {
       const user: User = {
         name,
@@ -64,7 +74,7 @@ export function SignUp({ setUserHasAccountToTrue }: SignUpProps) {
           onChange={handlePassword}
         />
 
-        <MessageDisplay message={message} />
+        <MessageDisplay text={message?.text} type={message?.type} />
 
         <SubmitButton onClick={handleSubmit} className='btn' type='submit'>
           Submit

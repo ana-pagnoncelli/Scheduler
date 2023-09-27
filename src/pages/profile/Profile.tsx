@@ -1,7 +1,14 @@
 import React, { useState } from "react";
 import { Grid } from "@mui/material";
-import { InputField, SubmitButton } from "../../components";
-// import { missingFields } from "../../messages";
+import {
+  InputField,
+  SubmitButton,
+  MessageDisplay,
+  MessageDisplayType,
+  SUCCESS_MESSAGE,
+  FAIL_MESSAGE
+} from "../../components";
+import { missingFields, profileUpdated } from "../../messages";
 
 export function Profile() {
   const [email, setEmail] = useState("");
@@ -9,7 +16,11 @@ export function Profile() {
   const [phone, setPhone] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
-  // const [message, setMessage] = useState("");
+
+  const [message, setMessage] = useState<MessageDisplayType>({
+    text: "",
+    type: SUCCESS_MESSAGE
+  });
 
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -34,9 +45,10 @@ export function Profile() {
   const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     if (email === "" || name === "") {
-      // setMessage(missingFields);
+      setMessage({ text: missingFields, type: FAIL_MESSAGE });
     } else {
       // updateProfile();
+      setMessage({ text: profileUpdated, type: FAIL_MESSAGE });
     }
   };
 
@@ -89,6 +101,7 @@ export function Profile() {
           />
         </Grid>
       </Grid>
+      <MessageDisplay text={message.text} type={message.type} />
       <SubmitButton onClick={handleSubmit} className='btn' type='submit'>
         Submit Changes
       </SubmitButton>
