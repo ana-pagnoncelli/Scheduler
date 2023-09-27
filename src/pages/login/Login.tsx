@@ -7,8 +7,6 @@ import {
   InputField,
   SubmitButton,
   MessageDisplay,
-  SUCCESS_MESSAGE,
-  MessageDisplayType,
   FAIL_MESSAGE
 } from "../../components";
 
@@ -22,10 +20,8 @@ export function Login({ setUserHasAccountToFalse }: LoginProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [message, setMessage] = useState<MessageDisplayType>({
-    text: "",
-    type: SUCCESS_MESSAGE
-  });
+  const [messageText, setMessageText] = useState("");
+  const [messageType, setMessageType] = useState("");
 
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -44,14 +40,16 @@ export function Login({ setUserHasAccountToFalse }: LoginProps) {
     if (success) {
       redirectToHome();
     } else {
-      setMessage({ text: loginError, type: FAIL_MESSAGE });
+      setMessageText(loginError);
+      setMessageType(FAIL_MESSAGE);
     }
   };
 
   const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     if (email === "" || password === "") {
-      setMessage({ text: missingFields, type: FAIL_MESSAGE });
+      setMessageText(missingFields);
+      setMessageType(FAIL_MESSAGE);
     } else {
       userLogin();
     }
@@ -76,7 +74,7 @@ export function Login({ setUserHasAccountToFalse }: LoginProps) {
           onChange={handlePassword}
         />
 
-        <MessageDisplay text={message.text} type={message.type} />
+        <MessageDisplay text={messageText} type={messageType} />
 
         <SubmitButton onClick={handleSubmit} className='btn' type='submit'>
           Submit

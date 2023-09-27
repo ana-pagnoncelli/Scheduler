@@ -7,13 +7,13 @@ import {
   SUCCESS_MESSAGE
 } from "../../components";
 
-export const createUserRequest = (user: User) => {
+export const createUserRequest = async (user: User) => {
   let message: MessageDisplayType = {
     text: "",
     type: SUCCESS_MESSAGE
   };
 
-  axios
+  await axios
     .post("/users", user)
     .then((response) => {
       const successMessage = singUpSuccess(user.name);

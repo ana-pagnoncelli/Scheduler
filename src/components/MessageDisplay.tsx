@@ -17,7 +17,7 @@ export const MessageStyleFail = styled("div")(() => ({
 }));
 
 export const MessageStyleSuccess = styled("div")(() => ({
-  color: "red",
+  color: "green",
   fontSize: "medium",
   padding: "5px",
   margin: "2px"
@@ -28,18 +28,20 @@ export function MessageDisplay({
   type
 }: MessageDisplayType): JSX.Element {
   const successMessage = (): JSX.Element => {
-    return (
-      <MessageStyleFail>
-        <span>{text}</span>
-      </MessageStyleFail>
-    );
-  };
-
-  const failMessage = (): JSX.Element => {
+    console.log("type", type);
     return (
       <MessageStyleSuccess>
         <span>{text}</span>
       </MessageStyleSuccess>
+    );
+  };
+
+  const failMessage = (): JSX.Element => {
+    console.log("type", type);
+    return (
+      <MessageStyleFail>
+        <span>{text}</span>
+      </MessageStyleFail>
     );
   };
 

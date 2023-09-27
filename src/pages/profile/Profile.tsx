@@ -4,7 +4,6 @@ import {
   InputField,
   SubmitButton,
   MessageDisplay,
-  MessageDisplayType,
   SUCCESS_MESSAGE,
   FAIL_MESSAGE
 } from "../../components";
@@ -17,10 +16,8 @@ export function Profile() {
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
 
-  const [message, setMessage] = useState<MessageDisplayType>({
-    text: "",
-    type: SUCCESS_MESSAGE
-  });
+  const [messageText, setMessageText] = useState("");
+  const [messageType, setMessageType] = useState("");
 
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -45,10 +42,12 @@ export function Profile() {
   const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     if (email === "" || name === "") {
-      setMessage({ text: missingFields, type: FAIL_MESSAGE });
+      setMessageText(missingFields);
+      setMessageType(FAIL_MESSAGE);
     } else {
       // updateProfile();
-      setMessage({ text: profileUpdated, type: FAIL_MESSAGE });
+      setMessageText(profileUpdated);
+      setMessageType(SUCCESS_MESSAGE);
     }
   };
 
@@ -101,7 +100,7 @@ export function Profile() {
           />
         </Grid>
       </Grid>
-      <MessageDisplay text={message.text} type={message.type} />
+      <MessageDisplay text={messageText} type={messageType} />
       <SubmitButton onClick={handleSubmit} className='btn' type='submit'>
         Submit Changes
       </SubmitButton>

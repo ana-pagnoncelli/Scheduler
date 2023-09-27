@@ -8,7 +8,6 @@ import {
   SubmitButton,
   MessageDisplay,
   MessageDisplayType,
-  SUCCESS_MESSAGE,
   FAIL_MESSAGE
 } from "../../components";
 
@@ -21,10 +20,8 @@ export function SignUp({ setUserHasAccountToTrue }: SignUpProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [message, setMessage] = useState<MessageDisplayType>({
-    text: "",
-    type: SUCCESS_MESSAGE
-  });
+  const [messageText, setMessageText] = useState("");
+  const [messageType, setMessageType] = useState("");
 
   const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -38,18 +35,21 @@ export function SignUp({ setUserHasAccountToTrue }: SignUpProps) {
     setPassword(e.target.value);
   };
 
-  const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
+  const handleSubmit = async (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
-    console.log(message);
     if (name === "" || email === "" || password === "") {
-      setMessage({ text: missingFields, type: FAIL_MESSAGE });
+      setMessageText(missingFields);
+      setMessageType(FAIL_MESSAGE);
     } else {
       const user: User = {
         name,
         email,
         password
       };
-      setMessage(createUserRequest(user));
+
+      const messageResult: MessageDisplayType = await createUserRequest(user);
+      setMessageText(messageResult?.text);
+      setMessageType(messageResult?.type);
     }
   };
 
@@ -74,7 +74,7 @@ export function SignUp({ setUserHasAccountToTrue }: SignUpProps) {
           onChange={handlePassword}
         />
 
-        <MessageDisplay text={message?.text} type={message?.type} />
+        <MessageDisplay text={messageText} type={messageType} />
 
         <SubmitButton onClick={handleSubmit} className='btn' type='submit'>
           Submit
