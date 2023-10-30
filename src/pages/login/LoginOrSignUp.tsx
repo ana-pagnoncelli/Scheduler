@@ -2,10 +2,16 @@ import React, { useState } from "react";
 import { SignUp } from "./SignUp";
 import { Login } from "./Login";
 
-export function LoginOrSignUp() {
+type LoginOrSignUpProps = {
+  // eslint-disable-next-line no-unused-vars
+  handleUserLogin: (userEmail: string) => void;
+};
+
+export function LoginOrSignUp({ handleUserLogin }: LoginOrSignUpProps) {
   const [userHasAccount, setUserHasAccount] = useState(true);
 
   const setUserHasAccountToFalse = () => {
+    handleUserLogin("ana");
     setUserHasAccount(false);
   };
 
@@ -16,7 +22,10 @@ export function LoginOrSignUp() {
   return (
     <div>
       {userHasAccount ? (
-        <Login setUserHasAccountToFalse={setUserHasAccountToFalse} />
+        <Login
+          setUserHasAccountToFalse={setUserHasAccountToFalse}
+          handleUserLogin={handleUserLogin}
+        />
       ) : (
         <SignUp setUserHasAccountToTrue={setUserHasAccountToTrue} />
       )}

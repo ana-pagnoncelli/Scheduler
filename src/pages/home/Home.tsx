@@ -1,7 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Typography } from "@mui/material";
+import { UserContext } from "../../providers/userProvider";
 
 export function Home() {
+  const user = useContext(UserContext);
+  console.log("ana aq");
+  console.log(user);
+
   return (
     <>
       <h1>This is the home page</h1>

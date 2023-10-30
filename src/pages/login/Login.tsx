@@ -12,9 +12,14 @@ import {
 
 type LoginProps = {
   setUserHasAccountToFalse: () => void;
+  // eslint-disable-next-line no-unused-vars
+  handleUserLogin: (userEmail: string) => void;
 };
 
-export function Login({ setUserHasAccountToFalse }: LoginProps) {
+export function Login({
+  setUserHasAccountToFalse,
+  handleUserLogin
+}: LoginProps) {
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -36,8 +41,9 @@ export function Login({ setUserHasAccountToFalse }: LoginProps) {
   };
 
   const userLogin = async () => {
-    const success = await loginRequest(email, password);
-    if (success) {
+    const user = await loginRequest(email, password);
+    if (user) {
+      handleUserLogin(user.email);
       redirectToHome();
     } else {
       setMessageText(loginError);

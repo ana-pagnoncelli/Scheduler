@@ -31,19 +31,19 @@ export const createUserRequest = async (user: User) => {
 export const loginRequest = async (
   email: string,
   password: string
-): Promise<Boolean> => {
+): Promise<User | null> => {
   const loginInfo = { email, password };
-  let loginSuccess = false;
+  let user = null;
 
   await axios
     .post("/users/login", loginInfo)
     .then((response) => {
-      loginSuccess = true;
-      console.log(response.data);
+      user = response.data;
     })
     .catch((err) => {
+      user = false;
       console.log(err);
     });
 
-  return loginSuccess;
+  return user;
 };
