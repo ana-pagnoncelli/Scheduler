@@ -1,13 +1,15 @@
-import * as React from "react";
+import React, { useContext } from "react";
 import { Toolbar, Typography, Button, Box, CssBaseline } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import AppBar from "./styles";
 
 import { DrawerButton, Drawer } from "./drawer";
+import { UserContext } from "../providers/userProvider";
 
 export function Header() {
   const navigate = useNavigate();
   const [isDrawerOpen, setDrawerOpen] = React.useState(false);
+  const user = useContext(UserContext);
 
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
@@ -23,6 +25,20 @@ export function Header() {
 
   const redirectToHomePage = () => {
     navigate("/home");
+  };
+
+  const loginButton = (): JSX.Element => {
+    return (
+      <div>
+        {user ? (
+          <div>{user}</div>
+        ) : (
+          <Button color='inherit' onClick={redirectToLoginPage}>
+            Login
+          </Button>
+        )}
+      </div>
+    );
   };
 
   return (
@@ -42,9 +58,7 @@ export function Header() {
           >
             Scheduler Header
           </Typography>
-          <Button color='inherit' onClick={redirectToLoginPage}>
-            Login
-          </Button>
+          {loginButton()}
         </Toolbar>
       </AppBar>
       <Drawer open={isDrawerOpen} handleDrawerClose={handleDrawerClose} />
