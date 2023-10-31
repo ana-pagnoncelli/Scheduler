@@ -39,6 +39,7 @@ export const loginRequest = async (
     .post("/users/login", loginInfo)
     .then((response) => {
       user = response.data;
+      console.log(user);
     })
     .catch((err) => {
       user = false;
