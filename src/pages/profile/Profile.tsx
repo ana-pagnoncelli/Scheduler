@@ -15,6 +15,7 @@ import {
 import { UserContext } from "../../providers/userProvider";
 import { getProfile, updateProfile } from "./requests";
 import { ProfileType } from "./types";
+import { SUBMIT_CHANGES_BUTTON_NAME } from "./constants";
 
 export function Profile() {
   const [email, setEmail] = useState("");
@@ -92,7 +93,7 @@ export function Profile() {
 
   const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
-    if (email === "" || name === "") {
+    if (name === "") {
       setMessageText(missingFields);
       setMessageType(FAIL_MESSAGE);
     } else {
@@ -101,7 +102,6 @@ export function Profile() {
   };
 
   useEffect(() => {
-    console.log("here");
     const fetchProfile = async () => {
       const profile = await getProfile(user);
       if (profile) fillProfile(profile);
@@ -161,7 +161,7 @@ export function Profile() {
       </Grid>
       <MessageDisplay text={messageText} type={messageType} />
       <SubmitButton onClick={handleSubmit} className='btn' type='submit'>
-        Submit Changes
+        {SUBMIT_CHANGES_BUTTON_NAME}
       </SubmitButton>
     </div>
   );
