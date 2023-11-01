@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Grid } from "@mui/material";
 import {
   InputField,
@@ -8,6 +8,8 @@ import {
   FAIL_MESSAGE
 } from "../../components";
 import { missingFields, profileUpdated } from "../../messages";
+import { UserContext } from "../../providers/userProvider";
+import { getProfile } from "./requests";
 
 export function Profile() {
   const [email, setEmail] = useState("");
@@ -18,6 +20,8 @@ export function Profile() {
 
   const [messageText, setMessageText] = useState("");
   const [messageType, setMessageType] = useState("");
+
+  const user = useContext(UserContext);
 
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -50,6 +54,10 @@ export function Profile() {
       setMessageType(SUCCESS_MESSAGE);
     }
   };
+
+  useEffect(() => {
+    getProfile(user);
+  });
 
   return (
     <div>

@@ -3,9 +3,10 @@ import { Profile } from "./types";
 
 export const getProfile = async (email: string): Promise<Profile | null> => {
   let profile = null;
+  const getProfileUrl = `/users/${email}`;
 
   await axios
-    .get("/user", { params: { email } })
+    .get(getProfileUrl)
     .then((response) => {
       profile = response.data;
       console.log(response.data);
