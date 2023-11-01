@@ -7,9 +7,13 @@ import {
   SUCCESS_MESSAGE,
   FAIL_MESSAGE
 } from "../../components";
-import { missingFields, profileUpdated } from "../../messages";
+import {
+  missingFields,
+  profileUpdateError,
+  profileUpdated
+} from "../../messages";
 import { UserContext } from "../../providers/userProvider";
-import { getProfile } from "./requests";
+import { getProfile, updateProfile } from "./requests";
 import { ProfileType } from "./types";
 
 export function Profile() {
@@ -49,18 +53,6 @@ export function Profile() {
     setPlan(e.target.value);
   };
 
-  const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-    if (email === "" || name === "") {
-      setMessageText(missingFields);
-      setMessageType(FAIL_MESSAGE);
-    } else {
-      // updateProfile();
-      setMessageText(profileUpdated);
-      setMessageType(SUCCESS_MESSAGE);
-    }
-  };
-
   const fillProfile = (profile: ProfileType) => {
     setEmail(profile.email);
     setName(profile.name);
@@ -70,14 +62,53 @@ export function Profile() {
     setPlan(profile.plan);
   };
 
+  const buildProfile = () => {
+    const profile: ProfileType = {
+      email,
+      name,
+      gender,
+      age,
+      phone,
+      plan,
+      password: "123"
+    };
+
+    return profile;
+  };
+
+  const handleUpdateProfile = async () => {
+    if (user) {
+      const profile = buildProfile();
+      const response = await updateProfile(user, profile);
+      if (response) {
+        setMessageText(profileUpdated);
+        setMessageType(SUCCESS_MESSAGE);
+      } else {
+        setMessageText(profileUpdateError);
+        setMessageType(FAIL_MESSAGE);
+      }
+    }
+  };
+
+  const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    if (email === "" || name === "") {
+      setMessageText(missingFields);
+      setMessageType(FAIL_MESSAGE);
+    } else {
+      handleUpdateProfile();
+    }
+  };
+
   useEffect(() => {
+    console.log("here");
     const fetchProfile = async () => {
       const profile = await getProfile(user);
       if (profile) fillProfile(profile);
     };
 
     if (user) fetchProfile();
-  });
+  }, []);
 
   return (
     <div>

@@ -4,20 +4,40 @@ import { ProfileType } from "./types";
 export const getProfile = async (
   email: string
 ): Promise<ProfileType | null> => {
-  let profile = null;
-  const getProfileUrl = `/users/${email}`;
+  let profileResponse = null;
+  const profileUrl = `/users/${email}`;
 
   await axios
-    .get(getProfileUrl)
+    .get(profileUrl)
     .then((response) => {
-      profile = response.data;
+      profileResponse = response.data;
       console.log(response.data);
     })
     .catch((err) => {
       console.log(err);
     });
 
-  return profile;
+  return profileResponse;
+};
+
+export const updateProfile = async (
+  email: string,
+  profile: ProfileType
+): Promise<ProfileType | null> => {
+  let profileResponse = null;
+  const profileUrl = `/users/${email}`;
+
+  await axios
+    .put(profileUrl, profile)
+    .then((response) => {
+      profileResponse = response.data;
+      console.log(response.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  return profileResponse;
 };
 
 // export const createUserRequest = async (user: User) => {
