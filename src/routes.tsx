@@ -8,6 +8,7 @@ import {
   LoginOrSignUp,
   Profile
 } from "./pages";
+import { Logout } from "./pages/logout";
 
 type RouterProps = {
   // eslint-disable-next-line no-unused-vars
@@ -23,6 +24,7 @@ export default function Router({ handleUserLogin }: RouterProps) {
       path: "login",
       element: <LoginOrSignUp handleUserLogin={handleUserLogin} />
     },
+    { path: "logout", element: <Logout /> },
     { path: "home", element: <Home /> },
     { path: "profile", element: <Profile /> },
     { path: "/", element: <Navigate to='/home' /> },
