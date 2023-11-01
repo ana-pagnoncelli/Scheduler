@@ -10,6 +10,7 @@ import {
 import { missingFields, profileUpdated } from "../../messages";
 import { UserContext } from "../../providers/userProvider";
 import { getProfile } from "./requests";
+import { ProfileType } from "./types";
 
 export function Profile() {
   const [email, setEmail] = useState("");
@@ -17,6 +18,7 @@ export function Profile() {
   const [phone, setPhone] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
+  const [plan, setPlan] = useState("");
 
   const [messageText, setMessageText] = useState("");
   const [messageType, setMessageType] = useState("");
@@ -43,6 +45,10 @@ export function Profile() {
     setGender(e.target.value);
   };
 
+  const handlePlan = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPlan(e.target.value);
+  };
+
   const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     if (email === "" || name === "") {
@@ -55,8 +61,22 @@ export function Profile() {
     }
   };
 
+  const fillProfile = (profile: ProfileType) => {
+    setEmail(profile.email);
+    setName(profile.name);
+    setGender(profile.gender);
+    setAge(profile.age);
+    setPhone(profile.phone);
+    setPlan(profile.plan);
+  };
+
   useEffect(() => {
-    getProfile(user);
+    const fetchProfile = async () => {
+      const profile = await getProfile(user);
+      if (profile) fillProfile(profile);
+    };
+
+    if (user) fetchProfile();
   });
 
   return (
@@ -103,8 +123,8 @@ export function Profile() {
         <Grid item xs={4}>
           <InputField
             fieldName='Plan'
-            fieldValue={email}
-            onChange={handleEmail}
+            fieldValue={plan}
+            onChange={handlePlan}
           />
         </Grid>
       </Grid>

@@ -1,7 +1,9 @@
 import axios from "axios";
-import { Profile } from "./types";
+import { ProfileType } from "./types";
 
-export const getProfile = async (email: string): Promise<Profile | null> => {
+export const getProfile = async (
+  email: string
+): Promise<ProfileType | null> => {
   let profile = null;
   const getProfileUrl = `/users/${email}`;
 

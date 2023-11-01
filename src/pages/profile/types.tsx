@@ -1,8 +1,9 @@
-export type Profile = {
+export type ProfileType = {
   name: string;
   email: string;
   password: string;
-  age: number;
+  age: string;
   gender: string;
-  phone: number;
+  phone: string;
+  plan: string;
 };
