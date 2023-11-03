@@ -3,78 +3,84 @@ import React from "react";
 // import Collapse from "@mui/material/Collapse";
 // import IconButton from "@mui/material/IconButton";
 import Table from "@mui/material/Table";
-// import TableBody from "@mui/material/TableBody";
+import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 // import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
+import { ScheduleClassTableRowDay } from "./ScheduleClassTableRowDay";
+import { ScheduleDay } from "./types";
 // import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 // import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
-// const scheduleList: ScheduleDay[] = [
-//   {
-//     day: "2021-03-02",
-//     hours: [
-//       {
-//         hour: "13",
-//         numberOfSpots: "2",
-//         availableSpots: "2"
-//       },
-//       {
-//         hour: "14",
-//         numberOfSpots: "2",
-//         availableSpots: "1"
-//       },
-//       {
-//         hour: "15",
-//         numberOfSpots: "2",
-//         availableSpots: "0"
-//       },
-//       {
-//         hour: "16",
-//         numberOfSpots: "2",
-//         availableSpots: "1"
-//       },
-//       {
-//         hour: "17",
-//         numberOfSpots: "2",
-//         availableSpots: "2"
-//       }
-//     ]
-//   },
-//   {
-//     day: "2021-03-03",
-//     hours: [
-//       {
-//         hour: "13",
-//         numberOfSpots: "2",
-//         availableSpots: "2"
-//       },
-//       {
-//         hour: "14",
-//         numberOfSpots: "2",
-//         availableSpots: "1"
-//       },
-//       {
-//         hour: "15",
-//         numberOfSpots: "2",
-//         availableSpots: "0"
-//       },
-//       {
-//         hour: "16",
-//         numberOfSpots: "2",
-//         availableSpots: "1"
-//       },
-//       {
-//         hour: "17",
-//         numberOfSpots: "2",
-//         availableSpots: "2"
-//       }
-//     ]
-//   }
-// ];
+const scheduleList: ScheduleDay[] = [
+  {
+    day: "2021-03-02",
+    numberOfSpots: "2",
+    availableSpots: "2",
+    hours: [
+      {
+        hour: "13",
+        numberOfSpots: "2",
+        availableSpots: "2"
+      },
+      {
+        hour: "14",
+        numberOfSpots: "2",
+        availableSpots: "1"
+      },
+      {
+        hour: "15",
+        numberOfSpots: "2",
+        availableSpots: "0"
+      },
+      {
+        hour: "16",
+        numberOfSpots: "2",
+        availableSpots: "1"
+      },
+      {
+        hour: "17",
+        numberOfSpots: "2",
+        availableSpots: "2"
+      }
+    ]
+  },
+  {
+    day: "2021-03-03",
+    numberOfSpots: "2",
+    availableSpots: "2",
+    hours: [
+      {
+        hour: "13",
+        numberOfSpots: "2",
+        availableSpots: "2"
+      },
+      {
+        hour: "14",
+        numberOfSpots: "2",
+        availableSpots: "1"
+      },
+      {
+        hour: "15",
+        numberOfSpots: "2",
+        availableSpots: "0"
+      },
+      {
+        hour: "16",
+        numberOfSpots: "2",
+        availableSpots: "1"
+      },
+      {
+        hour: "17",
+        numberOfSpots: "2",
+        availableSpots: "2"
+      }
+    ]
+  }
+];
 
 export function ScheduleClass() {
   return (
@@ -90,11 +96,14 @@ export function ScheduleClass() {
               <TableCell align='center'>Number of available spots</TableCell>
             </TableRow>
           </TableHead>
-          {/* <TableBody>
-          {rows.map((row) => (
-            <Row key={row.name} row={row} />
-          ))}
-        </TableBody> */}
+          <TableBody>
+            {scheduleList.map((scheduleDay) => (
+              <ScheduleClassTableRowDay
+                key={scheduleDay.day}
+                scheduleDay={scheduleDay}
+              />
+            ))}
+          </TableBody>
         </Table>
       </TableContainer>
     </>
