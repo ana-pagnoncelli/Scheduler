@@ -31,7 +31,7 @@ export function ScheduleClassTableHour({
         <Collapse in={open} timeout='auto' unmountOnExit>
           <Box sx={{ margin: 1 }}>
             <Typography variant='h6' gutterBottom component='div'>
-              Hours
+              Working Hours
             </Typography>
             <Table size='small' aria-label='purchases'>
               <TableHead>
