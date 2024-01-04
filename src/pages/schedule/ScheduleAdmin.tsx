@@ -1,11 +1,26 @@
-import React from "react";
-import Typography from "@mui/material/Typography";
+import React, { useEffect } from "react";
+import { Button, Typography } from "@mui/material";
 import { ScheduleClass } from "./ScheduleClass";
+import { getSchedules } from "./requests";
+import { FixedSchedule } from "./types";
 
 export function ScheduleAdmin() {
+  const fillScheduleTable = (schedules: Array<FixedSchedule>) => {
+    return schedules;
+  };
+
+  useEffect(() => {
+    const fetchSchedules = async () => {
+      const schedules = await getSchedules();
+      if (schedules) fillScheduleTable(schedules);
+    };
+
+    fetchSchedules();
+  }, []);
+
   return (
     <>
-      <h1>My Schedule Admin</h1>
+      <h1>My Available Schedules</h1>
       <Typography paragraph>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus
@@ -35,6 +50,7 @@ export function ScheduleAdmin() {
         aliquam ultrices sagittis orci a.
       </Typography>
 
+      <Button variant='contained'>Add Schedule</Button>
       <ScheduleClass />
     </>
   );

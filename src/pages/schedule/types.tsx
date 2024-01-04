@@ -10,3 +10,10 @@ export type ScheduleDay = {
   availableSpots: string;
   hours: ScheduleHour[];
 };
+
+export type FixedSchedule = {
+  week_day: string;
+  hour_of_the_day: string;
+  number_of_spots: string;
+  users_list: string[];
+};
