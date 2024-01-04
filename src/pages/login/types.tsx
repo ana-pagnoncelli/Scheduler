@@ -1,4 +1,9 @@
-export type User = { name: string; email: string; password: string };
+export type User = {
+  name: string;
+  email: string;
+  password: string;
+  admin: boolean;
+};
 
 // eslint-disable-next-line no-unused-vars
 export type FunctionSetIsLoginPage = (value: boolean) => void;

@@ -48,3 +48,20 @@ export const loginRequest = async (
 
   return user;
 };
+
+export const getUser = async (email: string): Promise<User | null> => {
+  let user = null;
+
+  await axios
+    .get(`/users/${email}`)
+    .then((response) => {
+      user = response.data;
+      console.log(user);
+    })
+    .catch((err) => {
+      user = false;
+      console.log(err);
+    });
+
+  return user;
+};

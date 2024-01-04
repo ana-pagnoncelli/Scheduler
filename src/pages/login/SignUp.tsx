@@ -44,7 +44,8 @@ export function SignUp({ setUserHasAccountToTrue }: SignUpProps) {
       const user: User = {
         name,
         email,
-        password
+        password,
+        admin: false
       };
 
       const messageResult: MessageDisplayType = await createUserRequest(user);
