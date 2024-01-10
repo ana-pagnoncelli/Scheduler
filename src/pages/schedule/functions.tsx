@@ -1,66 +1,46 @@
+/* eslint-disable camelcase */
 import { DayOfTheWeek, FixedSchedule, FixedSchedulesByDay } from "./types";
 
-// TODO: Refactor this function
+const fixedScheduleOf = (
+  dayOfTheWeek: DayOfTheWeek,
+  fixedSchedules: FixedSchedule[]
+): FixedSchedulesByDay => {
+  const filteredSchedule = fixedSchedules.filter(
+    (fixedSchedule) => fixedSchedule.week_day === dayOfTheWeek
+  );
+
+  const numberOfSpots = Object.values(filteredSchedule).reduce(
+    (t, { number_of_spots }) => t + Number(number_of_spots),
+    0
+  );
+
+  const busySpots = Object.values(filteredSchedule).reduce(
+    (t, { users_list }) => t + Number(users_list.length),
+    0
+  );
+
+  const availableSpots = numberOfSpots - busySpots;
+
+  return {
+    dayOfTheWeek,
+    fixedSchedules: filteredSchedule,
+    numberOfSpots,
+    availableSpots
+  };
+};
+
+// TODO: Refactor this function -> it is not optimized at all
 export const separateFixedSchedulesByDayOfTheWeek = (
   fixedSchedules: FixedSchedule[]
 ) => {
-  const fixedSchedulesMonday: FixedSchedulesByDay = {
-    dayOfTheWeek: DayOfTheWeek.monday,
-    fixedSchedules: fixedSchedules.filter(
-      (fixedSchedule) => fixedSchedule.week_day === DayOfTheWeek.monday
-    )
-  };
-
-  const fixedSchedulesTuesday: FixedSchedulesByDay = {
-    dayOfTheWeek: DayOfTheWeek.tuesday,
-    fixedSchedules: fixedSchedules.filter(
-      (fixedSchedule) => fixedSchedule.week_day === DayOfTheWeek.tuesday
-    )
-  };
-
-  const fixedSchedulesWednesday: FixedSchedulesByDay = {
-    dayOfTheWeek: DayOfTheWeek.wednesday,
-    fixedSchedules: fixedSchedules.filter(
-      (fixedSchedule) => fixedSchedule.week_day === DayOfTheWeek.wednesday
-    )
-  };
-
-  const fixedSchedulesThursday: FixedSchedulesByDay = {
-    dayOfTheWeek: DayOfTheWeek.thursday,
-    fixedSchedules: fixedSchedules.filter(
-      (fixedSchedule) => fixedSchedule.week_day === DayOfTheWeek.thursday
-    )
-  };
-
-  const fixedSchedulesFriday: FixedSchedulesByDay = {
-    dayOfTheWeek: DayOfTheWeek.friday,
-    fixedSchedules: fixedSchedules.filter(
-      (fixedSchedule) => fixedSchedule.week_day === DayOfTheWeek.friday
-    )
-  };
-
-  const fixedSchedulesSaturday: FixedSchedulesByDay = {
-    dayOfTheWeek: DayOfTheWeek.saturday,
-    fixedSchedules: fixedSchedules.filter(
-      (fixedSchedule) => fixedSchedule.week_day === DayOfTheWeek.saturday
-    )
-  };
-
-  const fixedSchedulesSunday: FixedSchedulesByDay = {
-    dayOfTheWeek: DayOfTheWeek.sunday,
-    fixedSchedules: fixedSchedules.filter(
-      (fixedSchedule) => fixedSchedule.week_day === DayOfTheWeek.sunday
-    )
-  };
-
   const fixedSchedulesByDay: FixedSchedulesByDay[] = [
-    fixedSchedulesMonday,
-    fixedSchedulesTuesday,
-    fixedSchedulesWednesday,
-    fixedSchedulesThursday,
-    fixedSchedulesFriday,
-    fixedSchedulesSaturday,
-    fixedSchedulesSunday
+    fixedScheduleOf(DayOfTheWeek.monday, fixedSchedules),
+    fixedScheduleOf(DayOfTheWeek.tuesday, fixedSchedules),
+    fixedScheduleOf(DayOfTheWeek.wednesday, fixedSchedules),
+    fixedScheduleOf(DayOfTheWeek.thursday, fixedSchedules),
+    fixedScheduleOf(DayOfTheWeek.friday, fixedSchedules),
+    fixedScheduleOf(DayOfTheWeek.saturday, fixedSchedules),
+    fixedScheduleOf(DayOfTheWeek.sunday, fixedSchedules)
   ];
   return fixedSchedulesByDay;
 };

@@ -29,6 +29,8 @@ export type FixedSchedule = {
 };
 
 export type FixedSchedulesByDay = {
+  availableSpots: number;
+  numberOfSpots: number;
   dayOfTheWeek: DayOfTheWeek;
   fixedSchedules: FixedSchedule[];
 };
