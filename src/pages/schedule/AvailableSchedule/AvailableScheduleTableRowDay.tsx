@@ -4,16 +4,12 @@ import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import { ScheduleDay } from "./types";
-import { ScheduleClassTableHour } from "./ScheduleClassTableHour";
+import { AvailableScheduleTableRowDayProps } from "../types";
+import { AvailableScheduleTableHour } from "./AvailableScheduleTableHour";
 
-type ScheduleClassTableRowDayProps = {
-  scheduleDay: ScheduleDay;
-};
-
-export function ScheduleClassTableRowDay({
-  scheduleDay
-}: ScheduleClassTableRowDayProps) {
+export function AvailableScheduleTableRowDay({
+  fixedSchedulesByDay
+}: AvailableScheduleTableRowDayProps) {
   const [open, setOpen] = React.useState(false);
 
   return (
@@ -28,13 +24,20 @@ export function ScheduleClassTableRowDay({
             {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
-        <TableCell component='th' scope='row'>
-          {scheduleDay.day}
+        <TableCell component='th' scope='row' align='left'>
+          {fixedSchedulesByDay.dayOfTheWeek}
         </TableCell>
-        <TableCell align='center'>{scheduleDay.numberOfSpots}</TableCell>
-        <TableCell align='center'>{scheduleDay.availableSpots}</TableCell>
+        <TableCell component='th' scope='row' align='center'>
+          {fixedSchedulesByDay.numberOfSpots}
+        </TableCell>
+        <TableCell component='th' scope='row' align='center'>
+          {fixedSchedulesByDay.availableSpots}
+        </TableCell>
       </TableRow>
-      <ScheduleClassTableHour open={open} scheduleHours={scheduleDay.hours} />
+      <AvailableScheduleTableHour
+        open={open}
+        fixedSchedules={fixedSchedulesByDay.fixedSchedules}
+      />
     </>
   );
 }

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material";
-import { ScheduleClass } from "./ScheduleClass";
+import { ScheduleClass } from "./ScheduleClass/ScheduleClass";
 import { getSchedules } from "./requests";
-import { AvailableSchedule } from "./AvailableSchedule";
+import { AvailableSchedule } from "./AvailableSchedule/AvailableSchedule";
 import { FixedSchedule } from "./types";
 
 export function ScheduleAdmin() {

@@ -2,7 +2,7 @@ import React from "react";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import { Button } from "@mui/material";
-import { ScheduleHour } from "./types";
+import { ScheduleHour } from "../types";
 
 type ScheduleClassTableRowHourProps = {
   scheduleHour: ScheduleHour;

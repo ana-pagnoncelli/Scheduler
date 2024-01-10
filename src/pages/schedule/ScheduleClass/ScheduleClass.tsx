@@ -7,7 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { ScheduleClassTableRowDay } from "./ScheduleClassTableRowDay";
-import { ScheduleDay } from "./types";
+import { ScheduleDay } from "../types";
 
 const scheduleList: ScheduleDay[] = [
   {

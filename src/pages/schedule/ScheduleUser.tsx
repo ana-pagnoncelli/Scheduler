@@ -1,6 +1,6 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
-import { ScheduleClass } from "./ScheduleClass";
+import { ScheduleClass } from "./ScheduleClass/ScheduleClass";
 
 export function ScheduleUser() {
   return (

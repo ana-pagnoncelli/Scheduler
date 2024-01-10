@@ -6,8 +6,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { AvailableScheduleProps } from "./types";
-import { separateFixedSchedulesByDayOfTheWeek } from "./functions";
+import { AvailableScheduleProps } from "../types";
+import { separateFixedSchedulesByDayOfTheWeek } from "../functions";
 import { AvailableScheduleTableRowDay } from "./AvailableScheduleTableRowDay";
 
 export function AvailableSchedule({ fixedSchedules }: AvailableScheduleProps) {
