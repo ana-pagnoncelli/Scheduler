@@ -42,3 +42,12 @@ export type AvailableScheduleProps = {
 export type AvailableScheduleTableRowDayProps = {
   fixedSchedulesByDay: FixedSchedulesByDay;
 };
+
+export type AvailableScheduleTableHourProps = {
+  fixedSchedules: FixedSchedule[];
+  open: boolean;
+};
+
+export type AvailableScheduleTableRowHourProps = {
+  fixedSchedule: FixedSchedule;
+};

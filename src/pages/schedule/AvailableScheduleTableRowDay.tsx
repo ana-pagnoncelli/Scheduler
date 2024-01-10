@@ -5,6 +5,7 @@ import TableRow from "@mui/material/TableRow";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { AvailableScheduleTableRowDayProps } from "./types";
+import { AvailableScheduleTableHour } from "./AvailableScheduleTableHour";
 
 export function AvailableScheduleTableRowDay({
   fixedSchedulesByDay
@@ -27,13 +28,16 @@ export function AvailableScheduleTableRowDay({
           {fixedSchedulesByDay.dayOfTheWeek}
         </TableCell>
         <TableCell component='th' scope='row' align='center'>
-          {fixedSchedulesByDay.dayOfTheWeek}
+          {fixedSchedulesByDay.numberOfSpots}
         </TableCell>
         <TableCell component='th' scope='row' align='center'>
-          {fixedSchedulesByDay.dayOfTheWeek}
+          {fixedSchedulesByDay.availableSpots}
         </TableCell>
       </TableRow>
-      {/* <ScheduleClassTableHour open={open} scheduleHours={scheduleDay.hours} /> */}
+      <AvailableScheduleTableHour
+        open={open}
+        fixedSchedules={fixedSchedulesByDay.fixedSchedules}
+      />
     </>
   );
 }
