@@ -1,17 +1,12 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
-// import IconButton from "@mui/material/IconButton";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
-// import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
-// import Paper from "@mui/material/Paper";
-// import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-// import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { ScheduleHour } from "./types";
 import { ScheduleClassTableRowHour } from "./ScheduleClassTableRowHour";
 
@@ -24,7 +19,6 @@ export function ScheduleClassTableHour({
   scheduleHours,
   open
 }: ScheduleClassTableHourProps) {
-  console.log(scheduleHours);
   return (
     <TableRow>
       <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -45,7 +39,10 @@ export function ScheduleClassTableHour({
               </TableHead>
               <TableBody>
                 {scheduleHours.map((scheduleHour) => (
-                  <ScheduleClassTableRowHour scheduleHour={scheduleHour} />
+                  <ScheduleClassTableRowHour
+                    key={scheduleHour.hour}
+                    scheduleHour={scheduleHour}
+                  />
                 ))}
               </TableBody>
             </Table>

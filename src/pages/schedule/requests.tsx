@@ -1,8 +1,8 @@
 import axios from "axios";
 import { FixedSchedule } from "./types";
 
-export const getSchedules = async (): Promise<Array<FixedSchedule> | null> => {
-  let schedules = null;
+export const getSchedules = async (): Promise<Array<FixedSchedule>> => {
+  let schedules: FixedSchedule[] = [];
 
   await axios
     .get(`/schedules/all`)
@@ -11,7 +11,6 @@ export const getSchedules = async (): Promise<Array<FixedSchedule> | null> => {
       console.log(schedules);
     })
     .catch((err) => {
-      schedules = false;
       console.log(err);
     });
 
