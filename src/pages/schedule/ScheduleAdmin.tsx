@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Button } from "@mui/material";
-import { ScheduleClass } from "./ScheduleClass/ScheduleClass";
 import { getSchedules } from "./requests";
 import { AvailableSchedule } from "./AvailableSchedule/AvailableSchedule";
 import { FixedSchedule } from "./types";
+import { AddSchedule } from "./AddSchedule";
 
 export function ScheduleAdmin() {
   const [fixedSchedules, setFixedSchedules] = useState<FixedSchedule[]>([]);
@@ -20,8 +19,7 @@ export function ScheduleAdmin() {
     <>
       <AvailableSchedule fixedSchedules={fixedSchedules} />
 
-      <Button variant='contained'>Add Schedule</Button>
-      <ScheduleClass />
+      <AddSchedule />
     </>
   );
 }
