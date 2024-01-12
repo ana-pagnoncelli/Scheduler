@@ -7,38 +7,41 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 export function AddScheduleForm() {
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DemoContainer components={["TimePicker"]}>
-        <DemoItem>
-          <TimePicker />
-        </DemoItem>
-        <TextField
-          required
-          id='outlined-required'
-          label='Required'
-          defaultValue='Hello World'
-        />
-        <TextField
-          disabled
-          id='outlined-disabled'
-          label='Disabled'
-          defaultValue='Hello World'
-        />
-        <TextField
-          id='outlined-password-input'
-          label='Password'
-          type='password'
-          autoComplete='current-password'
-        />
-        <TextField
-          id='outlined-read-only-input'
-          label='Read Only'
-          defaultValue='Hello World'
-          InputProps={{
-            readOnly: true
-          }}
-        />
-      </DemoContainer>
-    </LocalizationProvider>
+    <div>
+      <h2>Add Schedule</h2>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <DemoContainer components={["TimePicker"]}>
+          <DemoItem>
+            <TimePicker />
+          </DemoItem>
+          <TextField
+            required
+            id='outlined-required'
+            label='Required'
+            defaultValue='Hello World'
+          />
+          <TextField
+            disabled
+            id='outlined-disabled'
+            label='Disabled'
+            defaultValue='Hello World'
+          />
+          <TextField
+            id='outlined-password-input'
+            label='Password'
+            type='password'
+            autoComplete='current-password'
+          />
+          <TextField
+            id='outlined-read-only-input'
+            label='Read Only'
+            defaultValue='Hello World'
+            InputProps={{
+              readOnly: true
+            }}
+          />
+        </DemoContainer>
+      </LocalizationProvider>
+    </div>
   );
 }

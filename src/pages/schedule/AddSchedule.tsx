@@ -1,14 +1,23 @@
-import React from "react";
-import { Button } from "@mui/material";
+import React, { useState } from "react";
+import { Box, Button } from "@mui/material";
 import { AddScheduleForm } from "./AddScheduleForm";
 
 export function AddSchedule() {
-  return (
-    <>
-      <h2>Add Schedule</h2>
+  const [shouldShowForm, setShouldShowForm] = useState(false);
 
-      <AddScheduleForm />
-      <Button variant='contained'>Add Schedule</Button>
-    </>
+  const handleAddScheduleButton = () => {
+    setShouldShowForm(true);
+  };
+
+  return (
+    <Box pt={3}>
+      {shouldShowForm ? (
+        <AddScheduleForm />
+      ) : (
+        <Button onClick={handleAddScheduleButton} variant='contained'>
+          Add Schedule
+        </Button>
+      )}
+    </Box>
   );
 }
