@@ -15,7 +15,7 @@ export function AddSchedule() {
         <AddScheduleForm />
       ) : (
         <Button onClick={handleAddScheduleButton} variant='contained'>
-          Add Schedule
+          Create new schedule
         </Button>
       )}
     </Box>

@@ -34,13 +34,13 @@ export const separateFixedSchedulesByDayOfTheWeek = (
   fixedSchedules: FixedSchedule[]
 ) => {
   const fixedSchedulesByDay: FixedSchedulesByDay[] = [
-    fixedScheduleOf(DayOfTheWeek.monday, fixedSchedules),
-    fixedScheduleOf(DayOfTheWeek.tuesday, fixedSchedules),
-    fixedScheduleOf(DayOfTheWeek.wednesday, fixedSchedules),
-    fixedScheduleOf(DayOfTheWeek.thursday, fixedSchedules),
-    fixedScheduleOf(DayOfTheWeek.friday, fixedSchedules),
-    fixedScheduleOf(DayOfTheWeek.saturday, fixedSchedules),
-    fixedScheduleOf(DayOfTheWeek.sunday, fixedSchedules)
+    fixedScheduleOf(DayOfTheWeek.MONDAY, fixedSchedules),
+    fixedScheduleOf(DayOfTheWeek.TUESDAY, fixedSchedules),
+    fixedScheduleOf(DayOfTheWeek.WEDNESDAY, fixedSchedules),
+    fixedScheduleOf(DayOfTheWeek.THURSDAY, fixedSchedules),
+    fixedScheduleOf(DayOfTheWeek.FRIDAY, fixedSchedules),
+    fixedScheduleOf(DayOfTheWeek.SATURDAY, fixedSchedules),
+    fixedScheduleOf(DayOfTheWeek.SUNDAY, fixedSchedules)
   ];
   return fixedSchedulesByDay;
 };

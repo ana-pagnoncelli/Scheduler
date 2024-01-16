@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getSchedules } from "./requests";
 import { AvailableSchedule } from "./AvailableSchedule/AvailableSchedule";
 import { FixedSchedule } from "./types";
-import { AddSchedule } from "./AddSchedule";
+import { AddSchedule } from "./AddSchedule/AddSchedule";
 
 export function ScheduleAdmin() {
   const [fixedSchedules, setFixedSchedules] = useState<FixedSchedule[]>([]);

@@ -4,37 +4,43 @@ import { DayOfTheWeek, FixedSchedulesByDay } from "./types";
 test("separateFixedSchedulesByDayOfTheWeek", () => {
   const fixedSchedules = [
     {
-      week_day: DayOfTheWeek.monday,
+      id: "1",
+      week_day: DayOfTheWeek.MONDAY,
       hour_of_the_day: "18:00",
       number_of_spots: "2",
       users_list: ["ana"]
     },
     {
-      week_day: DayOfTheWeek.monday,
+      id: "2",
+      week_day: DayOfTheWeek.MONDAY,
       hour_of_the_day: "17:00",
       number_of_spots: "2",
       users_list: []
     },
     {
-      week_day: DayOfTheWeek.monday,
+      id: "3",
+      week_day: DayOfTheWeek.MONDAY,
       hour_of_the_day: "16:00",
       number_of_spots: "3",
       users_list: ["ana", "carolina"]
     },
     {
-      week_day: DayOfTheWeek.tuesday,
+      id: "4",
+      week_day: DayOfTheWeek.TUESDAY,
       hour_of_the_day: "18:00",
       number_of_spots: "2",
       users_list: []
     },
     {
-      week_day: DayOfTheWeek.friday,
+      id: "5",
+      week_day: DayOfTheWeek.FRIDAY,
       hour_of_the_day: "18:00",
       number_of_spots: "2",
       users_list: ["ana", "carolina"]
     },
     {
-      week_day: DayOfTheWeek.friday,
+      id: "6",
+      week_day: DayOfTheWeek.FRIDAY,
       hour_of_the_day: "17:00",
       number_of_spots: "2",
       users_list: ["ana", "carolina"]
@@ -43,24 +49,27 @@ test("separateFixedSchedulesByDayOfTheWeek", () => {
 
   const fixedSchedulesByDayOfTheWeek: FixedSchedulesByDay[] = [
     {
-      dayOfTheWeek: DayOfTheWeek.monday,
+      dayOfTheWeek: DayOfTheWeek.MONDAY,
       numberOfSpots: 7,
       availableSpots: 4,
       fixedSchedules: [
         {
-          week_day: DayOfTheWeek.monday,
+          id: "1",
+          week_day: DayOfTheWeek.MONDAY,
           hour_of_the_day: "18:00",
           number_of_spots: "2",
           users_list: ["ana"]
         },
         {
-          week_day: DayOfTheWeek.monday,
+          id: "2",
+          week_day: DayOfTheWeek.MONDAY,
           hour_of_the_day: "17:00",
           number_of_spots: "2",
           users_list: []
         },
         {
-          week_day: DayOfTheWeek.monday,
+          id: "3",
+          week_day: DayOfTheWeek.MONDAY,
           hour_of_the_day: "16:00",
           number_of_spots: "3",
           users_list: ["ana", "carolina"]
@@ -68,12 +77,13 @@ test("separateFixedSchedulesByDayOfTheWeek", () => {
       ]
     },
     {
-      dayOfTheWeek: DayOfTheWeek.tuesday,
+      dayOfTheWeek: DayOfTheWeek.TUESDAY,
       numberOfSpots: 2,
       availableSpots: 2,
       fixedSchedules: [
         {
-          week_day: DayOfTheWeek.tuesday,
+          id: "4",
+          week_day: DayOfTheWeek.TUESDAY,
           hour_of_the_day: "18:00",
           number_of_spots: "2",
           users_list: []
@@ -81,30 +91,32 @@ test("separateFixedSchedulesByDayOfTheWeek", () => {
       ]
     },
     {
-      dayOfTheWeek: DayOfTheWeek.wednesday,
+      dayOfTheWeek: DayOfTheWeek.WEDNESDAY,
       numberOfSpots: 0,
       availableSpots: 0,
       fixedSchedules: []
     },
     {
-      dayOfTheWeek: DayOfTheWeek.thursday,
+      dayOfTheWeek: DayOfTheWeek.THURSDAY,
       numberOfSpots: 0,
       availableSpots: 0,
       fixedSchedules: []
     },
     {
-      dayOfTheWeek: DayOfTheWeek.friday,
+      dayOfTheWeek: DayOfTheWeek.FRIDAY,
       numberOfSpots: 4,
       availableSpots: 0,
       fixedSchedules: [
         {
-          week_day: DayOfTheWeek.friday,
+          id: "5",
+          week_day: DayOfTheWeek.FRIDAY,
           hour_of_the_day: "18:00",
           number_of_spots: "2",
           users_list: ["ana", "carolina"]
         },
         {
-          week_day: DayOfTheWeek.friday,
+          id: "6",
+          week_day: DayOfTheWeek.FRIDAY,
           hour_of_the_day: "17:00",
           number_of_spots: "2",
           users_list: ["ana", "carolina"]
@@ -112,13 +124,13 @@ test("separateFixedSchedulesByDayOfTheWeek", () => {
       ]
     },
     {
-      dayOfTheWeek: DayOfTheWeek.saturday,
+      dayOfTheWeek: DayOfTheWeek.SATURDAY,
       numberOfSpots: 0,
       availableSpots: 0,
       fixedSchedules: []
     },
     {
-      dayOfTheWeek: DayOfTheWeek.sunday,
+      dayOfTheWeek: DayOfTheWeek.SUNDAY,
       numberOfSpots: 0,
       availableSpots: 0,
       fixedSchedules: []

@@ -12,16 +12,17 @@ export type ScheduleDay = {
 };
 
 export enum DayOfTheWeek {
-  monday = "MONDAY",
-  tuesday = "TUESDAY",
-  wednesday = "WEDNESDAY",
-  thursday = "THURSDAY",
-  friday = "FRIDAY",
-  saturday = "SATURDAY",
-  sunday = "SUNDAY"
+  MONDAY = "MONDAY",
+  TUESDAY = "TUESDAY",
+  WEDNESDAY = "WEDNESDAY",
+  THURSDAY = "THURSDAY",
+  FRIDAY = "FRIDAY",
+  SATURDAY = "SATURDAY",
+  SUNDAY = "SUNDAY"
 }
 
 export type FixedSchedule = {
+  id: string;
   week_day: DayOfTheWeek;
   hour_of_the_day: string;
   number_of_spots: string;

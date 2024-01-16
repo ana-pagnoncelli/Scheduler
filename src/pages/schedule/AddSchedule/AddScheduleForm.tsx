@@ -5,7 +5,9 @@ import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { Dayjs } from "dayjs";
-import { DayOfTheWeek } from "./types";
+import { DayOfTheWeek, FixedSchedule } from "../types";
+import { getHourAsString } from "./functions";
+import { createSchedule } from "../requests";
 
 export function AddScheduleForm() {
   const [dayOfTheWeek, setDayOfTheWeek] = useState("");
@@ -17,10 +19,7 @@ export function AddScheduleForm() {
   };
 
   const handleNumberOfSpots = (e: ChangeEvent<HTMLInputElement>) => {
-    // returns in 24h mode uhul
-    console.log("hour", hour?.hour());
-    console.log("minute", hour?.minute());
-    console.log("minute", hour);
+    console.log(getHourAsString(hour));
     setNumberOfSpots(e.target.value);
   };
 
@@ -45,14 +44,44 @@ export function AddScheduleForm() {
     );
   };
 
+  const hasEmptyFields = () => {
+    return !(hour && dayOfTheWeek && numberOfSpots);
+  };
+
+  const sendRequestCreateSchedule = async () => {
+    const schedule: FixedSchedule = {
+      id: crypto.randomUUID(),
+      week_day: dayOfTheWeek as DayOfTheWeek,
+      hour_of_the_day: getHourAsString(hour),
+      number_of_spots: numberOfSpots,
+      users_list: []
+    };
+
+    const message = await createSchedule(schedule);
+    console.log(message);
+  };
+
+  const handleCreateButton = () => {
+    let message = "";
+
+    if (hasEmptyFields()) {
+      message = "Has empty fields";
+    } else {
+      sendRequestCreateSchedule();
+    }
+
+    console.log(message);
+  };
+
   return (
     <div>
-      <h2>Add Schedule</h2>
+      <h2>Create new schedule</h2>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DemoContainer components={["TimePicker"]}>
           <DemoItem>
             <TimePicker
               value={hour}
+              ampm={false}
               onChange={(newValue) => setHour(newValue)}
             />
           </DemoItem>
@@ -62,8 +91,12 @@ export function AddScheduleForm() {
             onChange={handleNumberOfSpots}
           />
           {selectDayOfTheWeek()}
-          <Button variant='contained' color='success'>
-            Schedule
+          <Button
+            variant='contained'
+            color='success'
+            onClick={handleCreateButton}
+          >
+            Create
           </Button>
         </DemoContainer>
       </LocalizationProvider>
