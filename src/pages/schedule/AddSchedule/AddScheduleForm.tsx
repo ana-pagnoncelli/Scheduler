@@ -8,18 +8,25 @@ import { Dayjs } from "dayjs";
 import { DayOfTheWeek, FixedSchedule } from "../types";
 import { getHourAsString } from "./functions";
 import { createSchedule } from "../requests";
+import {
+  FAIL_MESSAGE,
+  MessageDisplay,
+  SUCCESS_MESSAGE
+} from "../../../components";
+import { missingFields } from "../../../messages";
 
 export function AddScheduleForm() {
   const [dayOfTheWeek, setDayOfTheWeek] = useState("");
   const [hour, setHour] = useState<Dayjs | null>(null);
   const [numberOfSpots, setNumberOfSpots] = useState("");
+  const [messageText, setMessageText] = useState("");
+  const [messageType, setMessageType] = useState("");
 
   const handleSelectDay = (e: ChangeEvent<HTMLInputElement>) => {
     setDayOfTheWeek(e.target.value);
   };
 
   const handleNumberOfSpots = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log(getHourAsString(hour));
     setNumberOfSpots(e.target.value);
   };
 
@@ -48,6 +55,17 @@ export function AddScheduleForm() {
     return !(hour && dayOfTheWeek && numberOfSpots);
   };
 
+  const setEmptyFieldsMessage = () => {
+    setMessageText(missingFields);
+    setMessageType(FAIL_MESSAGE);
+  };
+
+  const clearFields = () => {
+    setDayOfTheWeek("");
+    setHour(null);
+    setNumberOfSpots("");
+  };
+
   const sendRequestCreateSchedule = async () => {
     const schedule: FixedSchedule = {
       id: crypto.randomUUID(),
@@ -58,19 +76,20 @@ export function AddScheduleForm() {
     };
 
     const message = await createSchedule(schedule);
-    console.log(message);
+    setMessageText(message.text);
+    setMessageType(message.type);
+
+    if (message.type === SUCCESS_MESSAGE) {
+      clearFields();
+    }
   };
 
   const handleCreateButton = () => {
-    let message = "";
-
     if (hasEmptyFields()) {
-      message = "Has empty fields";
+      setEmptyFieldsMessage();
     } else {
       sendRequestCreateSchedule();
     }
-
-    console.log(message);
   };
 
   return (
@@ -100,6 +119,7 @@ export function AddScheduleForm() {
           </Button>
         </DemoContainer>
       </LocalizationProvider>
+      <MessageDisplay text={messageText} type={messageType} />
     </div>
   );
 }

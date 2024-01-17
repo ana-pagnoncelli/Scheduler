@@ -12,3 +12,8 @@ export const profileUpdated = "The profile was successfully updated";
 
 export const profileUpdateError =
   "The profile was not updated. Try again later.";
+
+export const scheduleAlreadyExists =
+  "This schedule already exists. Please, change the day of the week or the hour.";
+
+export const scheduleCreated = "The schedule was successfully created";

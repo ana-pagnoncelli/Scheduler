@@ -1,47 +1,32 @@
 import React from "react";
-import { styled } from "@mui/material/styles";
+import { Alert, Box } from "@mui/material";
 
 export const SUCCESS_MESSAGE = "success";
-export const FAIL_MESSAGE = "fail";
+export const FAIL_MESSAGE = "error";
 
 export type MessageDisplayType = {
   text: string;
   type: string;
 };
 
-export const MessageStyleFail = styled("div")(() => ({
-  color: "red",
-  fontSize: "medium",
-  padding: "5px",
-  margin: "2px"
-}));
-
-export const MessageStyleSuccess = styled("div")(() => ({
-  color: "green",
-  fontSize: "medium",
-  padding: "5px",
-  margin: "2px"
-}));
-
+// TODO implement onClose function
 export function MessageDisplay({
   text,
   type
 }: MessageDisplayType): JSX.Element {
   const successMessage = (): JSX.Element => {
-    console.log("type", type);
     return (
-      <MessageStyleSuccess>
-        <span>{text}</span>
-      </MessageStyleSuccess>
+      <Alert severity='success' onClose={() => {}}>
+        {text}
+      </Alert>
     );
   };
 
   const failMessage = (): JSX.Element => {
-    console.log("type", type);
     return (
-      <MessageStyleFail>
-        <span>{text}</span>
-      </MessageStyleFail>
+      <Alert severity='error' onClose={() => {}}>
+        {text}
+      </Alert>
     );
   };
 
@@ -53,5 +38,17 @@ export function MessageDisplay({
     return failMessage();
   };
 
-  return <div>{renderMessage()}</div>;
+  const hasText = () => {
+    return text !== "";
+  };
+
+  return (
+    <div>
+      {hasText() ? (
+        <Box pt={3} sx={{ width: "40%" }}>
+          {renderMessage()}
+        </Box>
+      ) : null}
+    </div>
+  );
 }

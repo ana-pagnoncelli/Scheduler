@@ -1,6 +1,11 @@
 import axios from "axios";
 import { FixedSchedule } from "./types";
-import { MessageDisplayType, SUCCESS_MESSAGE } from "../../components";
+import {
+  FAIL_MESSAGE,
+  MessageDisplayType,
+  SUCCESS_MESSAGE
+} from "../../components";
+import { scheduleCreated } from "../../messages";
 
 export const getSchedules = async (): Promise<Array<FixedSchedule>> => {
   let schedules: FixedSchedule[] = [];
@@ -27,12 +32,11 @@ export const createSchedule = async (schedule: FixedSchedule) => {
   await axios
     .post(`/schedules/`, schedule)
     .then((response) => {
-      const successMessage = "success";
-      message = { text: successMessage, type: SUCCESS_MESSAGE };
+      message = { text: scheduleCreated, type: SUCCESS_MESSAGE };
       console.log(response.data);
     })
     .catch((err) => {
-      // message = { text: singUpErrorCreatingUser, type: FAIL_MESSAGE };
+      message = { text: err.response.data.message, type: FAIL_MESSAGE };
       console.log(err);
     });
 
