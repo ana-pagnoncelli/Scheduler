@@ -52,3 +52,11 @@ export type AvailableScheduleTableHourProps = {
 export type AvailableScheduleTableRowHourProps = {
   fixedSchedule: FixedSchedule;
 };
+
+export type AddScheduleProps = {
+  updateAvailableSchedules: () => void;
+};
+
+export type AddScheduleFormProps = {
+  updateAvailableSchedules: () => void;
+};

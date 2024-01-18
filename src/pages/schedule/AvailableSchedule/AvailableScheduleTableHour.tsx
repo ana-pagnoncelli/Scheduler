@@ -30,7 +30,7 @@ export function AvailableScheduleTableHour({
                   <TableCell align='center'>Number Of Spots</TableCell>
                   <TableCell align='center'>Available Spots</TableCell>
                   <TableCell align='center'>Schedule</TableCell>
-                  <TableCell align='center'>Cancel</TableCell>
+                  <TableCell align='center'>Delete Schedule</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>

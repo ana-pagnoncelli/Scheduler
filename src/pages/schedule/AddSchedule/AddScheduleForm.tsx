@@ -5,7 +5,7 @@ import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { Dayjs } from "dayjs";
-import { DayOfTheWeek, FixedSchedule } from "../types";
+import { AddScheduleFormProps, DayOfTheWeek, FixedSchedule } from "../types";
 import { getHourAsString } from "./functions";
 import { createSchedule } from "../requests";
 import {
@@ -15,7 +15,9 @@ import {
 } from "../../../components";
 import { missingFields } from "../../../messages";
 
-export function AddScheduleForm() {
+export function AddScheduleForm({
+  updateAvailableSchedules
+}: AddScheduleFormProps) {
   const [dayOfTheWeek, setDayOfTheWeek] = useState("");
   const [hour, setHour] = useState<Dayjs | null>(null);
   const [numberOfSpots, setNumberOfSpots] = useState("");
@@ -30,6 +32,7 @@ export function AddScheduleForm() {
     setNumberOfSpots(e.target.value);
   };
 
+  // TODO move this as an outside component
   const selectDayOfTheWeek = () => {
     return (
       <TextField
@@ -81,6 +84,7 @@ export function AddScheduleForm() {
 
     if (message.type === SUCCESS_MESSAGE) {
       clearFields();
+      updateAvailableSchedules();
     }
   };
 

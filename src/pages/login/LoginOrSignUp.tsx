@@ -11,7 +11,6 @@ export function LoginOrSignUp({ handleUserLogin }: LoginOrSignUpProps) {
   const [userHasAccount, setUserHasAccount] = useState(true);
 
   const setUserHasAccountToFalse = () => {
-    handleUserLogin("ana");
     setUserHasAccount(false);
   };
 

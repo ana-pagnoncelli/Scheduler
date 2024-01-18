@@ -6,20 +6,25 @@ import { AddSchedule } from "./AddSchedule/AddSchedule";
 
 export function ScheduleAdmin() {
   const [fixedSchedules, setFixedSchedules] = useState<FixedSchedule[]>([]);
+  const [shouldGetSchedules, setShouldGetSchedules] = useState(false);
 
   useEffect(() => {
     const fetchSchedules = async () => {
       const schedules: FixedSchedule[] = await getSchedules();
       setFixedSchedules(schedules);
+      setShouldGetSchedules(false);
     };
     fetchSchedules();
-  }, []);
+  }, [shouldGetSchedules]);
+
+  const updateAvailableSchedules = () => {
+    setShouldGetSchedules(true);
+  };
 
   return (
     <>
       <AvailableSchedule fixedSchedules={fixedSchedules} />
-
-      <AddSchedule />
+      <AddSchedule updateAvailableSchedules={updateAvailableSchedules} />
     </>
   );
 }

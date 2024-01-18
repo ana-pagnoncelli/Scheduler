@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Box, Button } from "@mui/material";
 import { AddScheduleForm } from "./AddScheduleForm";
+import { AddScheduleProps } from "../types";
 
-export function AddSchedule() {
+export function AddSchedule({ updateAvailableSchedules }: AddScheduleProps) {
   const [shouldShowForm, setShouldShowForm] = useState(false);
 
   const handleAddScheduleButton = () => {
@@ -12,7 +13,7 @@ export function AddSchedule() {
   return (
     <Box pt={3}>
       {shouldShowForm ? (
-        <AddScheduleForm />
+        <AddScheduleForm updateAvailableSchedules={updateAvailableSchedules} />
       ) : (
         <Button onClick={handleAddScheduleButton} variant='contained'>
           Create new schedule

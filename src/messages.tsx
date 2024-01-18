@@ -17,3 +17,7 @@ export const scheduleAlreadyExists =
   "This schedule already exists. Please, change the day of the week or the hour.";
 
 export const scheduleCreated = "The schedule was successfully created";
+
+export const scheduleDeleted = "The schedule was successfully deleted";
+
+export const errorMessage = "Error. Try again later.";

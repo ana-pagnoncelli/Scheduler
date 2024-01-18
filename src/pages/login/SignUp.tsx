@@ -35,6 +35,8 @@ export function SignUp({ setUserHasAccountToTrue }: SignUpProps) {
     setPassword(e.target.value);
   };
 
+  // TODO add a button to login in the alert message for this case
+
   const handleSubmit = async (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     if (name === "" || email === "" || password === "") {

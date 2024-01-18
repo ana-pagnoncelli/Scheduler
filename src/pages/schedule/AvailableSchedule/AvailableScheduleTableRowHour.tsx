@@ -13,6 +13,8 @@ export function AvailableScheduleTableRowHour({
     );
   };
 
+  const deleteSchedule = () => {};
+
   return (
     <TableRow key={fixedSchedule.hour_of_the_day}>
       <TableCell component='th' scope='row'>
@@ -26,8 +28,8 @@ export function AvailableScheduleTableRowHour({
         </Button>
       </TableCell>
       <TableCell align='center'>
-        <Button variant='outlined' color='error'>
-          Cancel
+        <Button variant='outlined' color='error' onClick={deleteSchedule}>
+          Delete
         </Button>
       </TableCell>
     </TableRow>
