@@ -38,19 +38,23 @@ export type FixedSchedulesByDay = {
 
 export type AvailableScheduleProps = {
   fixedSchedules: FixedSchedule[];
+  updateAvailableSchedules: () => void;
 };
 
 export type AvailableScheduleTableRowDayProps = {
   fixedSchedulesByDay: FixedSchedulesByDay;
+  updateAvailableSchedules: () => void;
 };
 
 export type AvailableScheduleTableHourProps = {
   fixedSchedules: FixedSchedule[];
   open: boolean;
+  updateAvailableSchedules: () => void;
 };
 
 export type AvailableScheduleTableRowHourProps = {
   fixedSchedule: FixedSchedule;
+  updateAvailableSchedules: () => void;
 };
 
 export type AddScheduleProps = {

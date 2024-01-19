@@ -23,7 +23,10 @@ export function ScheduleAdmin() {
 
   return (
     <>
-      <AvailableSchedule fixedSchedules={fixedSchedules} />
+      <AvailableSchedule
+        fixedSchedules={fixedSchedules}
+        updateAvailableSchedules={updateAvailableSchedules}
+      />
       <AddSchedule updateAvailableSchedules={updateAvailableSchedules} />
     </>
   );

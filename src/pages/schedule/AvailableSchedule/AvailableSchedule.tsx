@@ -10,7 +10,10 @@ import { AvailableScheduleProps } from "../types";
 import { separateFixedSchedulesByDayOfTheWeek } from "../functions";
 import { AvailableScheduleTableRowDay } from "./AvailableScheduleTableRowDay";
 
-export function AvailableSchedule({ fixedSchedules }: AvailableScheduleProps) {
+export function AvailableSchedule({
+  fixedSchedules,
+  updateAvailableSchedules
+}: AvailableScheduleProps) {
   const fixedSchedulesByDayOfTheWeek =
     separateFixedSchedulesByDayOfTheWeek(fixedSchedules);
   return (
@@ -31,6 +34,7 @@ export function AvailableSchedule({ fixedSchedules }: AvailableScheduleProps) {
               <AvailableScheduleTableRowDay
                 key={fixedSchedulesOneDay.dayOfTheWeek}
                 fixedSchedulesByDay={fixedSchedulesOneDay}
+                updateAvailableSchedules={updateAvailableSchedules}
               />
             ))}
           </TableBody>

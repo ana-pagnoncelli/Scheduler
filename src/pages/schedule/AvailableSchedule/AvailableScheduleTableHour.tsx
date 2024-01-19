@@ -12,7 +12,8 @@ import { AvailableScheduleTableRowHour } from "./AvailableScheduleTableRowHour";
 
 export function AvailableScheduleTableHour({
   fixedSchedules,
-  open
+  open,
+  updateAvailableSchedules
 }: AvailableScheduleTableHourProps) {
   console.log("AvailableScheduleTableHour", fixedSchedules);
   return (
@@ -38,6 +39,7 @@ export function AvailableScheduleTableHour({
                   <AvailableScheduleTableRowHour
                     key={fixedSchedule.hour_of_the_day}
                     fixedSchedule={fixedSchedule}
+                    updateAvailableSchedules={updateAvailableSchedules}
                   />
                 ))}
               </TableBody>

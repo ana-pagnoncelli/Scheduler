@@ -5,7 +5,7 @@ import {
   MessageDisplayType,
   SUCCESS_MESSAGE
 } from "../../components";
-import { errorMessage, scheduleCreated, scheduleDeleted } from "../../messages";
+import { scheduleCreated } from "../../messages";
 
 export const getSchedules = async (): Promise<Array<FixedSchedule>> => {
   let schedules: FixedSchedule[] = [];
@@ -24,23 +24,12 @@ export const getSchedules = async (): Promise<Array<FixedSchedule>> => {
 };
 
 export const deleteSchedule = async (scheduleId: string) => {
-  let message: MessageDisplayType = {
-    text: "",
-    type: SUCCESS_MESSAGE
-  };
-
   await axios
     .delete(`/schedules/${scheduleId}`)
-    .then((response) => {
-      message = { text: scheduleDeleted, type: SUCCESS_MESSAGE };
-      console.log(response.data);
-    })
+    .then(() => {})
     .catch((err) => {
-      message = { text: errorMessage, type: FAIL_MESSAGE };
       console.log(err);
     });
-
-  return message;
 };
 
 export const createSchedule = async (schedule: FixedSchedule) => {

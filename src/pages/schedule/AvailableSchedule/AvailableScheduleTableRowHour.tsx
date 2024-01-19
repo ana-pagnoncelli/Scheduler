@@ -3,9 +3,11 @@ import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import { Button } from "@mui/material";
 import { AvailableScheduleTableRowHourProps } from "../types";
+import { deleteSchedule } from "../requests";
 
 export function AvailableScheduleTableRowHour({
-  fixedSchedule
+  fixedSchedule,
+  updateAvailableSchedules
 }: AvailableScheduleTableRowHourProps) {
   const availableSpots = () => {
     return (
@@ -13,7 +15,14 @@ export function AvailableScheduleTableRowHour({
     );
   };
 
-  const deleteSchedule = () => {};
+  const handleDeleteSchedule = () => {
+    const requestDeleteSchedule = async () => {
+      await deleteSchedule(fixedSchedule.id);
+      updateAvailableSchedules();
+    };
+
+    requestDeleteSchedule();
+  };
 
   return (
     <TableRow key={fixedSchedule.hour_of_the_day}>
@@ -28,7 +37,7 @@ export function AvailableScheduleTableRowHour({
         </Button>
       </TableCell>
       <TableCell align='center'>
-        <Button variant='outlined' color='error' onClick={deleteSchedule}>
+        <Button variant='outlined' color='error' onClick={handleDeleteSchedule}>
           Delete
         </Button>
       </TableCell>
