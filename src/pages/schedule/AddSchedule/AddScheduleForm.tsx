@@ -6,7 +6,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { Dayjs } from "dayjs";
 import { AddScheduleFormProps, DayOfTheWeek, FixedSchedule } from "../types";
-import { getHourAsString } from "./functions";
+import { getEmailsList, getHourAsString } from "./functions";
 import { createSchedule } from "../requests";
 import {
   FAIL_MESSAGE,
@@ -14,6 +14,8 @@ import {
   SUCCESS_MESSAGE
 } from "../../../components";
 import { missingFields } from "../../../messages";
+import { SelectUsers } from "./selectUsers";
+import { User } from "../../types/User";
 
 export function AddScheduleForm({
   updateAvailableSchedules
@@ -23,6 +25,11 @@ export function AddScheduleForm({
   const [numberOfSpots, setNumberOfSpots] = useState("");
   const [messageText, setMessageText] = useState("");
   const [messageType, setMessageType] = useState("");
+  const [users, setUsers] = useState<User[]>([]);
+
+  const handleUserSelection = (newUsers: User[]) => {
+    setUsers(newUsers);
+  };
 
   const handleSelectDay = (e: ChangeEvent<HTMLInputElement>) => {
     setDayOfTheWeek(e.target.value);
@@ -75,7 +82,7 @@ export function AddScheduleForm({
       week_day: dayOfTheWeek as DayOfTheWeek,
       hour_of_the_day: getHourAsString(hour),
       number_of_spots: numberOfSpots,
-      users_list: []
+      users_list: getEmailsList(users)
     };
 
     const message = await createSchedule(schedule);
@@ -106,14 +113,17 @@ export function AddScheduleForm({
               value={hour}
               ampm={false}
               onChange={(newValue) => setHour(newValue)}
+              sx={{ width: 200 }}
             />
           </DemoItem>
           <TextField
+            sx={{ width: 200 }}
             label='Number of spots'
             value={numberOfSpots}
             onChange={handleNumberOfSpots}
           />
           {selectDayOfTheWeek()}
+          {SelectUsers(handleUserSelection)}
           <Button
             variant='contained'
             color='success'

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { singUpSuccess, singUpErrorCreatingUser } from "../../messages";
-import { User } from "./types";
+import { User } from "../types/User";
 import {
   FAIL_MESSAGE,
   MessageDisplayType,

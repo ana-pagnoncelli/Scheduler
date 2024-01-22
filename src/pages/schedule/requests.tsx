@@ -6,8 +6,9 @@ import {
   SUCCESS_MESSAGE
 } from "../../components";
 import { scheduleCreated } from "../../messages";
+import { User } from "../types/User";
 
-export const getSchedules = async (): Promise<Array<FixedSchedule>> => {
+export const getSchedules = async (): Promise<FixedSchedule[]> => {
   let schedules: FixedSchedule[] = [];
 
   await axios
@@ -50,4 +51,20 @@ export const createSchedule = async (schedule: FixedSchedule) => {
     });
 
   return message;
+};
+
+export const getUsers = async (): Promise<User[]> => {
+  let users: User[] = [];
+
+  await axios
+    .get(`/users/`)
+    .then((response) => {
+      users = response.data;
+      console.log("users", response.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  return users;
 };

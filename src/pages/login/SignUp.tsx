@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { HasAccountButton } from "./styles";
 import { missingFields } from "../../messages";
 import { createUserRequest } from "./requests";
-import { User } from "./types";
+import { User } from "../types/User";
 import {
   InputField,
   SubmitButton,

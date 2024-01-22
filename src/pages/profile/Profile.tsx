@@ -70,8 +70,7 @@ export function Profile() {
       gender,
       age,
       phone,
-      plan,
-      password: "123"
+      plan
     };
 
     return profile;
