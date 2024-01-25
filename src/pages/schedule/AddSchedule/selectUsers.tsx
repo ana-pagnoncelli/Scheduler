@@ -1,10 +1,14 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { Autocomplete, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { User } from "../../types/User";
 import { getUsers } from "../requests";
+import { SelectUsersProps } from "../types";
+import { User } from "../../types/User";
 
-export function SelectUsers(handleUserSelection: (value: User[]) => void) {
+export function SelectUsers({
+  handleUserSelection,
+  selectedUsers
+}: SelectUsersProps) {
   const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
@@ -23,6 +27,7 @@ export function SelectUsers(handleUserSelection: (value: User[]) => void) {
       options={users}
       getOptionLabel={(user) => user.email}
       filterSelectedOptions
+      value={selectedUsers}
       onChange={(_, value) => handleUserSelection(value)}
       renderInput={(params) => (
         <TextField

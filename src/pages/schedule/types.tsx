@@ -1,3 +1,6 @@
+import { ChangeEvent } from "react";
+import { User } from "../types/User";
+
 export type ScheduleHour = {
   hour: string;
   numberOfSpots: string;
@@ -63,4 +66,14 @@ export type AddScheduleProps = {
 
 export type AddScheduleFormProps = {
   updateAvailableSchedules: () => void;
+};
+
+export type SelectUsersProps = {
+  handleUserSelection: (value: User[]) => void;
+  selectedUsers: User[];
+};
+
+export type SelectDayOfTheWeekProps = {
+  handleSelectDay: (e: ChangeEvent<HTMLInputElement>) => void;
+  dayOfTheWeek: string;
 };

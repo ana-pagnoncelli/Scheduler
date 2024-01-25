@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
-import { Button, MenuItem, TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -14,8 +14,9 @@ import {
   SUCCESS_MESSAGE
 } from "../../../components";
 import { missingFields } from "../../../messages";
-import { SelectUsers } from "./selectUsers";
 import { User } from "../../types/User";
+import { SelectUsers } from "./SelectUsers";
+import { SelectDayOfTheWeek } from "./SelectDayOfTheWeek";
 
 export function AddScheduleForm({
   updateAvailableSchedules
@@ -25,10 +26,11 @@ export function AddScheduleForm({
   const [numberOfSpots, setNumberOfSpots] = useState("");
   const [messageText, setMessageText] = useState("");
   const [messageType, setMessageType] = useState("");
-  const [users, setUsers] = useState<User[]>([]);
+  const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
 
   const handleUserSelection = (newUsers: User[]) => {
-    setUsers(newUsers);
+    console.log("chegou", newUsers);
+    setSelectedUsers(newUsers);
   };
 
   const handleSelectDay = (e: ChangeEvent<HTMLInputElement>) => {
@@ -40,26 +42,6 @@ export function AddScheduleForm({
   };
 
   // TODO move this as an outside component
-  const selectDayOfTheWeek = () => {
-    return (
-      <TextField
-        id='outlined-select-day'
-        select
-        label='Select day'
-        value={dayOfTheWeek}
-        variant='outlined'
-        onChange={handleSelectDay}
-      >
-        {(Object.keys(DayOfTheWeek) as Array<keyof typeof DayOfTheWeek>).map(
-          (key) => (
-            <MenuItem key={key} value={key}>
-              {key}
-            </MenuItem>
-          )
-        )}
-      </TextField>
-    );
-  };
 
   const hasEmptyFields = () => {
     return !(hour && dayOfTheWeek && numberOfSpots);
@@ -71,6 +53,7 @@ export function AddScheduleForm({
   };
 
   const clearFields = () => {
+    setSelectedUsers([]);
     setDayOfTheWeek("");
     setHour(null);
     setNumberOfSpots("");
@@ -82,7 +65,7 @@ export function AddScheduleForm({
       week_day: dayOfTheWeek as DayOfTheWeek,
       hour_of_the_day: getHourAsString(hour),
       number_of_spots: numberOfSpots,
-      users_list: getEmailsList(users)
+      users_list: getEmailsList(selectedUsers)
     };
 
     const message = await createSchedule(schedule);
@@ -122,8 +105,14 @@ export function AddScheduleForm({
             value={numberOfSpots}
             onChange={handleNumberOfSpots}
           />
-          {selectDayOfTheWeek()}
-          {SelectUsers(handleUserSelection)}
+          <SelectDayOfTheWeek
+            dayOfTheWeek={dayOfTheWeek}
+            handleSelectDay={handleSelectDay}
+          />
+          <SelectUsers
+            handleUserSelection={handleUserSelection}
+            selectedUsers={selectedUsers}
+          />
           <Button
             variant='contained'
             color='success'
