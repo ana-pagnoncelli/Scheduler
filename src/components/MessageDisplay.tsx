@@ -1,5 +1,6 @@
 import React from "react";
-import { Alert, Box } from "@mui/material";
+import { Alert } from "@mui/material";
+import { MessageBox } from "./styles";
 
 export const SUCCESS_MESSAGE = "success";
 export const FAIL_MESSAGE = "error";
@@ -43,12 +44,6 @@ export function MessageDisplay({
   };
 
   return (
-    <div>
-      {hasText() ? (
-        <Box pt={3} sx={{ width: "40%" }}>
-          {renderMessage()}
-        </Box>
-      ) : null}
-    </div>
+    <div>{hasText() ? <MessageBox>{renderMessage()}</MessageBox> : null}</div>
   );
 }

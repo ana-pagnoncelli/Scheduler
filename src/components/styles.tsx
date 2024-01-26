@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 export const Label = styled("label")(() => ({
@@ -12,3 +13,10 @@ export const Input = styled("input")(() => ({
   padding: "5px",
   margin: "2px"
 }));
+
+export const MessageBox = styled(Box)({
+  textAlign: "center",
+  margin: "2px",
+  padding: "3px",
+  overflow: "hidden"
+});

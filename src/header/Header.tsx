@@ -11,6 +11,10 @@ export function Header() {
   const [isDrawerOpen, setDrawerOpen] = React.useState(false);
   const user = useContext(UserContext);
 
+  const isUserLogged = () => {
+    return user !== "";
+  };
+
   const handleDrawerOpen = () => {
     setDrawerOpen(true);
   };
@@ -24,9 +28,12 @@ export function Header() {
   };
 
   const redirectToHomePage = () => {
-    navigate("/home");
+    if (isUserLogged()) {
+      navigate("/home");
+    }
   };
 
+  // TODO create an icon here with name, logout and profile
   const loginButton = (): JSX.Element => {
     return (
       <div>
@@ -45,11 +52,13 @@ export function Header() {
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar position='fixed' isDrawerOpen={isDrawerOpen}>
-        <Toolbar color='red'>
-          <DrawerButton
-            open={isDrawerOpen}
-            handleDrawerOpen={handleDrawerOpen}
-          />
+        <Toolbar>
+          {isUserLogged() ? (
+            <DrawerButton
+              open={isDrawerOpen}
+              handleDrawerOpen={handleDrawerOpen}
+            />
+          ) : null}
           <Typography
             variant='h6'
             component='div'
@@ -61,7 +70,9 @@ export function Header() {
           {loginButton()}
         </Toolbar>
       </AppBar>
-      <Drawer open={isDrawerOpen} handleDrawerClose={handleDrawerClose} />
+      {isUserLogged() ? (
+        <Drawer open={isDrawerOpen} handleDrawerClose={handleDrawerClose} />
+      ) : null}
     </Box>
   );
 }

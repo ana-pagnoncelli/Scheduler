@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import { HasAccountButton } from "./styles";
+import {
+  LoginApp,
+  LoginButton,
+  LoginForm,
+  LoginTextField,
+  LoginTitle
+} from "./styles";
 import { missingFields } from "../../messages";
 import { createUserRequest } from "./requests";
 import { User } from "../types/User";
 import {
-  InputField,
-  SubmitButton,
   MessageDisplay,
   MessageDisplayType,
   FAIL_MESSAGE
@@ -57,40 +61,33 @@ export function SignUp({ setUserHasAccountToTrue }: SignUpProps) {
   };
 
   return (
-    <div className='form'>
-      <div>
-        <h1>Sing Up</h1>
-      </div>
+    <LoginApp>
+      <LoginForm>
+        <LoginTitle variant='h3'>Register</LoginTitle>
+        <LoginTextField label='Name' value={name} onChange={handleName} />
 
-      <form>
-        <InputField fieldName='Name' fieldValue={name} onChange={handleName} />
+        <LoginTextField label='Email' value={email} onChange={handleEmail} />
 
-        <InputField
-          fieldName='Email'
-          fieldValue={email}
-          onChange={handleEmail}
-        />
-
-        <InputField
-          fieldName='Password'
-          fieldValue={password}
+        <LoginTextField
+          label='Password'
+          value={password}
           onChange={handlePassword}
         />
 
         <MessageDisplay text={messageText} type={messageType} />
 
-        <SubmitButton onClick={handleSubmit} className='btn' type='submit'>
-          Submit
-        </SubmitButton>
-      </form>
+        <LoginButton variant='contained' color='success' onClick={handleSubmit}>
+          Register
+        </LoginButton>
 
-      <HasAccountButton
-        onClick={setUserHasAccountToTrue}
-        className='btn'
-        type='submit'
-      >
-        Already have an account? Enter here.
-      </HasAccountButton>
-    </div>
+        <LoginButton
+          variant='outlined'
+          color='secondary'
+          onClick={setUserHasAccountToTrue}
+        >
+          Login
+        </LoginButton>
+      </LoginForm>
+    </LoginApp>
   );
 }

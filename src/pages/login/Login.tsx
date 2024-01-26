@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { HasAccountButton } from "./styles";
+// import { useNavigate } from "react-router-dom";
+import {
+  LoginApp,
+  LoginButton,
+  LoginForm,
+  LoginTextField,
+  LoginTitle
+} from "./styles";
 import { loginError, missingFields } from "../../messages";
 import { loginRequest } from "./requests";
-import {
-  InputField,
-  SubmitButton,
-  MessageDisplay,
-  FAIL_MESSAGE
-} from "../../components";
+import { MessageDisplay, FAIL_MESSAGE } from "../../components";
 
 type LoginProps = {
   setUserHasAccountToFalse: () => void;
@@ -20,7 +21,7 @@ export function Login({
   setUserHasAccountToFalse,
   handleUserLogin
 }: LoginProps) {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -36,15 +37,15 @@ export function Login({
     setPassword(e.target.value);
   };
 
-  const redirectToHome = () => {
-    navigate("/home");
-  };
+  // const redirectToHome = () => {
+  //   navigate("/home");
+  // };
 
   const userLogin = async () => {
     const user = await loginRequest(email, password);
     if (user) {
       handleUserLogin(user.email);
-      redirectToHome();
+      // redirectToHome();
     } else {
       setMessageText(loginError);
       setMessageType(FAIL_MESSAGE);
@@ -62,37 +63,29 @@ export function Login({
   };
 
   return (
-    <div className='form'>
-      <div>
-        <h1>Login</h1>
-      </div>
-
-      <form>
-        <InputField
-          fieldName='Email'
-          fieldValue={email}
-          onChange={handleEmail}
-        />
-
-        <InputField
-          fieldName='Password'
-          fieldValue={password}
+    <LoginApp>
+      <LoginForm>
+        <LoginTitle variant='h3'>Login</LoginTitle>
+        <LoginTextField label='Email' value={email} onChange={handleEmail} />
+        <LoginTextField
+          label='Password'
+          value={password}
           onChange={handlePassword}
         />
 
         <MessageDisplay text={messageText} type={messageType} />
 
-        <SubmitButton onClick={handleSubmit} className='btn' type='submit'>
-          Submit
-        </SubmitButton>
-      </form>
-      <HasAccountButton
-        onClick={setUserHasAccountToFalse}
-        className='btn'
-        type='submit'
-      >
-        Do not have an account? Register here.
-      </HasAccountButton>
-    </div>
+        <LoginButton variant='contained' color='success' onClick={handleSubmit}>
+          Login
+        </LoginButton>
+        <LoginButton
+          variant='outlined'
+          color='secondary'
+          onClick={setUserHasAccountToFalse}
+        >
+          Register
+        </LoginButton>
+      </LoginForm>
+    </LoginApp>
   );
 }

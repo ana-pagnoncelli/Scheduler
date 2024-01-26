@@ -29,7 +29,6 @@ export function AddScheduleForm({
   const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
 
   const handleUserSelection = (newUsers: User[]) => {
-    console.log("chegou", newUsers);
     setSelectedUsers(newUsers);
   };
 
@@ -40,8 +39,6 @@ export function AddScheduleForm({
   const handleNumberOfSpots = (e: ChangeEvent<HTMLInputElement>) => {
     setNumberOfSpots(e.target.value);
   };
-
-  // TODO move this as an outside component
 
   const hasEmptyFields = () => {
     return !(hour && dayOfTheWeek && numberOfSpots);

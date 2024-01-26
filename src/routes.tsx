@@ -17,7 +17,7 @@ type RouterProps = {
 
 export default function Router({ handleUserLogin }: RouterProps) {
   const routes = useRoutes([
-    { path: "/", element: <Home /> },
+    { path: "/", element: <LoginOrSignUp handleUserLogin={handleUserLogin} /> },
     { path: "schedule-class", element: <Schedule /> },
     { path: "available-plans", element: <AvailablePlans /> },
     {
