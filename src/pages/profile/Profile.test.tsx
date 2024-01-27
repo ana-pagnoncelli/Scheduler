@@ -8,10 +8,15 @@ import { getProfile, updateProfile } from "./requests";
 
 jest.mock("./requests");
 
+const userContext = {
+  email: "ana",
+  isAdmin: false
+};
+
 describe("Profile", () => {
   beforeEach(() => {
     render(
-      <UserContext.Provider value='ana'>
+      <UserContext.Provider value={userContext}>
         <Profile />
       </UserContext.Provider>
     );

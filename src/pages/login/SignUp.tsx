@@ -8,7 +8,7 @@ import {
 } from "./styles";
 import { missingFields } from "../../messages";
 import { createUserRequest } from "./requests";
-import { User } from "../types/User";
+import { User } from "../../types/User";
 import {
   MessageDisplay,
   MessageDisplayType,

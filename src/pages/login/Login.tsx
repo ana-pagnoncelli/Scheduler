@@ -10,11 +10,11 @@ import {
 import { loginError, missingFields } from "../../messages";
 import { loginRequest } from "./requests";
 import { MessageDisplay, FAIL_MESSAGE } from "../../components";
+import { UserContextType } from "../../providers/userProvider";
 
 type LoginProps = {
   setUserHasAccountToFalse: () => void;
-  // eslint-disable-next-line no-unused-vars
-  handleUserLogin: (userEmail: string) => void;
+  handleUserLogin: (newUserContext: UserContextType) => void;
 };
 
 export function Login({
@@ -44,7 +44,7 @@ export function Login({
   const userLogin = async () => {
     const user = await loginRequest(email, password);
     if (user) {
-      handleUserLogin(user.email);
+      handleUserLogin({ email: user.email, isAdmin: user.admin });
       // redirectToHome();
     } else {
       setMessageText(loginError);

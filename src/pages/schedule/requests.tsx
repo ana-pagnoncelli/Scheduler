@@ -6,7 +6,7 @@ import {
   SUCCESS_MESSAGE
 } from "../../components";
 import { scheduleCreated } from "../../messages";
-import { User } from "../types/User";
+import { User } from "../../types/User";
 
 export const getSchedules = async (): Promise<FixedSchedule[]> => {
   let schedules: FixedSchedule[] = [];

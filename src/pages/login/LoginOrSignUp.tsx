@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { SignUp } from "./SignUp";
 import { Login } from "./Login";
+import { UserContextType } from "../../providers/userProvider";
 
 type LoginOrSignUpProps = {
-  // eslint-disable-next-line no-unused-vars
-  handleUserLogin: (userEmail: string) => void;
+  handleUserLogin: (newUserContext: UserContextType) => void;
 };
 
 export function LoginOrSignUp({ handleUserLogin }: LoginOrSignUpProps) {

@@ -1,5 +1,5 @@
 import { Dayjs } from "dayjs";
-import { User } from "../../types/User";
+import { User } from "../../../types/User";
 
 export const formatToTwoDigitString = (num: number) => {
   if (num < 10) {

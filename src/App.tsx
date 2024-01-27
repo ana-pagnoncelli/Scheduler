@@ -1,15 +1,19 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { Box, CssBaseline, GlobalStyles } from "@mui/material";
 import { BrowserRouter } from "react-router-dom";
 import { LoginOrSignUp } from "./pages/login";
 import { appStyle } from "./styles";
-import { UserContext } from "./providers/userProvider";
+import {
+  UserContext,
+  UserContextType,
+  defaultUserContext
+} from "./providers/userProvider";
 import { DrawerHeader, Header } from "./header";
 import Router from "./routes";
 
 function App() {
-  const [user, setUser] = useState("");
+  const [userContext, setUserContext] =
+    useState<UserContextType>(defaultUserContext);
 
   // const shouldShowLoginOrSignUpPage = () => {
   //   // change this to be the click on the button on the header
@@ -17,12 +21,12 @@ function App() {
   // };
 
   const userIsLogged = () => {
-    return false;
+    return userContext?.email !== "";
   };
 
-  const handleUserLogin = (userEmail: string) => {
-    console.log(user);
-    setUser(userEmail);
+  const handleUserLogin = (newUserContext: UserContextType) => {
+    console.log(userContext);
+    setUserContext(newUserContext);
   };
 
   // use the showLoginOrSignUp to don't show the drawer
@@ -32,13 +36,13 @@ function App() {
       <GlobalStyles styles={appStyle} />
       {userIsLogged() ? (
         <Box sx={{ display: "flex" }}>
-          <UserContext.Provider value={user}>
+          <UserContext.Provider value={userContext}>
             <BrowserRouter>
               <CssBaseline />
               <Header />
               <Box component='main' sx={{ flexGrow: 1, p: 3 }}>
                 <DrawerHeader />
-                <Router handleUserLogin={handleUserLogin} />
+                <Router />
               </Box>
             </BrowserRouter>
           </UserContext.Provider>

@@ -9,10 +9,10 @@ import { UserContext } from "../providers/userProvider";
 export function Header() {
   const navigate = useNavigate();
   const [isDrawerOpen, setDrawerOpen] = React.useState(false);
-  const user = useContext(UserContext);
+  const { email } = useContext(UserContext);
 
   const isUserLogged = () => {
-    return user !== "";
+    return email !== "";
   };
 
   const handleDrawerOpen = () => {
@@ -37,8 +37,8 @@ export function Header() {
   const loginButton = (): JSX.Element => {
     return (
       <div>
-        {user ? (
-          <div>{user}</div>
+        {email ? (
+          <div>{email}</div>
         ) : (
           <Button color='inherit' onClick={redirectToLoginPage}>
             Login
@@ -53,12 +53,10 @@ export function Header() {
       <CssBaseline />
       <AppBar position='fixed' isDrawerOpen={isDrawerOpen}>
         <Toolbar>
-          {isUserLogged() ? (
-            <DrawerButton
-              open={isDrawerOpen}
-              handleDrawerOpen={handleDrawerOpen}
-            />
-          ) : null}
+          <DrawerButton
+            open={isDrawerOpen}
+            handleDrawerOpen={handleDrawerOpen}
+          />
           <Typography
             variant='h6'
             component='div'
@@ -70,9 +68,7 @@ export function Header() {
           {loginButton()}
         </Toolbar>
       </AppBar>
-      {isUserLogged() ? (
-        <Drawer open={isDrawerOpen} handleDrawerClose={handleDrawerClose} />
-      ) : null}
+      <Drawer open={isDrawerOpen} handleDrawerClose={handleDrawerClose} />
     </Box>
   );
 }

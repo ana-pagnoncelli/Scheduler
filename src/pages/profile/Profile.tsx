@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Grid } from "@mui/material";
+import { Grid, TextField } from "@mui/material";
 import {
   InputField,
   SubmitButton,
@@ -18,7 +18,6 @@ import { ProfileType } from "./types";
 import { SUBMIT_CHANGES_BUTTON_NAME } from "./constants";
 
 export function Profile() {
-  const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [age, setAge] = useState("");
@@ -28,11 +27,7 @@ export function Profile() {
   const [messageText, setMessageText] = useState("");
   const [messageType, setMessageType] = useState("");
 
-  const user = useContext(UserContext);
-
-  const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-  };
+  const { email } = useContext(UserContext);
 
   const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -55,7 +50,6 @@ export function Profile() {
   };
 
   const fillProfile = (profile: ProfileType) => {
-    setEmail(profile.email);
     setName(profile.name);
     setGender(profile.gender);
     setAge(profile.age);
@@ -77,9 +71,9 @@ export function Profile() {
   };
 
   const handleUpdateProfile = async () => {
-    if (user) {
+    if (email) {
       const profile = buildProfile();
-      const response = await updateProfile(user, profile);
+      const response = await updateProfile(email, profile);
       if (response) {
         setMessageText(profileUpdated);
         setMessageType(SUCCESS_MESSAGE);
@@ -102,11 +96,11 @@ export function Profile() {
 
   useEffect(() => {
     const fetchProfile = async () => {
-      const profile = await getProfile(user);
+      const profile = await getProfile(email);
       if (profile) fillProfile(profile);
     };
 
-    if (user) fetchProfile();
+    if (email) fetchProfile();
   }, []);
 
   return (
@@ -122,11 +116,7 @@ export function Profile() {
             />
           </Grid>
           <Grid item xs={4}>
-            <InputField
-              fieldName='Email'
-              fieldValue={email}
-              onChange={handleEmail}
-            />
+            <TextField label='Email' value={email} />
           </Grid>
         </Grid>
       </Grid>

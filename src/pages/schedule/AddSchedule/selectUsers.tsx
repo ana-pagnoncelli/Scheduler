@@ -3,7 +3,7 @@ import { Autocomplete, TextField } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { getUsers } from "../requests";
 import { SelectUsersProps } from "../types";
-import { User } from "../../types/User";
+import { User } from "../../../types/User";
 
 export function SelectUsers({
   handleUserSelection,
