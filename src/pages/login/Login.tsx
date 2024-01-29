@@ -11,6 +11,7 @@ import { loginError, missingFields } from "../../messages";
 import { loginRequest } from "./requests";
 import { MessageDisplay, FAIL_MESSAGE } from "../../components";
 import { UserContextType } from "../../providers/userProvider";
+import { PasswordField } from "./PasswordField";
 
 type LoginProps = {
   setUserHasAccountToFalse: () => void;
@@ -36,10 +37,26 @@ export function Login({
   const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
-
+  // TODO
   // const redirectToHome = () => {
   //   navigate("/home");
   // };
+
+  const setMissingFieldsMessage = () => {
+    setMessageText("");
+    setTimeout(() => {
+      setMessageText(missingFields);
+    }, 0);
+    setMessageType(FAIL_MESSAGE);
+  };
+
+  const setLoginErrorMessage = () => {
+    setMessageText("");
+    setTimeout(() => {
+      setMessageText(loginError);
+    }, 0);
+    setMessageType(FAIL_MESSAGE);
+  };
 
   const userLogin = async () => {
     const user = await loginRequest(email, password);
@@ -47,16 +64,14 @@ export function Login({
       handleUserLogin({ email: user.email, isAdmin: user.admin });
       // redirectToHome();
     } else {
-      setMessageText(loginError);
-      setMessageType(FAIL_MESSAGE);
+      setLoginErrorMessage();
     }
   };
 
   const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     if (email === "" || password === "") {
-      setMessageText(missingFields);
-      setMessageType(FAIL_MESSAGE);
+      setMissingFieldsMessage();
     } else {
       userLogin();
     }
@@ -67,14 +82,8 @@ export function Login({
       <LoginForm>
         <LoginTitle variant='h3'>Login</LoginTitle>
         <LoginTextField label='Email' value={email} onChange={handleEmail} />
-        <LoginTextField
-          label='Password'
-          value={password}
-          onChange={handlePassword}
-        />
-
+        <PasswordField password={password} handlePassword={handlePassword} />
         <MessageDisplay text={messageText} type={messageType} />
-
         <LoginButton variant='contained' color='success' onClick={handleSubmit}>
           Login
         </LoginButton>

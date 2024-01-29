@@ -16,7 +16,5 @@ export const Input = styled("input")(() => ({
 
 export const MessageBox = styled(Box)({
   textAlign: "center",
-  margin: "2px",
-  padding: "3px",
   overflow: "hidden"
 });

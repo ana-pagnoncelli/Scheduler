@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Alert } from "@mui/material";
 import { MessageBox } from "./styles";
 
@@ -15,18 +15,35 @@ export function MessageDisplay({
   text,
   type
 }: MessageDisplayType): JSX.Element {
+  const [messageText, setMessageText] = useState(text);
+
+  const clearMessage = () => {
+    setMessageText("");
+  };
+
   const successMessage = (): JSX.Element => {
     return (
-      <Alert severity='success' onClose={() => {}}>
-        {text}
+      // alert that closes when clicking x
+      <Alert
+        severity='success'
+        onClose={() => {
+          clearMessage();
+        }}
+      >
+        {messageText}
       </Alert>
     );
   };
 
   const failMessage = (): JSX.Element => {
     return (
-      <Alert severity='error' onClose={() => {}}>
-        {text}
+      <Alert
+        severity='error'
+        onClose={() => {
+          clearMessage();
+        }}
+      >
+        {messageText}
       </Alert>
     );
   };
@@ -39,11 +56,12 @@ export function MessageDisplay({
     return failMessage();
   };
 
-  const hasText = () => {
-    return text !== "";
-  };
+  useEffect(() => {
+    setMessageText(text);
+  }, [text]);
 
   return (
-    <div>{hasText() ? <MessageBox>{renderMessage()}</MessageBox> : null}</div>
+    <div>{messageText ? <MessageBox>{renderMessage()}</MessageBox> : null}</div>
+    // </Fade>
   );
 }

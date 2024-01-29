@@ -16,6 +16,7 @@ import { UserContext } from "../../providers/userProvider";
 import { getProfile, updateProfile } from "./requests";
 import { ProfileType } from "./types";
 import { SUBMIT_CHANGES_BUTTON_NAME } from "./constants";
+import { LoginApp, LoginForm } from "./styles";
 
 export function Profile() {
   const [name, setName] = useState("");
@@ -104,54 +105,56 @@ export function Profile() {
   }, []);
 
   return (
-    <div>
-      <h1>Profile Page</h1>
-      <Grid container spacing={1}>
+    <LoginApp>
+      <LoginForm>
+        <h1>Profile Page</h1>
+        <Grid container spacing={1}>
+          <Grid container item xs={12} spacing={1}>
+            <Grid item xs={4}>
+              <InputField
+                fieldName='Name'
+                fieldValue={name}
+                onChange={handleName}
+              />
+            </Grid>
+            <Grid item xs={4}>
+              <TextField label='Email' value={email} />
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid container item xs={12} spacing={1}>
+          <Grid item xs={4}>
+            <InputField fieldName='Age' fieldValue={age} onChange={handleAge} />
+          </Grid>
+          <Grid item xs={4}>
+            <InputField
+              fieldName='Phone'
+              fieldValue={phone}
+              onChange={handlePhone}
+            />
+          </Grid>
+        </Grid>
         <Grid container item xs={12} spacing={1}>
           <Grid item xs={4}>
             <InputField
-              fieldName='Name'
-              fieldValue={name}
-              onChange={handleName}
+              fieldName='Gender'
+              fieldValue={gender}
+              onChange={handleGender}
             />
           </Grid>
           <Grid item xs={4}>
-            <TextField label='Email' value={email} />
+            <InputField
+              fieldName='Plan'
+              fieldValue={plan}
+              onChange={handlePlan}
+            />
           </Grid>
         </Grid>
-      </Grid>
-      <Grid container item xs={12} spacing={1}>
-        <Grid item xs={4}>
-          <InputField fieldName='Age' fieldValue={age} onChange={handleAge} />
-        </Grid>
-        <Grid item xs={4}>
-          <InputField
-            fieldName='Phone'
-            fieldValue={phone}
-            onChange={handlePhone}
-          />
-        </Grid>
-      </Grid>
-      <Grid container item xs={12} spacing={1}>
-        <Grid item xs={4}>
-          <InputField
-            fieldName='Gender'
-            fieldValue={gender}
-            onChange={handleGender}
-          />
-        </Grid>
-        <Grid item xs={4}>
-          <InputField
-            fieldName='Plan'
-            fieldValue={plan}
-            onChange={handlePlan}
-          />
-        </Grid>
-      </Grid>
-      <MessageDisplay text={messageText} type={messageType} />
-      <SubmitButton onClick={handleSubmit} className='btn' type='submit'>
-        {SUBMIT_CHANGES_BUTTON_NAME}
-      </SubmitButton>
-    </div>
+        <MessageDisplay text={messageText} type={messageType} />
+        <SubmitButton onClick={handleSubmit} className='btn' type='submit'>
+          {SUBMIT_CHANGES_BUTTON_NAME}
+        </SubmitButton>
+      </LoginForm>
+    </LoginApp>
   );
 }
