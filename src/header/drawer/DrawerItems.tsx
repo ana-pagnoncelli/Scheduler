@@ -4,7 +4,7 @@ import Divider from "@mui/material/Divider";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import { DrawerItem } from "./DrawerItem";
 import { DrawerItemsProps, DrawerItemInfo } from "./types";
-import { UserContext } from "../../providers/userProvider";
+import { UserContext } from "../../context/userContext";
 
 const items: DrawerItemInfo[] = [
   {

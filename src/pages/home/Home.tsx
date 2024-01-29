@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Typography } from "@mui/material";
-import { UserContext } from "../../providers/userProvider";
+import { UserContext } from "../../context/userContext";
 
 export function Home() {
   const user = useContext(UserContext);

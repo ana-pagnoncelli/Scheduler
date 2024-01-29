@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { UserContext } from "../../providers/userProvider";
+import { UserContext } from "../../context/userContext";
 import { ScheduleUser } from "./ScheduleUser";
 import { ScheduleAdmin } from "./ScheduleAdmin";
 

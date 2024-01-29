@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { SignUp } from "./SignUp";
 import { Login } from "./Login";
-import { UserContextType } from "../../providers/userProvider";
+import { UserContextType } from "../../context/userContext";
 
 type LoginOrSignUpProps = {
   handleUserLogin: (newUserContext: UserContextType) => void;

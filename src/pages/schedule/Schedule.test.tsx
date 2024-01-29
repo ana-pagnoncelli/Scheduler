@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { Schedule } from "./Schedule";
-import { UserContext, defaultUserContext } from "../../providers/userProvider";
+import { UserContext, defaultUserContext } from "../../context/userContext";
 
 jest.mock("../login/requests");
 

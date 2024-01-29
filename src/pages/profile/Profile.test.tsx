@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import { Profile } from "./Profile";
 import { missingFields } from "../../messages";
 import { SUBMIT_CHANGES_BUTTON_NAME } from "./constants";
-import { UserContext } from "../../providers/userProvider";
+import { UserContext } from "../../context/userContext";
 import { getProfile, updateProfile } from "./requests";
 
 jest.mock("./requests");

@@ -7,9 +7,10 @@ import {
   UserContext,
   UserContextType,
   defaultUserContext
-} from "./providers/userProvider";
+} from "./context/userContext";
 import { DrawerHeader, Header } from "./header";
 import Router from "./routes";
+import { AlertProvider } from "./context/alertContext";
 
 function App() {
   const [userContext, setUserContext] =
@@ -29,10 +30,8 @@ function App() {
     setUserContext(newUserContext);
   };
 
-  // use the showLoginOrSignUp to don't show the drawer
-
   return (
-    <>
+    <AlertProvider>
       <GlobalStyles styles={appStyle} />
       {userIsLogged() ? (
         <Box sx={{ display: "flex" }}>
@@ -50,7 +49,7 @@ function App() {
       ) : (
         <LoginOrSignUp handleUserLogin={handleUserLogin} />
       )}
-    </>
+    </AlertProvider>
   );
 }
 

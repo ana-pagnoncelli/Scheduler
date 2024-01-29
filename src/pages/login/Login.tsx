@@ -9,9 +9,10 @@ import {
 } from "./styles";
 import { loginError, missingFields } from "../../messages";
 import { loginRequest } from "./requests";
-import { MessageDisplay, FAIL_MESSAGE } from "../../components";
-import { UserContextType } from "../../providers/userProvider";
+import { UserContextType } from "../../context/userContext";
 import { PasswordField } from "./PasswordField";
+import { AlertPopup } from "../../components/AlertPopup";
+import { useAlert } from "../../hooks/useAlert";
 
 type LoginProps = {
   setUserHasAccountToFalse: () => void;
@@ -24,11 +25,10 @@ export function Login({
 }: LoginProps) {
   // const navigate = useNavigate();
 
+  const { setAlert } = useAlert();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const [messageText, setMessageText] = useState("");
-  const [messageType, setMessageType] = useState("");
 
   const handleEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -42,36 +42,20 @@ export function Login({
   //   navigate("/home");
   // };
 
-  const setMissingFieldsMessage = () => {
-    setMessageText("");
-    setTimeout(() => {
-      setMessageText(missingFields);
-    }, 0);
-    setMessageType(FAIL_MESSAGE);
-  };
-
-  const setLoginErrorMessage = () => {
-    setMessageText("");
-    setTimeout(() => {
-      setMessageText(loginError);
-    }, 0);
-    setMessageType(FAIL_MESSAGE);
-  };
-
   const userLogin = async () => {
     const user = await loginRequest(email, password);
     if (user) {
       handleUserLogin({ email: user.email, isAdmin: user.admin });
       // redirectToHome();
     } else {
-      setLoginErrorMessage();
+      setAlert(loginError, "error");
     }
   };
 
   const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     if (email === "" || password === "") {
-      setMissingFieldsMessage();
+      setAlert(missingFields, "error");
     } else {
       userLogin();
     }
@@ -83,7 +67,6 @@ export function Login({
         <LoginTitle variant='h3'>Login</LoginTitle>
         <LoginTextField label='Email' value={email} onChange={handleEmail} />
         <PasswordField password={password} handlePassword={handlePassword} />
-        <MessageDisplay text={messageText} type={messageType} />
         <LoginButton variant='contained' color='success' onClick={handleSubmit}>
           Login
         </LoginButton>
@@ -94,6 +77,7 @@ export function Login({
         >
           Register
         </LoginButton>
+        <AlertPopup />
       </LoginForm>
     </LoginApp>
   );

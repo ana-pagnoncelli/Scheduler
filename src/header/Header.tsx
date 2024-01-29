@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import AppBar from "./styles";
 
 import { DrawerButton, Drawer } from "./drawer";
-import { UserContext } from "../providers/userProvider";
+import { UserContext } from "../context/userContext";
 
 export function Header() {
   const navigate = useNavigate();

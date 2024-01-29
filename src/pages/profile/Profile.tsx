@@ -12,7 +12,7 @@ import {
   profileUpdateError,
   profileUpdated
 } from "../../messages";
-import { UserContext } from "../../providers/userProvider";
+import { UserContext } from "../../context/userContext";
 import { getProfile, updateProfile } from "./requests";
 import { ProfileType } from "./types";
 import { SUBMIT_CHANGES_BUTTON_NAME } from "./constants";

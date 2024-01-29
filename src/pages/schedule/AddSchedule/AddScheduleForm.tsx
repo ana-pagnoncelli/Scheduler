@@ -17,10 +17,12 @@ import { missingFields } from "../../../messages";
 import { User } from "../../../types/User";
 import { SelectUsers } from "./SelectUsers";
 import { SelectDayOfTheWeek } from "./SelectDayOfTheWeek";
+import { useAlert } from "../../../hooks/useAlert";
 
 export function AddScheduleForm({
   updateAvailableSchedules
 }: AddScheduleFormProps) {
+  const { setAlert } = useAlert();
   const [dayOfTheWeek, setDayOfTheWeek] = useState("");
   const [hour, setHour] = useState<Dayjs | null>(null);
   const [numberOfSpots, setNumberOfSpots] = useState("");
@@ -77,6 +79,7 @@ export function AddScheduleForm({
 
   const handleCreateButton = () => {
     if (hasEmptyFields()) {
+      setAlert("Edit success!", "success");
       setEmptyFieldsMessage();
     } else {
       sendRequestCreateSchedule();
