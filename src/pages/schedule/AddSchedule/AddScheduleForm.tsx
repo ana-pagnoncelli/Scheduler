@@ -13,7 +13,7 @@ import {
   MessageDisplay,
   SUCCESS_MESSAGE
 } from "../../../components";
-import { missingFields } from "../../../messages";
+import { missingFields } from "../../../components/AlertPopup/messages";
 import { User } from "../../../types/User";
 import { SelectUsers } from "./SelectUsers";
 import { SelectDayOfTheWeek } from "./SelectDayOfTheWeek";

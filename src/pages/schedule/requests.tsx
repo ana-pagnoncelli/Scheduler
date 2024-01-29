@@ -5,7 +5,7 @@ import {
   MessageDisplayType,
   SUCCESS_MESSAGE
 } from "../../components";
-import { scheduleCreated } from "../../messages";
+import { scheduleCreated } from "../../components/AlertPopup/messages";
 import { User } from "../../types/User";
 
 export const getSchedules = async (): Promise<FixedSchedule[]> => {

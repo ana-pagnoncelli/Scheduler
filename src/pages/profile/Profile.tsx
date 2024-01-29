@@ -11,7 +11,7 @@ import {
   missingFields,
   profileUpdateError,
   profileUpdated
-} from "../../messages";
+} from "../../components/AlertPopup/messages";
 import { UserContext } from "../../context/userContext";
 import { getProfile, updateProfile } from "./requests";
 import { ProfileType } from "./types";

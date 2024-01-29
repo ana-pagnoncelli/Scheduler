@@ -1,7 +1,7 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { Profile } from "./Profile";
-import { missingFields } from "../../messages";
+import { missingFields } from "../../components/AlertPopup/messages";
 import { SUBMIT_CHANGES_BUTTON_NAME } from "./constants";
 import { UserContext } from "../../context/userContext";
 import { getProfile, updateProfile } from "./requests";

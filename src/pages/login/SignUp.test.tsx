@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { SignUp } from "./SignUp";
 import { createUserRequest } from "./requests";
-import { missingFields } from "../../messages";
+import { missingFields } from "../../components/AlertPopup/messages";
 
 jest.mock("./requests");
 

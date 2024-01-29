@@ -1,5 +1,8 @@
 import axios from "axios";
-import { singUpSuccess, singUpErrorCreatingUser } from "../../messages";
+import {
+  singUpSuccess,
+  singUpErrorCreatingUser
+} from "../../components/AlertPopup/messages";
 import { User } from "../../types/User";
 import {
   FAIL_MESSAGE,

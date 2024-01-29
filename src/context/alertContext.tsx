@@ -1,24 +1,25 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { AlertColor } from "@mui/material";
 import React, { ReactNode, createContext, useState, useMemo } from "react";
 
-export type SUCCESS = "success";
-export type ERROR = "error";
-export type INFO = "info";
-export type WARNING = "warning";
 type AlertType = AlertColor | undefined;
 
-const initialState = {
-  text: "",
-  open: false,
-  type: undefined as AlertType
+type AlertContextType = {
+  text: string;
+  type: AlertType;
+  open: boolean;
+  setOpenAlert: (open: boolean) => void;
+  setAlert: (newText: string, newType: AlertType) => void;
 };
 
-export const AlertContext = createContext({
-  ...initialState,
-  setAlert: (newText: string, newType: AlertType) => {},
-  setOpenAlert: (open: boolean) => {}
-});
+const initialValue = {
+  text: "",
+  open: false,
+  type: undefined as AlertType,
+  setAlert: () => {},
+  setOpenAlert: () => {}
+};
+
+export const AlertContext = createContext<AlertContextType>(initialValue);
 
 type AlertProviderProps = {
   children: ReactNode;

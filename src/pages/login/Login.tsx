@@ -7,11 +7,15 @@ import {
   LoginTextField,
   LoginTitle
 } from "./styles";
-import { loginError, missingFields } from "../../messages";
+import {
+  loginError,
+  missingFields,
+  AlertPopup,
+  AlertColors
+} from "../../components/AlertPopup";
 import { loginRequest } from "./requests";
 import { UserContextType } from "../../context/userContext";
 import { PasswordField } from "./PasswordField";
-import { AlertPopup } from "../../components/AlertPopup";
 import { useAlert } from "../../hooks/useAlert";
 
 type LoginProps = {
@@ -48,14 +52,14 @@ export function Login({
       handleUserLogin({ email: user.email, isAdmin: user.admin });
       // redirectToHome();
     } else {
-      setAlert(loginError, "error");
+      setAlert(loginError, AlertColors.ERROR);
     }
   };
 
   const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     if (email === "" || password === "") {
-      setAlert(missingFields, "error");
+      setAlert(missingFields, AlertColors.ERROR);
     } else {
       userLogin();
     }

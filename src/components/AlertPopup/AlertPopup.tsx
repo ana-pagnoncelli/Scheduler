@@ -1,6 +1,6 @@
 import React from "react";
 import { Alert, Collapse } from "@mui/material";
-import { useAlert } from "../hooks/useAlert";
+import { useAlert } from "../../hooks/useAlert";
 
 // const ALERT_TIME = 5000;
 
@@ -11,7 +11,7 @@ export function AlertPopup() {
     setOpenAlert(false);
   };
 
-  // TODO alert with progress bar
+  // TODO alert timeout with progress bar
   // setTimeout(() => {
   //   setText("");
   //   setType(undefined);

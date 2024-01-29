@@ -6,7 +6,7 @@ import {
   LoginTextField,
   LoginTitle
 } from "./styles";
-import { missingFields } from "../../messages";
+import { missingFields } from "../../components/AlertPopup/messages";
 import { createUserRequest } from "./requests";
 import { User } from "../../types/User";
 import {
