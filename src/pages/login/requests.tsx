@@ -4,28 +4,22 @@ import {
   singUpErrorCreatingUser
 } from "../../components/AlertPopup/messages";
 import { User } from "../../types/User";
-import {
-  FAIL_MESSAGE,
-  MessageDisplayType,
-  SUCCESS_MESSAGE
-} from "../../components";
-import { AlertColors } from "../../components/AlertPopup";
+import { AlertColors, AlertMessage } from "../../components/AlertPopup";
 
 export const createUserRequest = async (user: User) => {
-  let message: MessageDisplayType = {
+  let message: AlertMessage = {
     text: "",
-    type: SUCCESS_MESSAGE
+    type: AlertColors.SUCCESS
   };
 
   await axios
     .post("/users", user)
-    .then((response) => {
+    .then(() => {
       const successMessage = singUpSuccess(user.name);
       message = { text: successMessage, type: AlertColors.SUCCESS };
-      console.log(response.data);
     })
     .catch((err) => {
-      message = { text: singUpErrorCreatingUser, type: FAIL_MESSAGE };
+      message = { text: singUpErrorCreatingUser, type: AlertColors.ERROR };
       console.log(err);
     });
 

@@ -10,7 +10,8 @@ jest.mock("./requests");
 
 const userContext = {
   email: "ana",
-  isAdmin: false
+  isAdmin: false,
+  setUser: () => {}
 };
 
 describe("Profile", () => {

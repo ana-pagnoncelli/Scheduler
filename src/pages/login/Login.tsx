@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-
 import { Button, TextField, Typography } from "@mui/material";
 import { LoginApp, LoginForm } from "./styles";
 import {
@@ -10,22 +8,17 @@ import {
   AlertColors
 } from "../../components/AlertPopup";
 import { loginRequest } from "./requests";
-import { UserContextType } from "../../context/userContext";
 import { PasswordField } from "./PasswordField";
 import { useAlert } from "../../hooks/useAlert";
+import { useUser } from "../../hooks/useUser";
 
 type LoginProps = {
   setUserHasAccountToFalse: () => void;
-  handleUserLogin: (newUserContext: UserContextType) => void;
 };
 
-export function Login({
-  setUserHasAccountToFalse,
-  handleUserLogin
-}: LoginProps) {
-  // const navigate = useNavigate();
-
+export function Login({ setUserHasAccountToFalse }: LoginProps) {
   const { setAlert } = useAlert();
+  const { setUser } = useUser();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,16 +30,11 @@ export function Login({
   const handlePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
   };
-  // TODO
-  // const redirectToHome = () => {
-  //   navigate("/home");
-  // };
 
   const userLogin = async () => {
     const user = await loginRequest(email, password);
     if (user) {
-      handleUserLogin({ email: user.email, isAdmin: user.admin });
-      // redirectToHome();
+      setUser(user.email, user.admin);
     } else {
       setAlert(loginError, AlertColors.ERROR);
     }

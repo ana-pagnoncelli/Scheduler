@@ -4,3 +4,8 @@ export enum AlertColors {
   INFO = "info",
   WARNING = "warning"
 }
+
+export type AlertMessage = {
+  text: string;
+  type: AlertColors;
+};

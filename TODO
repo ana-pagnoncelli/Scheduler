@@ -25,7 +25,8 @@ General ->
 - Dockeriza tudo
 
 System ->
-- User Login
+- Create logs
+- Make the api request more robust
 - User Profile -> What is the plan the user is currently assigned
 - Schedule -> User can schedule a free time
 - Admin is a user that can add the times for students to pick

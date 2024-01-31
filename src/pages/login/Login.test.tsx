@@ -10,12 +10,7 @@ const setUserHasAccountToFalse = () => {};
 
 describe("Login", () => {
   beforeEach(() => {
-    render(
-      <Login
-        setUserHasAccountToFalse={setUserHasAccountToFalse}
-        handleUserLogin={() => {}}
-      />
-    );
+    render(<Login setUserHasAccountToFalse={setUserHasAccountToFalse} />);
   });
 
   it("renders Login page", () => {

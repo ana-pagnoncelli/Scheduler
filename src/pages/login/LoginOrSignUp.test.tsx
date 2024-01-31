@@ -4,7 +4,7 @@ import { LoginOrSignUp } from "./LoginOrSignUp";
 
 describe("LoginOrSignUp", () => {
   beforeEach(() => {
-    render(<LoginOrSignUp handleUserLogin={() => {}} />);
+    render(<LoginOrSignUp />);
   });
 
   it("renders LoginOrSignUp component", () => {

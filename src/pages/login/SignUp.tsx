@@ -32,19 +32,27 @@ export function SignUp({ setUserHasAccountToTrue }: SignUpProps) {
 
   // TODO add a button to login in the alert message for this case
 
+  const handleCreateUser = async () => {
+    const user: User = {
+      name,
+      email,
+      password,
+      admin: false
+    };
+    const alertMessage = await createUserRequest(user);
+    setAlert(alertMessage.text, alertMessage.type);
+
+    if (alertMessage.type === AlertColors.SUCCESS) {
+      setUserHasAccountToTrue();
+    }
+  };
+
   const handleSubmit = async (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     if (name === "" || email === "" || password === "") {
       setAlert(missingFields, AlertColors.ERROR);
     } else {
-      const user: User = {
-        name,
-        email,
-        password,
-        admin: false
-      };
-
-      await createUserRequest(user);
+      handleCreateUser();
     }
   };
 

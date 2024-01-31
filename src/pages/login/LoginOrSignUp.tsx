@@ -1,13 +1,8 @@
 import React, { useState } from "react";
 import { SignUp } from "./SignUp";
 import { Login } from "./Login";
-import { UserContextType } from "../../context/userContext";
 
-type LoginOrSignUpProps = {
-  handleUserLogin: (newUserContext: UserContextType) => void;
-};
-
-export function LoginOrSignUp({ handleUserLogin }: LoginOrSignUpProps) {
+export function LoginOrSignUp() {
   const [userHasAccount, setUserHasAccount] = useState(true);
 
   const setUserHasAccountToFalse = () => {
@@ -21,10 +16,7 @@ export function LoginOrSignUp({ handleUserLogin }: LoginOrSignUpProps) {
   return (
     <div>
       {userHasAccount ? (
-        <Login
-          setUserHasAccountToFalse={setUserHasAccountToFalse}
-          handleUserLogin={handleUserLogin}
-        />
+        <Login setUserHasAccountToFalse={setUserHasAccountToFalse} />
       ) : (
         <SignUp setUserHasAccountToTrue={setUserHasAccountToTrue} />
       )}
