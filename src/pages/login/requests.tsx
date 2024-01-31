@@ -9,6 +9,7 @@ import {
   MessageDisplayType,
   SUCCESS_MESSAGE
 } from "../../components";
+import { AlertColors } from "../../components/AlertPopup";
 
 export const createUserRequest = async (user: User) => {
   let message: MessageDisplayType = {
@@ -20,7 +21,7 @@ export const createUserRequest = async (user: User) => {
     .post("/users", user)
     .then((response) => {
       const successMessage = singUpSuccess(user.name);
-      message = { text: successMessage, type: SUCCESS_MESSAGE };
+      message = { text: successMessage, type: AlertColors.SUCCESS };
       console.log(response.data);
     })
     .catch((err) => {

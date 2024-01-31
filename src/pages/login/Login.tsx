@@ -1,12 +1,8 @@
 import React, { useState } from "react";
 // import { useNavigate } from "react-router-dom";
-import {
-  LoginApp,
-  LoginButton,
-  LoginForm,
-  LoginTextField,
-  LoginTitle
-} from "./styles";
+
+import { Button, TextField, Typography } from "@mui/material";
+import { LoginApp, LoginForm } from "./styles";
 import {
   loginError,
   missingFields,
@@ -68,19 +64,19 @@ export function Login({
   return (
     <LoginApp>
       <LoginForm>
-        <LoginTitle variant='h3'>Login</LoginTitle>
-        <LoginTextField label='Email' value={email} onChange={handleEmail} />
+        <Typography variant='h3'>Login</Typography>
+        <TextField label='Email' value={email} onChange={handleEmail} />
         <PasswordField password={password} handlePassword={handlePassword} />
-        <LoginButton variant='contained' color='success' onClick={handleSubmit}>
+        <Button variant='contained' color='success' onClick={handleSubmit}>
           Login
-        </LoginButton>
-        <LoginButton
+        </Button>
+        <Button
           variant='outlined'
           color='secondary'
           onClick={setUserHasAccountToFalse}
         >
           Register
-        </LoginButton>
+        </Button>
         <AlertPopup />
       </LoginForm>
     </LoginApp>

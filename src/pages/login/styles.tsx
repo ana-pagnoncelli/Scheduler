@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { BACKGROUND_COLOR } from "../../styles";
 
 export const LoginForm = styled("form")(() => ({
@@ -20,9 +20,3 @@ export const LoginApp = styled(Box)({
   height: "100vh",
   overflow: "hidden"
 });
-
-export const LoginTextField = styled(TextField)({});
-
-export const LoginButton = styled(Button)({});
-
-export const LoginTitle = styled(Typography)({});
