@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Grid, TextField } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import {
-  InputField,
-  SubmitButton,
   MessageDisplay,
   SUCCESS_MESSAGE,
   FAIL_MESSAGE
@@ -16,7 +14,7 @@ import { UserContext } from "../../context/userContext";
 import { getProfile, updateProfile } from "./requests";
 import { ProfileType } from "./types";
 import { SUBMIT_CHANGES_BUTTON_NAME } from "./constants";
-import { LoginApp, LoginForm } from "./styles";
+import { ProfileApp, ProfileBox, ProfileForm } from "./styles";
 
 export function Profile() {
   const [name, setName] = useState("");
@@ -105,56 +103,22 @@ export function Profile() {
   }, []);
 
   return (
-    <LoginApp>
-      <LoginForm>
-        <h1>Profile Page</h1>
-        <Grid container spacing={1}>
-          <Grid container item xs={12} spacing={1}>
-            <Grid item xs={4}>
-              <InputField
-                fieldName='Name'
-                fieldValue={name}
-                onChange={handleName}
-              />
-            </Grid>
-            <Grid item xs={4}>
-              <TextField label='Email' value={email} />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid container item xs={12} spacing={1}>
-          <Grid item xs={4}>
-            <InputField fieldName='Age' fieldValue={age} onChange={handleAge} />
-          </Grid>
-          <Grid item xs={4}>
-            <InputField
-              fieldName='Phone'
-              fieldValue={phone}
-              onChange={handlePhone}
-            />
-          </Grid>
-        </Grid>
-        <Grid container item xs={12} spacing={1}>
-          <Grid item xs={4}>
-            <InputField
-              fieldName='Gender'
-              fieldValue={gender}
-              onChange={handleGender}
-            />
-          </Grid>
-          <Grid item xs={4}>
-            <InputField
-              fieldName='Plan'
-              fieldValue={plan}
-              onChange={handlePlan}
-            />
-          </Grid>
-        </Grid>
+    <ProfileApp>
+      <ProfileBox>
+        <Typography variant='h3'>Profile</Typography>
+        <ProfileForm>
+          <TextField label='Name' value={name} onChange={handleName} />
+          <TextField label='Email' value={email} />
+          <TextField label='Age' value={age} onChange={handleAge} />
+          <TextField label='Phone' value={phone} onChange={handlePhone} />
+          <TextField label='Gender' value={gender} onChange={handleGender} />
+          <TextField label='Plan' value={plan} onChange={handlePlan} />
+        </ProfileForm>
         <MessageDisplay text={messageText} type={messageType} />
-        <SubmitButton onClick={handleSubmit} className='btn' type='submit'>
+        <Button variant='contained' color='success' onClick={handleSubmit}>
           {SUBMIT_CHANGES_BUTTON_NAME}
-        </SubmitButton>
-      </LoginForm>
-    </LoginApp>
+        </Button>
+      </ProfileBox>
+    </ProfileApp>
   );
 }

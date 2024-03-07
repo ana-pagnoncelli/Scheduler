@@ -20,7 +20,7 @@ export function AppLoginOrRoute() {
           <BrowserRouter>
             <CssBaseline />
             <Header />
-            <Box component='main' sx={{ flexGrow: 1, p: 3 }}>
+            <Box component='main' sx={{ flexGrow: 1 }}>
               <DrawerHeader />
               <Router />
             </Box>
