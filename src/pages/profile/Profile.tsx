@@ -1,11 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Button, TextField, Typography } from "@mui/material";
 import {
-  MessageDisplay,
-  SUCCESS_MESSAGE,
-  FAIL_MESSAGE
-} from "../../components";
-import {
   missingFields,
   profileUpdateError,
   profileUpdated
@@ -15,16 +10,16 @@ import { getProfile, updateProfile } from "./requests";
 import { ProfileType } from "./types";
 import { SUBMIT_CHANGES_BUTTON_NAME } from "./constants";
 import { ProfileApp, ProfileBox, ProfileForm } from "./styles";
+import { AlertColors, AlertPopup } from "../../components/AlertPopup";
+import { useAlert } from "../../hooks/useAlert";
 
 export function Profile() {
+  const { setAlert } = useAlert();
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [plan, setPlan] = useState("");
-
-  const [messageText, setMessageText] = useState("");
-  const [messageType, setMessageType] = useState("");
 
   const { email } = useContext(UserContext);
 
@@ -74,11 +69,9 @@ export function Profile() {
       const profile = buildProfile();
       const response = await updateProfile(email, profile);
       if (response) {
-        setMessageText(profileUpdated);
-        setMessageType(SUCCESS_MESSAGE);
+        setAlert(profileUpdated, AlertColors.SUCCESS);
       } else {
-        setMessageText(profileUpdateError);
-        setMessageType(FAIL_MESSAGE);
+        setAlert(profileUpdateError, AlertColors.ERROR);
       }
     }
   };
@@ -86,8 +79,7 @@ export function Profile() {
   const handleSubmit = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     if (name === "") {
-      setMessageText(missingFields);
-      setMessageType(FAIL_MESSAGE);
+      setAlert(missingFields, AlertColors.ERROR);
     } else {
       handleUpdateProfile();
     }
@@ -114,7 +106,7 @@ export function Profile() {
           <TextField label='Gender' value={gender} onChange={handleGender} />
           <TextField label='Plan' value={plan} onChange={handlePlan} />
         </ProfileForm>
-        <MessageDisplay text={messageText} type={messageType} />
+        <AlertPopup />
         <Button variant='contained' color='success' onClick={handleSubmit}>
           {SUBMIT_CHANGES_BUTTON_NAME}
         </Button>

@@ -6,15 +6,17 @@ export const ProfileBox = styled(Box)({
   padding: "30px",
   borderRadius: "10px",
   maxWidth: "70%",
-  margin: "50px auto"
+  margin: "50px auto",
+  display: "flex",
+  flexDirection: "column",
+  gap: "20px"
 });
 
 export const ProfileForm = styled("form")(() => ({
   display: "flex",
-  flexFlow: "row wrap",
-  gap: "12px",
+  flexDirection: "column",
+  gap: "20px",
   marginTop: "20px",
-  marginBottom: "20px",
   alignContent: "stretch"
 }));
 
