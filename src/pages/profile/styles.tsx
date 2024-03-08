@@ -5,7 +5,7 @@ export const ProfileBox = styled(Box)({
   background: BOX_COLOR,
   padding: "30px",
   borderRadius: "10px",
-  maxWidth: "70%",
+  maxWidth: "500px",
   margin: "50px auto",
   display: "flex",
   flexDirection: "column",

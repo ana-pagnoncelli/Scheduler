@@ -6,32 +6,36 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Typography from "@mui/material/Typography";
 import { AvailableScheduleTableHourProps } from "../types";
 import { AvailableScheduleTableRowHour } from "./AvailableScheduleTableRowHour";
+import { tableHeadItemStyle, tableHeadStyle } from "../styles";
 
 export function AvailableScheduleTableHour({
   fixedSchedules,
   open,
   updateAvailableSchedules
 }: AvailableScheduleTableHourProps) {
-  console.log("AvailableScheduleTableHour", fixedSchedules);
   return (
     <TableRow>
       <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
         <Collapse in={open} timeout='auto' unmountOnExit>
           <Box sx={{ margin: 1 }}>
-            <Typography variant='h6' gutterBottom component='div'>
-              Working Hours
-            </Typography>
             <Table size='small' aria-label='purchases'>
-              <TableHead>
+              <TableHead style={tableHeadStyle}>
                 <TableRow>
-                  <TableCell>Hour</TableCell>
-                  <TableCell align='center'>Number Of Spots</TableCell>
-                  <TableCell align='center'>Available Spots</TableCell>
-                  <TableCell align='center'>Schedule</TableCell>
-                  <TableCell align='center'>Delete Schedule</TableCell>
+                  <TableCell style={tableHeadItemStyle}>Hour</TableCell>
+                  <TableCell style={tableHeadItemStyle} align='center'>
+                    Number Of Spots
+                  </TableCell>
+                  <TableCell style={tableHeadItemStyle} align='center'>
+                    Available Spots
+                  </TableCell>
+                  <TableCell style={tableHeadItemStyle} align='center'>
+                    Schedule
+                  </TableCell>
+                  <TableCell style={tableHeadItemStyle} align='center'>
+                    Delete Schedule
+                  </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>

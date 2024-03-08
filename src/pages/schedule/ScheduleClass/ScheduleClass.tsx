@@ -8,6 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { ScheduleClassTableRowDay } from "./ScheduleClassTableRowDay";
 import { ScheduleDay } from "../types";
+import { tableHeadStyle } from "../styles";
 
 const scheduleList: ScheduleDay[] = [
   {
@@ -82,7 +83,7 @@ export function ScheduleClass() {
       <h1>Schedule a Class </h1>
       <TableContainer component={Paper}>
         <Table aria-label='collapsible table'>
-          <TableHead>
+          <TableHead style={tableHeadStyle}>
             <TableRow>
               <TableCell />
               <TableCell align='left'>Day</TableCell>

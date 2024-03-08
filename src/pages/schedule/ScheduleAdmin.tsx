@@ -3,6 +3,7 @@ import { getSchedules } from "./requests";
 import { AvailableSchedule } from "./AvailableSchedule/AvailableSchedule";
 import { FixedSchedule } from "./types";
 import { AddSchedule } from "./AddSchedule/AddSchedule";
+import { ScheduleBox } from "./styles";
 
 export function ScheduleAdmin() {
   const [fixedSchedules, setFixedSchedules] = useState<FixedSchedule[]>([]);
@@ -22,12 +23,12 @@ export function ScheduleAdmin() {
   };
 
   return (
-    <>
+    <ScheduleBox>
       <AvailableSchedule
         fixedSchedules={fixedSchedules}
         updateAvailableSchedules={updateAvailableSchedules}
       />
       <AddSchedule updateAvailableSchedules={updateAvailableSchedules} />
-    </>
+    </ScheduleBox>
   );
 }

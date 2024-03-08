@@ -4,6 +4,7 @@ import TableRow from "@mui/material/TableRow";
 import { Button } from "@mui/material";
 import { AvailableScheduleTableRowHourProps } from "../types";
 import { deleteSchedule } from "../requests";
+import { tableInnerItemStyle } from "../styles";
 
 export function AvailableScheduleTableRowHour({
   fixedSchedule,
@@ -25,7 +26,7 @@ export function AvailableScheduleTableRowHour({
   };
 
   return (
-    <TableRow key={fixedSchedule.hour_of_the_day}>
+    <TableRow key={fixedSchedule.hour_of_the_day} style={tableInnerItemStyle}>
       <TableCell component='th' scope='row'>
         {fixedSchedule.hour_of_the_day}
       </TableCell>
