@@ -1,8 +1,8 @@
 import { Box, styled } from "@mui/material";
-import { BACKGROUND_COLOR, SECONDARY_COLOR } from "../../../styles";
+import { SECONDARY_COLOR, TERTIARY_COLOR } from "../../../styles";
 
 export const AddScheduleBox = styled(Box)({
-  background: BACKGROUND_COLOR,
+  background: TERTIARY_COLOR,
   borderWidth: "2px",
   borderStyle: "solid",
   borderColor: SECONDARY_COLOR,
@@ -11,16 +11,15 @@ export const AddScheduleBox = styled(Box)({
   display: "flex",
   flexDirection: "column",
   gap: "20px",
-  justifyContent: "center",
-  alignItems: "center",
-  width: "100%"
+  alignItems: "center"
 });
 
 export const InputBox = styled(Box)({
   display: "flex",
   flexDirection: "row",
   gap: "20px",
-  textAlign: "center",
   flex: 1,
   width: "100%"
 });
+
+export const selectHourStyle = { flex: 1, margin: 0, padding: 0 };

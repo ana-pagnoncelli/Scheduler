@@ -1,4 +1,5 @@
 import { ChangeEvent } from "react";
+import { Dayjs } from "dayjs";
 import { User } from "../../types/User";
 
 export type ScheduleHour = {
@@ -76,4 +77,9 @@ export type SelectUsersProps = {
 export type SelectDayOfTheWeekProps = {
   handleSelectDay: (e: ChangeEvent<HTMLInputElement>) => void;
   dayOfTheWeek: string;
+};
+
+export type SelectHourProps = {
+  setHour: React.Dispatch<React.SetStateAction<Dayjs | null>>;
+  hour: Dayjs | null;
 };

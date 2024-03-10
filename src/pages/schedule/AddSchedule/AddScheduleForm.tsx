@@ -1,9 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
 import { Button, TextField, Typography } from "@mui/material";
-import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
-import { TimePicker } from "@mui/x-date-pickers/TimePicker";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { Dayjs } from "dayjs";
 import { AddScheduleFormProps, DayOfTheWeek, FixedSchedule } from "../types";
 import { getEmailsList, getHourAsString } from "./functions";
@@ -15,6 +11,8 @@ import { SelectDayOfTheWeek } from "./SelectDayOfTheWeek";
 import { useAlert } from "../../../hooks/useAlert";
 import { AddScheduleBox, InputBox } from "./styles";
 import { AlertColors } from "../../../components/AlertPopup";
+import { SelectHour } from "./SelectTime";
+import { buttonStyleSecondaryColor } from "../styles";
 
 export function AddScheduleForm({
   updateAvailableSchedules
@@ -78,20 +76,7 @@ export function AddScheduleForm({
     <AddScheduleBox>
       <Typography variant='h4'>Create new schedule</Typography>
       <InputBox>
-        <DemoContainer
-          components={["TimePicker"]}
-          sx={{ flex: 1, margin: 0, padding: 0 }}
-        >
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoItem>
-              <TimePicker
-                value={hour}
-                ampm={false}
-                onChange={(newValue) => setHour(newValue)}
-              />
-            </DemoItem>
-          </LocalizationProvider>
-        </DemoContainer>
+        <SelectHour hour={hour} setHour={setHour} />
 
         <TextField
           sx={{ flex: 1 }}
@@ -113,9 +98,9 @@ export function AddScheduleForm({
         variant='contained'
         color='success'
         onClick={handleCreateButton}
-        sx={{ maxWidth: 200 }}
+        sx={buttonStyleSecondaryColor}
       >
-        Create
+        Create Schedule
       </Button>
     </AddScheduleBox>
   );
