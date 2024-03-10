@@ -5,6 +5,7 @@ import AppBar from "./styles";
 
 import { DrawerButton, Drawer } from "./drawer";
 import { UserContext } from "../context/userContext";
+import { SECONDARY_COLOR } from "../styles";
 
 export function Header() {
   const navigate = useNavigate();
@@ -51,7 +52,11 @@ export function Header() {
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position='fixed' isDrawerOpen={isDrawerOpen}>
+      <AppBar
+        position='fixed'
+        isDrawerOpen={isDrawerOpen}
+        sx={{ background: SECONDARY_COLOR }}
+      >
         <Toolbar>
           <DrawerButton
             open={isDrawerOpen}

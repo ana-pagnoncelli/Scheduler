@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
-import { Button, TextField } from "@mui/material";
+import { Button, TextField, Typography } from "@mui/material";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -8,16 +8,13 @@ import { Dayjs } from "dayjs";
 import { AddScheduleFormProps, DayOfTheWeek, FixedSchedule } from "../types";
 import { getEmailsList, getHourAsString } from "./functions";
 import { createSchedule } from "../requests";
-import {
-  FAIL_MESSAGE,
-  MessageDisplay,
-  SUCCESS_MESSAGE
-} from "../../../components";
 import { missingFields } from "../../../components/AlertPopup/messages";
 import { User } from "../../../types/User";
 import { SelectUsers } from "./SelectUsers";
 import { SelectDayOfTheWeek } from "./SelectDayOfTheWeek";
 import { useAlert } from "../../../hooks/useAlert";
+import { AddScheduleBox, InputBox } from "./styles";
+import { AlertColors } from "../../../components/AlertPopup";
 
 export function AddScheduleForm({
   updateAvailableSchedules
@@ -26,8 +23,6 @@ export function AddScheduleForm({
   const [dayOfTheWeek, setDayOfTheWeek] = useState("");
   const [hour, setHour] = useState<Dayjs | null>(null);
   const [numberOfSpots, setNumberOfSpots] = useState("");
-  const [messageText, setMessageText] = useState("");
-  const [messageType, setMessageType] = useState("");
   const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
 
   const handleUserSelection = (newUsers: User[]) => {
@@ -44,11 +39,6 @@ export function AddScheduleForm({
 
   const hasEmptyFields = () => {
     return !(hour && dayOfTheWeek && numberOfSpots);
-  };
-
-  const setEmptyFieldsMessage = () => {
-    setMessageText(missingFields);
-    setMessageType(FAIL_MESSAGE);
   };
 
   const clearFields = () => {
@@ -68,10 +58,9 @@ export function AddScheduleForm({
     };
 
     const message = await createSchedule(schedule);
-    setMessageText(message.text);
-    setMessageType(message.type);
+    setAlert(message.text, message.type);
 
-    if (message.type === SUCCESS_MESSAGE) {
+    if (message.type === AlertColors.SUCCESS) {
       clearFields();
       updateAvailableSchedules();
     }
@@ -79,50 +68,55 @@ export function AddScheduleForm({
 
   const handleCreateButton = () => {
     if (hasEmptyFields()) {
-      setAlert("Edit success!", "success");
-      setEmptyFieldsMessage();
+      setAlert(missingFields, AlertColors.ERROR);
     } else {
       sendRequestCreateSchedule();
     }
   };
 
   return (
-    <div>
-      <h2>Create new schedule</h2>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DemoContainer components={["TimePicker"]}>
-          <DemoItem>
-            <TimePicker
-              value={hour}
-              ampm={false}
-              onChange={(newValue) => setHour(newValue)}
-              sx={{ width: 200 }}
-            />
-          </DemoItem>
-          <TextField
-            sx={{ width: 200 }}
-            label='Number of spots'
-            value={numberOfSpots}
-            onChange={handleNumberOfSpots}
-          />
-          <SelectDayOfTheWeek
-            dayOfTheWeek={dayOfTheWeek}
-            handleSelectDay={handleSelectDay}
-          />
-          <SelectUsers
-            handleUserSelection={handleUserSelection}
-            selectedUsers={selectedUsers}
-          />
-          <Button
-            variant='contained'
-            color='success'
-            onClick={handleCreateButton}
-          >
-            Create
-          </Button>
+    <AddScheduleBox>
+      <Typography variant='h4'>Create new schedule</Typography>
+      <InputBox>
+        <DemoContainer
+          components={["TimePicker"]}
+          sx={{ flex: 1, margin: 0, padding: 0 }}
+        >
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DemoItem>
+              <TimePicker
+                value={hour}
+                ampm={false}
+                onChange={(newValue) => setHour(newValue)}
+              />
+            </DemoItem>
+          </LocalizationProvider>
         </DemoContainer>
-      </LocalizationProvider>
-      <MessageDisplay text={messageText} type={messageType} />
-    </div>
+
+        <TextField
+          sx={{ flex: 1 }}
+          label='Number of spots'
+          value={numberOfSpots}
+          onChange={handleNumberOfSpots}
+        />
+        <SelectDayOfTheWeek
+          dayOfTheWeek={dayOfTheWeek}
+          handleSelectDay={handleSelectDay}
+        />
+        <SelectUsers
+          handleUserSelection={handleUserSelection}
+          selectedUsers={selectedUsers}
+        />
+      </InputBox>
+
+      <Button
+        variant='contained'
+        color='success'
+        onClick={handleCreateButton}
+        sx={{ maxWidth: 200 }}
+      >
+        Create
+      </Button>
+    </AddScheduleBox>
   );
 }

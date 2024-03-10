@@ -21,7 +21,7 @@ export function SelectUsers({
 
   return (
     <Autocomplete
-      sx={{ width: 450 }}
+      sx={{ flex: 2 }}
       multiple
       id='tags-outlined'
       options={users}

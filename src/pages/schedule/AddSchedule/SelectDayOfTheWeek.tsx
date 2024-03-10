@@ -14,6 +14,7 @@ export function SelectDayOfTheWeek({
       value={dayOfTheWeek}
       variant='outlined'
       onChange={handleSelectDay}
+      sx={{ flex: 1 }}
     >
       {(Object.keys(DayOfTheWeek) as Array<keyof typeof DayOfTheWeek>).map(
         (key) => (

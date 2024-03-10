@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Box, Button } from "@mui/material";
+import { Button } from "@mui/material";
 import { AddScheduleForm } from "./AddScheduleForm";
 import { AddScheduleProps } from "../types";
+import { buttonStyleSecondaryColor } from "../styles";
 
 export function AddSchedule({ updateAvailableSchedules }: AddScheduleProps) {
   const [shouldShowForm, setShouldShowForm] = useState(false);
@@ -11,14 +12,18 @@ export function AddSchedule({ updateAvailableSchedules }: AddScheduleProps) {
   };
 
   return (
-    <Box pt={3}>
+    <div>
       {shouldShowForm ? (
         <AddScheduleForm updateAvailableSchedules={updateAvailableSchedules} />
       ) : (
-        <Button onClick={handleAddScheduleButton} variant='contained'>
+        <Button
+          onClick={handleAddScheduleButton}
+          variant='contained'
+          style={buttonStyleSecondaryColor}
+        >
           Create new schedule
         </Button>
       )}
-    </Box>
+    </div>
   );
 }

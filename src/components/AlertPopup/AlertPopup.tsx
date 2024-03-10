@@ -2,7 +2,7 @@ import React from "react";
 import { Alert, Snackbar } from "@mui/material";
 import { useAlert } from "../../hooks/useAlert";
 
-// const ALERT_TIME = 5000;
+const ALERT_DURATION = 8000;
 
 export function AlertPopup() {
   const { text, type, open, setOpenAlert } = useAlert();
@@ -11,18 +11,12 @@ export function AlertPopup() {
     setOpenAlert(false);
   };
 
-  // TODO alert timeout with progress bar
-  // setTimeout(() => {
-  //   setText("");
-  //   setType(undefined);
-  // }, ALERT_TIME);
-
   return (
     <Snackbar
       open={open}
-      autoHideDuration={6000}
+      autoHideDuration={ALERT_DURATION}
       onClose={clearAlert}
-      anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+      anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
     >
       <Alert severity={type} onClose={clearAlert} sx={{ width: "100%" }}>
         {text}

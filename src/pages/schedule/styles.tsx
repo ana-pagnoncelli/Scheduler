@@ -1,5 +1,11 @@
 import { Box, styled } from "@mui/material";
-import { BACKGROUND_COLOR, BOX_COLOR, SECONDARY_COLOR } from "../../styles";
+import {
+  BACKGROUND_COLOR,
+  BOX_COLOR,
+  QUATERNARY_COLOR,
+  SECONDARY_COLOR,
+  TERTIARY_COLOR
+} from "../../styles";
 
 export const ScheduleBox = styled(Box)({
   background: BOX_COLOR,
@@ -21,13 +27,22 @@ export const ScheduleApp = styled(Box)({
 });
 
 export const tableInnerItemStyle = {
-  background: BACKGROUND_COLOR
+  background: TERTIARY_COLOR
 };
 
 export const tableHeadStyle = {
   background: SECONDARY_COLOR
 };
 
+export const tableInnerHeadStyle = {
+  background: QUATERNARY_COLOR
+};
+
 export const tableHeadItemStyle = {
+  color: "white"
+};
+
+export const buttonStyleSecondaryColor = {
+  background: SECONDARY_COLOR,
   color: "white"
 };

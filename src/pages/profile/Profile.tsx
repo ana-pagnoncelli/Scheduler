@@ -99,8 +99,8 @@ export function Profile() {
       <ProfileBox>
         <Typography variant='h3'>Profile</Typography>
         <ProfileForm>
+          <TextField label='Email' value={email} disabled />
           <TextField label='Name' value={name} onChange={handleName} />
-          <TextField label='Email' value={email} />
           <TextField label='Age' value={age} onChange={handleAge} />
           <TextField label='Phone' value={phone} onChange={handlePhone} />
           <TextField label='Gender' value={gender} onChange={handleGender} />

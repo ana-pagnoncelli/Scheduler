@@ -8,7 +8,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { AvailableScheduleTableHourProps } from "../types";
 import { AvailableScheduleTableRowHour } from "./AvailableScheduleTableRowHour";
-import { tableHeadItemStyle, tableHeadStyle } from "../styles";
+import { tableInnerHeadStyle } from "../styles";
 
 export function AvailableScheduleTableHour({
   fixedSchedules,
@@ -17,25 +17,17 @@ export function AvailableScheduleTableHour({
 }: AvailableScheduleTableHourProps) {
   return (
     <TableRow>
-      <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+      <TableCell style={{ padding: 0 }} colSpan={6}>
         <Collapse in={open} timeout='auto' unmountOnExit>
-          <Box sx={{ margin: 1 }}>
+          <Box sx={{ margin: 0, padding: 0 }}>
             <Table size='small' aria-label='purchases'>
-              <TableHead style={tableHeadStyle}>
+              <TableHead style={tableInnerHeadStyle}>
                 <TableRow>
-                  <TableCell style={tableHeadItemStyle}>Hour</TableCell>
-                  <TableCell style={tableHeadItemStyle} align='center'>
-                    Number Of Spots
-                  </TableCell>
-                  <TableCell style={tableHeadItemStyle} align='center'>
-                    Available Spots
-                  </TableCell>
-                  <TableCell style={tableHeadItemStyle} align='center'>
-                    Schedule
-                  </TableCell>
-                  <TableCell style={tableHeadItemStyle} align='center'>
-                    Delete Schedule
-                  </TableCell>
+                  <TableCell>Hour</TableCell>
+                  <TableCell align='center'>Number Of Spots</TableCell>
+                  <TableCell align='center'>Available Spots</TableCell>
+                  <TableCell align='center'>Users</TableCell>
+                  <TableCell align='center'>Delete Schedule</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>

@@ -1,12 +1,8 @@
 import axios from "axios";
 import { FixedSchedule } from "./types";
-import {
-  FAIL_MESSAGE,
-  MessageDisplayType,
-  SUCCESS_MESSAGE
-} from "../../components";
 import { scheduleCreated } from "../../components/AlertPopup/messages";
 import { User } from "../../types/User";
+import { AlertColors, AlertMessage } from "../../components/AlertPopup";
 
 export const getSchedules = async (): Promise<FixedSchedule[]> => {
   let schedules: FixedSchedule[] = [];
@@ -34,19 +30,19 @@ export const deleteSchedule = async (scheduleId: string) => {
 };
 
 export const createSchedule = async (schedule: FixedSchedule) => {
-  let message: MessageDisplayType = {
+  let message: AlertMessage = {
     text: "",
-    type: SUCCESS_MESSAGE
+    type: AlertColors.SUCCESS
   };
 
   await axios
     .post(`/schedules/`, schedule)
     .then((response) => {
-      message = { text: scheduleCreated, type: SUCCESS_MESSAGE };
+      message = { text: scheduleCreated, type: AlertColors.SUCCESS };
       console.log(response.data);
     })
     .catch((err) => {
-      message = { text: err.response.data.message, type: FAIL_MESSAGE };
+      message = { text: err.response.data.message, type: AlertColors.ERROR };
       console.log(err);
     });
 
