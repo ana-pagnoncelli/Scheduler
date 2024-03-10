@@ -44,5 +44,6 @@ export const tableHeadItemStyle = {
 
 export const buttonStyleSecondaryColor = {
   background: SECONDARY_COLOR,
+  backgroundColor: SECONDARY_COLOR,
   color: "white"
 };

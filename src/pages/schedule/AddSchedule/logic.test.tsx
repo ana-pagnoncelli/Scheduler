@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import { formatToTwoDigitString, getHourAsString } from "./functions";
+import { formatToTwoDigitString, getHourAsString } from "./logic";
 
 describe("testing functions", () => {
   describe("formatToTwoDigitString", () => {

@@ -2,7 +2,7 @@ import React, { ChangeEvent, useState } from "react";
 import { Button, TextField, Typography } from "@mui/material";
 import { Dayjs } from "dayjs";
 import { AddScheduleFormProps, DayOfTheWeek, FixedSchedule } from "../types";
-import { getEmailsList, getHourAsString } from "./functions";
+import { getEmailsList, getHourAsString } from "./logic";
 import { createSchedule } from "../requests";
 import { missingFields } from "../../../components/AlertPopup/messages";
 import { User } from "../../../types/User";
@@ -96,9 +96,8 @@ export function AddScheduleForm({
 
       <Button
         variant='contained'
-        color='success'
         onClick={handleCreateButton}
-        sx={buttonStyleSecondaryColor}
+        style={buttonStyleSecondaryColor}
       >
         Create Schedule
       </Button>
