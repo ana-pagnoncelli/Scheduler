@@ -10,7 +10,7 @@ import { getProfile, updateProfile } from "./requests";
 import { ProfileType } from "./types";
 import { SUBMIT_CHANGES_BUTTON_NAME } from "./constants";
 import { ProfileApp, ProfileBox, ProfileForm } from "./styles";
-import { AlertColors, AlertPopup } from "../../components/AlertPopup";
+import { AlertColors } from "../../components/AlertPopup";
 import { useAlert } from "../../hooks/useAlert";
 
 export function Profile() {
@@ -106,7 +106,6 @@ export function Profile() {
           <TextField label='Gender' value={gender} onChange={handleGender} />
           <TextField label='Plan' value={plan} onChange={handlePlan} />
         </ProfileForm>
-        <AlertPopup />
         <Button variant='contained' color='success' onClick={handleSubmit}>
           {SUBMIT_CHANGES_BUTTON_NAME}
         </Button>

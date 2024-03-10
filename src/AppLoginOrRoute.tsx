@@ -5,6 +5,7 @@ import { LoginOrSignUp } from "./pages/login";
 import { DrawerHeader, Header } from "./header";
 import Router from "./routes";
 import { useUser } from "./hooks/useUser";
+import { AlertPopup } from "./components/AlertPopup";
 
 export function AppLoginOrRoute() {
   const { email } = useUser();
@@ -29,6 +30,7 @@ export function AppLoginOrRoute() {
       ) : (
         <LoginOrSignUp />
       )}
+      <AlertPopup />
     </div>
   );
 }

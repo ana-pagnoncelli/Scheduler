@@ -4,7 +4,6 @@ import { LoginApp, LoginForm } from "./styles";
 import {
   loginError,
   missingFields,
-  AlertPopup,
   AlertColors
 } from "../../components/AlertPopup";
 import { loginRequest } from "./requests";
@@ -65,7 +64,6 @@ export function Login({ setUserHasAccountToFalse }: LoginProps) {
         >
           Register
         </Button>
-        <AlertPopup />
       </LoginForm>
     </LoginApp>
   );

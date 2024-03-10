@@ -4,7 +4,7 @@ import { LoginApp, LoginForm } from "./styles";
 import { missingFields } from "../../components/AlertPopup/messages";
 import { createUserRequest } from "./requests";
 import { User } from "../../types/User";
-import { AlertColors, AlertPopup } from "../../components/AlertPopup";
+import { AlertColors } from "../../components/AlertPopup";
 import { useAlert } from "../../hooks/useAlert";
 import { PasswordField } from "./PasswordField";
 
@@ -74,7 +74,6 @@ export function SignUp({ setUserHasAccountToTrue }: SignUpProps) {
         >
           Login
         </Button>
-        <AlertPopup />
       </LoginForm>
     </LoginApp>
   );

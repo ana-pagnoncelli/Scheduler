@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert, Collapse } from "@mui/material";
+import { Alert, Snackbar } from "@mui/material";
 import { useAlert } from "../../hooks/useAlert";
 
 // const ALERT_TIME = 5000;
@@ -18,10 +18,15 @@ export function AlertPopup() {
   // }, ALERT_TIME);
 
   return (
-    <Collapse in={open}>
-      <Alert severity={type} onClose={clearAlert}>
+    <Snackbar
+      open={open}
+      autoHideDuration={6000}
+      onClose={clearAlert}
+      anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+    >
+      <Alert severity={type} onClose={clearAlert} sx={{ width: "100%" }}>
         {text}
       </Alert>
-    </Collapse>
+    </Snackbar>
   );
 }
