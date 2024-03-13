@@ -44,3 +44,13 @@ export const separateFixedSchedulesByDayOfTheWeek = (
   ];
   return fixedSchedulesByDay;
 };
+
+export const displayUsersList = (usersList: string[]) => {
+  return usersList.join(" | ");
+};
+
+export const availableSpots = (fixedSchedule: FixedSchedule) => {
+  return (
+    Number(fixedSchedule.number_of_spots) - fixedSchedule.users_list.length
+  );
+};

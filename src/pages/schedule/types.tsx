@@ -69,6 +69,11 @@ export type AddScheduleFormProps = {
   updateAvailableSchedules: () => void;
 };
 
+export type DeleteScheduleProps = {
+  updateAvailableSchedules: () => void;
+  fixedSchedule: FixedSchedule;
+};
+
 export type SelectUsersProps = {
   handleUserSelection: (value: User[]) => void;
   selectedUsers: User[];

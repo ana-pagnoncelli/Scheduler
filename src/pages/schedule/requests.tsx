@@ -20,7 +20,7 @@ export const getSchedules = async (): Promise<FixedSchedule[]> => {
   return schedules;
 };
 
-export const deleteSchedule = async (scheduleId: string) => {
+export const deleteScheduleRequest = async (scheduleId: string) => {
   await axios
     .delete(`/schedules/${scheduleId}`)
     .then(() => {})
