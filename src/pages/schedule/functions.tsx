@@ -47,6 +47,9 @@ export const separateFixedSchedulesByDayOfTheWeek = (
 };
 
 export const displayUsersList = (usersList: string[]) => {
+  if (usersList.length === 0) {
+    return "None";
+  }
   return usersList.join(" | ");
 };
 

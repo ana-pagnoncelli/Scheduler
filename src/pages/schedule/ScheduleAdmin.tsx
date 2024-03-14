@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getSchedules } from "./requests";
-import { AvailableSchedule } from "./AvailableSchedule/AvailableSchedule";
+import { AvailableSchedule } from "./AvailableScheduleTable/AvailableSchedule";
 import { FixedSchedule } from "./types";
 import { AddSchedule } from "./AddSchedule/AddSchedule";
 import { ScheduleBox } from "./styles";

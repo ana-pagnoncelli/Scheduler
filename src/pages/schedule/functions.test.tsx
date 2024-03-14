@@ -150,7 +150,7 @@ describe("functions file", () => {
   test("displayUsersList", () => {
     expect(displayUsersList(["ana", "carolina"])).toBe("ana | carolina");
     expect(displayUsersList(["ana"])).toBe("ana");
-    expect(displayUsersList([])).toBe("");
+    expect(displayUsersList([])).toBe("None");
   });
 
   test("availableSpots", () => {
