@@ -1,14 +1,19 @@
 import React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+
+import {
+  Typography,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper
+} from "@mui/material";
+
 import { ScheduleClassTableRowDay } from "./ScheduleClassTableRowDay";
 import { ScheduleDay } from "../types";
-import { tableHeadStyle } from "../styles";
+import { tableHeadItemStyle, tableHeadStyle } from "../styles";
 
 const scheduleList: ScheduleDay[] = [
   {
@@ -80,15 +85,21 @@ const scheduleList: ScheduleDay[] = [
 export function ScheduleClass() {
   return (
     <>
-      <h1>Schedule a Class </h1>
+      <Typography variant='h3'>Schedule a Class </Typography>
       <TableContainer component={Paper}>
         <Table aria-label='collapsible table'>
           <TableHead style={tableHeadStyle}>
             <TableRow>
               <TableCell />
-              <TableCell align='left'>Day</TableCell>
-              <TableCell align='center'>Number of spots</TableCell>
-              <TableCell align='center'>Number of available spots</TableCell>
+              <TableCell style={tableHeadItemStyle} align='left'>
+                Day
+              </TableCell>
+              <TableCell style={tableHeadItemStyle} align='center'>
+                Number of spots
+              </TableCell>
+              <TableCell style={tableHeadItemStyle} align='center'>
+                Number of available spots
+              </TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

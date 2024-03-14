@@ -3,6 +3,7 @@ import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import { Button } from "@mui/material";
 import { ScheduleHour } from "../types";
+import { tableInnerItemStyle } from "../styles";
 
 type ScheduleClassTableRowHourProps = {
   scheduleHour: ScheduleHour;
@@ -16,7 +17,7 @@ export function ScheduleClassTableRowHour({
   };
 
   return (
-    <TableRow key={scheduleHour.hour}>
+    <TableRow key={scheduleHour.hour} style={tableInnerItemStyle}>
       <TableCell component='th' scope='row'>
         {scheduleHour.hour}
       </TableCell>

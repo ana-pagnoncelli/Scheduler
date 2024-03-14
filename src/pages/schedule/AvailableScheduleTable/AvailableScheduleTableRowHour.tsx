@@ -10,11 +10,7 @@ export function AvailableScheduleTableRowHour({
   updateAvailableSchedules
 }: AvailableScheduleTableRowHourProps) {
   return (
-    <TableRow
-      key={fixedSchedule.hour_of_the_day}
-      style={tableInnerItemStyle}
-      sx={{ margin: 0, padding: 0 }}
-    >
+    <TableRow key={fixedSchedule.hour_of_the_day} style={tableInnerItemStyle}>
       <TableCell component='th' scope='row'>
         {fixedSchedule.hour_of_the_day}
       </TableCell>

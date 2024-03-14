@@ -1,6 +1,7 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import { ScheduleClass } from "./ScheduleClassTable/ScheduleClass";
+import { ScheduleBox } from "./styles";
 
 export function ScheduleUser() {
   return (
@@ -34,8 +35,9 @@ export function ScheduleUser() {
         maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin
         aliquam ultrices sagittis orci a.
       </Typography>
-
-      <ScheduleClass />
+      <ScheduleBox>
+        <ScheduleClass />
+      </ScheduleBox>
     </>
   );
 }
