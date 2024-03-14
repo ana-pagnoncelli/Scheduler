@@ -1,4 +1,5 @@
 /* eslint-disable camelcase */
+import React from "react";
 import { DayOfTheWeek, FixedSchedule, FixedSchedulesByDay } from "./types";
 
 const fixedScheduleOf = (
@@ -52,5 +53,18 @@ export const displayUsersList = (usersList: string[]) => {
 export const availableSpots = (fixedSchedule: FixedSchedule) => {
   return (
     Number(fixedSchedule.number_of_spots) - fixedSchedule.users_list.length
+  );
+};
+
+export const fixedScheduleToHtml = (fixedSchedule: FixedSchedule) => {
+  const users = displayUsersList(fixedSchedule.users_list);
+  return (
+    <>
+      Day of the week: {fixedSchedule.week_day}
+      <br />
+      Hour: {fixedSchedule.hour_of_the_day}
+      <br />
+      Users: {users}
+    </>
   );
 };

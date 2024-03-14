@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import { deleteScheduleRequest } from "../requests";
 import { DeleteScheduleProps } from "../types";
+import { fixedScheduleToHtml } from "../functions";
 
 export function DeleteSchedule({
   fixedSchedule,
@@ -51,7 +52,7 @@ export function DeleteSchedule({
         </DialogTitle>
         <DialogContent>
           <DialogContentText id='delete-schedule-dialog-description'>
-            If you delete this schedule, the users will have a loosen spot.
+            {fixedScheduleToHtml(fixedSchedule)}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -61,7 +62,7 @@ export function DeleteSchedule({
             onClick={handleDeleteSchedule}
             autoFocus
           >
-            DELETE
+            Delete
           </Button>
           <Button variant='outlined' color='success' onClick={handleClose}>
             Cancel
