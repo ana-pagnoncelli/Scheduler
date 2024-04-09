@@ -1,12 +1,20 @@
 import React from "react";
 import { Navigate, useRoutes } from "react-router-dom";
-import { Home, NotFound, Schedule, AvailablePlans, Profile } from "./pages";
+import {
+  Home,
+  NotFound,
+  Schedule,
+  AvailablePlans,
+  Profile,
+  ScheduleAdmin
+} from "./pages";
 import { Logout } from "./pages/logout";
 
 export default function Router() {
   const routes = useRoutes([
     { path: "schedule-class", element: <Schedule /> },
     { path: "available-plans", element: <AvailablePlans /> },
+    { path: "schedule-admin", element: <ScheduleAdmin /> },
     { path: "logout", element: <Logout /> },
     { path: "home", element: <Home /> },
     { path: "profile", element: <Profile /> },

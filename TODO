@@ -1,4 +1,5 @@
 Technical Frontend:
+
 - enhance husky -> create a commit pattern maybe
 - check if it is possible to use a visual regression test (lambda test?)
 - pipeline
@@ -9,25 +10,26 @@ Technical Frontend:
 - create jest tests for login component
 - create jest tests for loginOrSingUp component
 - create cypress tests to cover all the functionalities of loginOrSignUp
+- Move the fixed schedule to a new route, moving the folders as well. With the addSchedule. Is is a admin page.
 
 Technical Backend ->
-- create a backend using node
-- create a database using Firebase
-- Try to use GraphQL: https://medium.com/mehak-vohra/using-graphql-to-query-your-firebase-realtime-database-a6e6cbd6aa3a
-- User creation
-- User login
+
 - Swagger
+- Authentication
+- Check if the user is admin, to admin only APIs
 
 General ->
+
 - Update readme with storybook info
 - Update readme with husky info
 - Put everything on AWS
 - Dockeriza tudo
 
 System ->
+
 - Create logs
-- Make the api request more robust
+- Make the api request more robust with more specific errors and handles
 - User Profile -> What is the plan the user is currently assigned
 - Schedule -> User can schedule a free time
-- Admin is a user that can add the times for students to pick
-- Available Plans -> User can update its plan. Like two hours per week and prices or hire a plan.
+- Available Plans -> User can visualize its plan and the others that exist, but can't update. Only the admin.
+- Create a history page for the admin, where he can check everything the users did
