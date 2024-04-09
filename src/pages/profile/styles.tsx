@@ -1,16 +1,7 @@
-import { Box, styled } from "@mui/material";
-import { BACKGROUND_COLOR, BOX_COLOR } from "../../styles";
+import { styled } from "@mui/material";
+import { BaseApp, BaseBox } from "../styles";
 
-export const ProfileBox = styled(Box)({
-  background: BOX_COLOR,
-  padding: "30px",
-  borderRadius: "10px",
-  maxWidth: "500px",
-  margin: "50px auto",
-  display: "flex",
-  flexDirection: "column",
-  gap: "20px"
-});
+export const ProfileBox = styled(BaseBox)({});
 
 export const ProfileForm = styled("form")(() => ({
   display: "flex",
@@ -20,9 +11,6 @@ export const ProfileForm = styled("form")(() => ({
   alignContent: "stretch"
 }));
 
-export const ProfileApp = styled(Box)({
-  background: BACKGROUND_COLOR,
-  textAlign: "center",
-  height: "100vh",
-  overflow: "hidden"
+export const ProfileApp = styled(BaseApp)({
+  height: "100vh"
 });

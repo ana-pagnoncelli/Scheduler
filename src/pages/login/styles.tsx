@@ -1,6 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { Box } from "@mui/material";
-import { BACKGROUND_COLOR } from "../../styles";
+import { BaseApp } from "../styles";
 
 export const LoginForm = styled("form")(() => ({
   width: "330px",
@@ -14,9 +13,6 @@ export const LoginForm = styled("form")(() => ({
   marginTop: "40px"
 }));
 
-export const LoginApp = styled(Box)({
-  background: BACKGROUND_COLOR,
-  textAlign: "center",
-  height: "100vh",
-  overflow: "hidden"
+export const LoginApp = styled(BaseApp)({
+  height: "100vh"
 });
