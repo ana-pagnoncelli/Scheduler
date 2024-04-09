@@ -1,15 +1,9 @@
 import { Box, styled } from "@mui/material";
-import { BACKGROUND_COLOR, BOX_COLOR } from "../../styles";
+import { BaseApp, BaseBox } from "../styles";
+import { QUATERNARY_COLOR, SECONDARY_COLOR } from "../../styles";
 
-export const ProfileBox = styled(Box)({
-  background: BOX_COLOR,
-  padding: "30px",
-  borderRadius: "10px",
-  maxWidth: "500px",
-  margin: "50px auto",
-  display: "flex",
-  flexDirection: "column",
-  gap: "20px"
+export const AvailablePlanBox = styled(BaseBox)({
+  maxWidth: "1000px"
 });
 
 export const ProfileForm = styled("form")(() => ({
@@ -20,9 +14,14 @@ export const ProfileForm = styled("form")(() => ({
   alignContent: "stretch"
 }));
 
-export const ProfileApp = styled(Box)({
-  background: BACKGROUND_COLOR,
-  textAlign: "center",
-  height: "100vh",
-  overflow: "hidden"
+export const ItemPlanBox = styled(Box)(() => ({
+  background: QUATERNARY_COLOR,
+  borderWidth: "2px",
+  borderStyle: "solid",
+  borderColor: SECONDARY_COLOR,
+  borderRadius: "10px"
+}));
+
+export const AvailablePlanApp = styled(BaseApp)({
+  height: "100vh"
 });

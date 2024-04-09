@@ -1,5 +1,6 @@
 import React from "react";
-import Box from "@mui/material/Box";
+import { Typography } from "@mui/material";
+import { AvailablePlanApp, AvailablePlanBox, ItemPlanBox } from "./styles";
 
 type Plan = { name: string; text: string; price: number };
 
@@ -26,16 +27,18 @@ const availablePlansList: Plan[] = [
 
 export function AvailablePlansAdmin() {
   return (
-    <>
-      <h1> Available plans </h1>
-      {availablePlansList.map((plan) => (
-        <Box component='fieldset'>
-          <legend>{plan.name}</legend>
-          {plan.text}
-          <br />
-          Price: ${plan.price}
-        </Box>
-      ))}
-    </>
+    <AvailablePlanApp>
+      <AvailablePlanBox>
+        <Typography variant='h3'> Available plans </Typography>
+        {availablePlansList.map((plan) => (
+          <ItemPlanBox>
+            <legend>{plan.name}</legend>
+            {plan.text}
+            <br />
+            Price: ${plan.price}
+          </ItemPlanBox>
+        ))}
+      </AvailablePlanBox>
+    </AvailablePlanApp>
   );
 }
