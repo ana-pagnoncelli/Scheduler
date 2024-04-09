@@ -3,17 +3,19 @@ import { Navigate, useRoutes } from "react-router-dom";
 import {
   Home,
   NotFound,
-  Schedule,
-  AvailablePlans,
+  ScheduleUser,
+  AvailablePlansClient,
   Profile,
-  ScheduleAdmin
+  ScheduleAdmin,
+  AvailablePlansAdmin
 } from "./pages";
 import { Logout } from "./pages/logout";
 
 export default function Router() {
   const routes = useRoutes([
-    { path: "schedule-class", element: <Schedule /> },
-    { path: "available-plans", element: <AvailablePlans /> },
+    { path: "schedule-class", element: <ScheduleUser /> },
+    { path: "available-plans", element: <AvailablePlansClient /> },
+    { path: "available-plans-admin", element: <AvailablePlansAdmin /> },
     { path: "schedule-admin", element: <ScheduleAdmin /> },
     { path: "logout", element: <Logout /> },
     { path: "home", element: <Home /> },

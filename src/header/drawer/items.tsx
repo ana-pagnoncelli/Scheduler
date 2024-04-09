@@ -12,11 +12,6 @@ export const primaryBaseItems: DrawerItemInfo[] = [
     name: "Cancel Class",
     icon: <InboxIcon />,
     path: "/cancel-class"
-  },
-  {
-    name: "Available Plans",
-    icon: <InboxIcon />,
-    path: "/available-plans"
   }
 ];
 
@@ -53,21 +48,35 @@ export const itemsWithLogout = () => {
 };
 
 export const itemsWithAdmin = () => {
-  const item: DrawerItemInfo = {
-    name: "Manage Schedules",
-    icon: <InboxIcon />,
-    path: "/schedule-admin"
-  };
+  const items: DrawerItemInfo[] = [
+    {
+      name: "Manage Schedules",
+      icon: <InboxIcon />,
+      path: "/schedule-admin"
+    },
+    {
+      name: "Manage Plans",
+      icon: <InboxIcon />,
+      path: "/available-plans-admin"
+    }
+  ];
 
-  return [...primaryBaseItems, item];
+  return [...primaryBaseItems, ...items];
 };
 
 export const itemsWithClient = () => {
-  const item: DrawerItemInfo = {
-    name: "Schedule Class",
-    icon: <InboxIcon />,
-    path: "/schedule-class"
-  };
+  const items: DrawerItemInfo[] = [
+    {
+      name: "Schedule Class",
+      icon: <InboxIcon />,
+      path: "/schedule-class"
+    },
+    {
+      name: "Available Plans",
+      icon: <InboxIcon />,
+      path: "/available-plans"
+    }
+  ];
 
-  return [...primaryBaseItems, item];
+  return [...primaryBaseItems, ...items];
 };

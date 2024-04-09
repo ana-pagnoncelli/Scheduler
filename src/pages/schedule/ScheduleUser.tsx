@@ -1,11 +1,11 @@
 import React from "react";
 import Typography from "@mui/material/Typography";
 import { ScheduleClass } from "./ScheduleClassTable/ScheduleClass";
-import { ScheduleBox } from "./styles";
+import { ScheduleApp, ScheduleBox } from "./styles";
 
 export function ScheduleUser() {
   return (
-    <>
+    <ScheduleApp>
       <h1>My Schedule User</h1>
       <Typography paragraph>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -35,9 +35,10 @@ export function ScheduleUser() {
         maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin
         aliquam ultrices sagittis orci a.
       </Typography>
+
       <ScheduleBox>
         <ScheduleClass />
       </ScheduleBox>
-    </>
+    </ScheduleApp>
   );
 }

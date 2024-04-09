@@ -24,7 +24,7 @@ const availablePlansList: Plan[] = [
 // TODO: If admin, add/edit/remove plan
 // Create in the backend and retrieve it
 
-export function AvailablePlans() {
+export function AvailablePlansAdmin() {
   return (
     <>
       <h1> Available plans </h1>

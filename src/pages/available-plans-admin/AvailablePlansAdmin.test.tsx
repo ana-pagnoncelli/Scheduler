@@ -1,9 +1,9 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import { AvailablePlans } from "./AvailablePlans";
+import { AvailablePlansAdmin } from "./AvailablePlansAdmin";
 
 test("renders available plans page", () => {
-  render(<AvailablePlans />);
+  render(<AvailablePlansAdmin />);
   const linkElement = screen.getByText("Available plans");
   expect(linkElement).toBeInTheDocument();
 });
