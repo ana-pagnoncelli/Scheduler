@@ -1,5 +1,5 @@
 import { Box, styled } from "@mui/material";
-import { BACKGROUND_COLOR, BOX_COLOR } from "../styles";
+import { BACKGROUND_COLOR, BOX_COLOR, SECONDARY_COLOR } from "../styles";
 
 export const BaseBox = styled(Box)({
   background: BOX_COLOR,
@@ -17,3 +17,11 @@ export const BaseApp = styled(Box)({
   textAlign: "center",
   overflow: "hidden"
 });
+
+export const tableHeadStyle = {
+  background: SECONDARY_COLOR
+};
+
+export const tableHeadItemStyle = {
+  color: "white"
+};

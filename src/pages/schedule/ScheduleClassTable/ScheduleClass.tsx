@@ -13,7 +13,7 @@ import {
 
 import { ScheduleClassTableRowDay } from "./ScheduleClassTableRowDay";
 import { ScheduleDay } from "../types";
-import { tableHeadItemStyle, tableHeadStyle } from "../styles";
+import { tableHeadItemStyle, tableHeadStyle } from "../../styles";
 
 const scheduleList: ScheduleDay[] = [
   {

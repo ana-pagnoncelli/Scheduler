@@ -6,14 +6,6 @@ export const AvailablePlanBox = styled(BaseBox)({
   maxWidth: "1000px"
 });
 
-export const ProfileForm = styled("form")(() => ({
-  display: "flex",
-  flexDirection: "column",
-  gap: "20px",
-  marginTop: "20px",
-  alignContent: "stretch"
-}));
-
 export const ItemPlanBox = styled(Box)(() => ({
   background: QUATERNARY_COLOR,
   borderWidth: "2px",

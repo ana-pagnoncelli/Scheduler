@@ -12,7 +12,7 @@ import {
 import { AvailableScheduleProps } from "../types";
 import { separateFixedSchedulesByDayOfTheWeek } from "../functions";
 import { AvailableScheduleTableRowDay } from "./AvailableScheduleTableRowDay";
-import { tableHeadItemStyle, tableHeadStyle } from "../styles";
+import { tableHeadItemStyle, tableHeadStyle } from "../../styles";
 
 export function AvailableSchedule({
   fixedSchedules,

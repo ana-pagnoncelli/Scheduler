@@ -19,16 +19,8 @@ export const tableInnerItemStyle = {
   background: TERTIARY_COLOR
 };
 
-export const tableHeadStyle = {
-  background: SECONDARY_COLOR
-};
-
 export const tableInnerHeadStyle = {
   background: QUATERNARY_COLOR
-};
-
-export const tableHeadItemStyle = {
-  color: "white"
 };
 
 export const buttonStyleSecondaryColor = {
