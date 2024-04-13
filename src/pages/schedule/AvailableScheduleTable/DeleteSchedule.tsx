@@ -12,11 +12,13 @@ import {
 import { deleteScheduleRequest } from "../requests";
 import { DeleteScheduleProps } from "../types";
 import { fixedScheduleToHtml } from "../functions";
+import { AlertColors } from "../../../components/AlertPopup";
+import { useAlert } from "../../../hooks/useAlert";
+import { useSchedules } from "../../../hooks/useSchedule";
 
-export function DeleteSchedule({
-  fixedSchedule,
-  updateAvailableSchedules
-}: DeleteScheduleProps) {
+export function DeleteSchedule({ fixedSchedule }: DeleteScheduleProps) {
+  const { fetchSchedules } = useSchedules();
+  const { setAlert } = useAlert();
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -28,11 +30,15 @@ export function DeleteSchedule({
   };
 
   const handleDeleteSchedule = () => {
-    const requestDeleteSchedule = async () => {
-      await deleteScheduleRequest(fixedSchedule.id);
-      updateAvailableSchedules();
+    const callDeleteSchedule = async () => {
+      const message = await deleteScheduleRequest(fixedSchedule.id);
+      setAlert(message.text, message.type);
+
+      if (message.type === AlertColors.SUCCESS) {
+        fetchSchedules();
+      }
     };
-    requestDeleteSchedule();
+    callDeleteSchedule();
     handleClose();
   };
 

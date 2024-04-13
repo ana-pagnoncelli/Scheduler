@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { Button } from "@mui/material";
 import { AddScheduleForm } from "./AddScheduleForm";
-import { AddScheduleProps } from "../types";
 import { buttonStyleSecondaryColor } from "../styles";
 
-export function AddSchedule({ updateAvailableSchedules }: AddScheduleProps) {
+export function AddSchedule() {
   const [shouldShowForm, setShouldShowForm] = useState(false);
 
   const handleAddScheduleButton = () => {
@@ -14,7 +13,7 @@ export function AddSchedule({ updateAvailableSchedules }: AddScheduleProps) {
   return (
     <div>
       {shouldShowForm ? (
-        <AddScheduleForm updateAvailableSchedules={updateAvailableSchedules} />
+        <AddScheduleForm />
       ) : (
         <Button
           onClick={handleAddScheduleButton}

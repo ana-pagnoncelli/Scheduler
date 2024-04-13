@@ -11,8 +11,7 @@ import { tableInnerHeadStyle } from "../styles";
 
 export function AvailableScheduleTableHour({
   fixedSchedules,
-  open,
-  updateAvailableSchedules
+  open
 }: AvailableScheduleTableHourProps) {
   return (
     <TableRow>
@@ -33,7 +32,6 @@ export function AvailableScheduleTableHour({
                 <AvailableScheduleTableRowHour
                   key={fixedSchedule.hour_of_the_day}
                   fixedSchedule={fixedSchedule}
-                  updateAvailableSchedules={updateAvailableSchedules}
                 />
               ))}
             </TableBody>

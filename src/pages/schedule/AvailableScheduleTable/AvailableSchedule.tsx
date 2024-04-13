@@ -9,15 +9,14 @@ import {
   TableRow,
   Paper
 } from "@mui/material";
-import { AvailableScheduleProps } from "../types";
 import { separateFixedSchedulesByDayOfTheWeek } from "../functions";
 import { AvailableScheduleTableRowDay } from "./AvailableScheduleTableRowDay";
 import { tableHeadItemStyle, tableHeadStyle } from "../../styles";
+import { useSchedules } from "../../../hooks/useSchedule";
 
-export function AvailableSchedule({
-  fixedSchedules,
-  updateAvailableSchedules
-}: AvailableScheduleProps) {
+export function AvailableSchedule() {
+  const { fixedSchedules } = useSchedules();
+
   const fixedSchedulesByDayOfTheWeek =
     separateFixedSchedulesByDayOfTheWeek(fixedSchedules);
 
@@ -45,7 +44,6 @@ export function AvailableSchedule({
               <AvailableScheduleTableRowDay
                 key={fixedSchedulesOneDay.dayOfTheWeek}
                 fixedSchedulesByDay={fixedSchedulesOneDay}
-                updateAvailableSchedules={updateAvailableSchedules}
               />
             ))}
           </TableBody>

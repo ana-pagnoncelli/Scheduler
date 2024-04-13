@@ -1,35 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { getSchedules } from "./requests";
+import React, { useContext, useEffect } from "react";
 import { AvailableSchedule } from "./AvailableScheduleTable/AvailableSchedule";
-import { FixedSchedule } from "./types";
 import { AddSchedule } from "./AddSchedule/AddSchedule";
 import { ScheduleApp, ScheduleBox } from "./styles";
+import { ScheduleContext } from "../../context/scheduleContext";
 
 export function ScheduleAdmin() {
-  const [fixedSchedules, setFixedSchedules] = useState<FixedSchedule[]>([]);
-  const [shouldGetSchedules, setShouldGetSchedules] = useState(false);
+  const { fetchSchedules } = useContext(ScheduleContext);
 
   useEffect(() => {
-    const fetchSchedules = async () => {
-      const schedules: FixedSchedule[] = await getSchedules();
-      setFixedSchedules(schedules);
-      setShouldGetSchedules(false);
-    };
     fetchSchedules();
-  }, [shouldGetSchedules]);
-
-  const updateAvailableSchedules = () => {
-    setShouldGetSchedules(true);
-  };
+  }, []);
 
   return (
     <ScheduleApp>
       <ScheduleBox>
-        <AvailableSchedule
-          fixedSchedules={fixedSchedules}
-          updateAvailableSchedules={updateAvailableSchedules}
-        />
-        <AddSchedule updateAvailableSchedules={updateAvailableSchedules} />
+        <AvailableSchedule />
+        <AddSchedule />
       </ScheduleBox>
     </ScheduleApp>
   );

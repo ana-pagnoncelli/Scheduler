@@ -6,8 +6,7 @@ import { availableSpots, displayUsersList } from "../functions";
 import { DeleteSchedule } from "./DeleteSchedule";
 
 export function AvailableScheduleTableRowHour({
-  fixedSchedule,
-  updateAvailableSchedules
+  fixedSchedule
 }: AvailableScheduleTableRowHourProps) {
   return (
     <TableRow key={fixedSchedule.hour_of_the_day} style={tableInnerItemStyle}>
@@ -20,10 +19,7 @@ export function AvailableScheduleTableRowHour({
         {displayUsersList(fixedSchedule.users_list)}
       </TableCell>
       <TableCell align='center'>
-        <DeleteSchedule
-          updateAvailableSchedules={updateAvailableSchedules}
-          fixedSchedule={fixedSchedule}
-        />
+        <DeleteSchedule fixedSchedule={fixedSchedule} />
       </TableCell>
     </TableRow>
   );

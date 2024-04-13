@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
 import { Button, TextField, Typography } from "@mui/material";
 import { Dayjs } from "dayjs";
-import { AddScheduleFormProps, DayOfTheWeek, FixedSchedule } from "../types";
+import { DayOfTheWeek, FixedSchedule } from "../types";
 import { getEmailsList, getHourAsString } from "./logic";
 import { createSchedule } from "../requests";
 import { missingFields } from "../../../components/AlertPopup/messages";
@@ -13,10 +13,10 @@ import { AddScheduleBox, InputBox } from "./styles";
 import { AlertColors } from "../../../components/AlertPopup";
 import { SelectHour } from "./SelectTime";
 import { buttonStyleSecondaryColor } from "../styles";
+import { useSchedules } from "../../../hooks/useSchedule";
 
-export function AddScheduleForm({
-  updateAvailableSchedules
-}: AddScheduleFormProps) {
+export function AddScheduleForm() {
+  const { fetchSchedules } = useSchedules();
   const { setAlert } = useAlert();
   const [dayOfTheWeek, setDayOfTheWeek] = useState("");
   const [hour, setHour] = useState<Dayjs | null>(null);
@@ -60,7 +60,7 @@ export function AddScheduleForm({
 
     if (message.type === AlertColors.SUCCESS) {
       clearFields();
-      updateAvailableSchedules();
+      fetchSchedules();
     }
   };
 

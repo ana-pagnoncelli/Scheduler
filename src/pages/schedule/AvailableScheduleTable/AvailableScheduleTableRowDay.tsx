@@ -8,8 +8,7 @@ import { AvailableScheduleTableRowDayProps } from "../types";
 import { AvailableScheduleTableHour } from "./AvailableScheduleTableHour";
 
 export function AvailableScheduleTableRowDay({
-  fixedSchedulesByDay,
-  updateAvailableSchedules
+  fixedSchedulesByDay
 }: AvailableScheduleTableRowDayProps) {
   const [open, setOpen] = React.useState(false);
 
@@ -38,7 +37,6 @@ export function AvailableScheduleTableRowDay({
       <AvailableScheduleTableHour
         open={open}
         fixedSchedules={fixedSchedulesByDay.fixedSchedules}
-        updateAvailableSchedules={updateAvailableSchedules}
       />
     </>
   );

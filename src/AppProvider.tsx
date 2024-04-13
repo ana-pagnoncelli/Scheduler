@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import { AlertProvider } from "./context/alertContext";
 import { UserProvider } from "./context/userContext";
+import { ScheduleProvider } from "./context/scheduleContext";
 
 type AppProviderProps = {
   children: ReactNode;
@@ -9,7 +10,9 @@ type AppProviderProps = {
 export function AppProvider({ children }: AppProviderProps) {
   return (
     <AlertProvider>
-      <UserProvider>{children}</UserProvider>
+      <ScheduleProvider>
+        <UserProvider>{children}</UserProvider>
+      </ScheduleProvider>
     </AlertProvider>
   );
 }
