@@ -6,8 +6,8 @@ import {
   planCreated
 } from "../../components/AlertPopup";
 
-export const getPlans = async (): Promise<Array<Plan> | null> => {
-  let plans = null;
+export const getPlans = async (): Promise<Plan[]> => {
+  let plans: Plan[] = [];
 
   await axios
     .get(`/plans`)

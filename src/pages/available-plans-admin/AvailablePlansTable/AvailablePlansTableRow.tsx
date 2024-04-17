@@ -1,7 +1,7 @@
 import React from "react";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
-import { AvailablePlansTableRowProps } from "./types";
+import { AvailablePlansTableRowProps } from "../types";
 
 export function AvailablePlansTableRow({ plan }: AvailablePlansTableRowProps) {
   return (

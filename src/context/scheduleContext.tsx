@@ -28,7 +28,6 @@ export function ScheduleProvider({ children }: ScheduleProviderProps) {
     };
 
     callGetSchedules();
-    console.log("provider", fixedSchedules);
   };
 
   const schedulesValue = useMemo(

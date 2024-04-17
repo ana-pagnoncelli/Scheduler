@@ -1,6 +1,6 @@
 import React from "react";
 import { TableCell, TableHead, TableRow } from "@mui/material";
-import { tableHeadItemStyle, tableHeadStyle } from "../styles";
+import { tableHeadItemStyle, tableHeadStyle } from "../../styles";
 
 export function AvailablePlanTableHead() {
   return (
