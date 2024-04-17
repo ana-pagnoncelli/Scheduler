@@ -9,11 +9,12 @@ import { User } from "../../../types/User";
 import { SelectUsers } from "./SelectUsers";
 import { SelectDayOfTheWeek } from "./SelectDayOfTheWeek";
 import { useAlert } from "../../../hooks/useAlert";
-import { AddScheduleBox, InputBox } from "./styles";
 import { AlertColors } from "../../../components/AlertPopup";
 import { SelectHour } from "./SelectTime";
 import { buttonStyleSecondaryColor } from "../styles";
 import { useSchedules } from "../../../hooks/useSchedule";
+import { AddElementBox } from "../../styles";
+import { InputBox } from "./styles";
 
 export function AddScheduleForm() {
   const { fetchSchedules } = useSchedules();
@@ -73,7 +74,7 @@ export function AddScheduleForm() {
   };
 
   return (
-    <AddScheduleBox>
+    <AddElementBox>
       <Typography variant='h4'>Create new schedule</Typography>
       <InputBox>
         <SelectHour hour={hour} setHour={setHour} />
@@ -101,6 +102,6 @@ export function AddScheduleForm() {
       >
         Create Schedule
       </Button>
-    </AddScheduleBox>
+    </AddElementBox>
   );
 }

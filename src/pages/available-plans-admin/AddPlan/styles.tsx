@@ -7,5 +7,3 @@ export const InputBox = styled(Box)({
   flex: 1,
   width: "100%"
 });
-
-export const selectHourStyle = { flex: 1, margin: 0, padding: 0 };

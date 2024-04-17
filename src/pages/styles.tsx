@@ -1,5 +1,10 @@
 import { Box, styled } from "@mui/material";
-import { BACKGROUND_COLOR, BOX_COLOR, SECONDARY_COLOR } from "../styles";
+import {
+  BACKGROUND_COLOR,
+  BOX_COLOR,
+  SECONDARY_COLOR,
+  TERTIARY_COLOR
+} from "../styles";
 
 export const BaseBox = styled(Box)({
   background: BOX_COLOR,
@@ -25,3 +30,22 @@ export const tableHeadStyle = {
 export const tableHeadItemStyle = {
   color: "white"
 };
+
+export const buttonStyleSecondaryColor = {
+  background: SECONDARY_COLOR,
+  backgroundColor: SECONDARY_COLOR,
+  color: "white"
+};
+
+export const AddElementBox = styled(Box)({
+  background: TERTIARY_COLOR,
+  borderWidth: "2px",
+  borderStyle: "solid",
+  borderColor: SECONDARY_COLOR,
+  padding: "30px",
+  borderRadius: "10px",
+  display: "flex",
+  flexDirection: "column",
+  gap: "20px",
+  alignItems: "center"
+});

@@ -1,31 +1,28 @@
-// import React, { useState } from "react";
-// import { Button } from "@mui/material";
-// import { AddScheduleForm } from "./AddScheduleForm";
-// import { AddScheduleProps } from "../types";
-// import { buttonStyleSecondaryColor } from "../styles";
+import React, { useState } from "react";
+import { Button } from "@mui/material";
+import { buttonStyleSecondaryColor } from "../../styles";
+import { AddPlanForm } from "./AddPlanForm";
 
-// export function AddPlan({ updateAvailablePlans }: AddPlanProps) {
-//   const [shouldShowForm, setShouldShowForm] = useState(false);
+export function AddPlan() {
+  const [shouldShowForm, setShouldShowForm] = useState(false);
 
-//   const handleAddScheduleButton = () => {
-//     setShouldShowForm(true);
-//   };
+  const handleAddPlanButton = () => {
+    setShouldShowForm(true);
+  };
 
-//   return (
-//     <div>
-//       {shouldShowForm ? (
-//         <AddScheduleForm updateAvailablePlans={updateAvailablePlans} />
-//       ) : (
-//         <Button
-//           onClick={handleAddScheduleButton}
-//           variant='contained'
-//           style={buttonStyleSecondaryColor}
-//         >
-//           Create new plan
-//         </Button>
-//       )}
-//     </div>
-//   );
-// }
-
-export function AddPlan() {}
+  return (
+    <div>
+      {shouldShowForm ? (
+        <AddPlanForm />
+      ) : (
+        <Button
+          onClick={handleAddPlanButton}
+          variant='contained'
+          style={buttonStyleSecondaryColor}
+        >
+          Create new plan
+        </Button>
+      )}
+    </div>
+  );
+}
