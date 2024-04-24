@@ -1,54 +1,70 @@
 import React, { ChangeEvent, useState } from "react";
 import { Button, TextField, Typography } from "@mui/material";
-// import { missingFields } from "../../../components/AlertPopup/messages";
-// import { useAlert } from "../../../hooks/useAlert";
-// import { AlertColors } from "../../../components/AlertPopup";
+import { useAlert } from "../../../hooks/useAlert";
+import { AlertColors, missingFields } from "../../../components/AlertPopup";
 import { AddElementBox, buttonStyleSecondaryColor } from "../../styles";
 import { InputBox } from "./styles";
+import { createPlan } from "../requests";
+import { Plan } from "../types";
+import { usePlans } from "../../../hooks/usePlan";
 
 export function AddPlanForm() {
-  // const { setAlert } = useAlert();
-  const [numberOfSpots, setNumberOfSpots] = useState("");
+  const { fetchPlans } = usePlans();
+  const { setAlert } = useAlert();
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
+  const [classesPerWeek, setClassesPerWeek] = useState("");
 
-  const handleNumberOfSpots = (e: ChangeEvent<HTMLInputElement>) => {
-    setNumberOfSpots(e.target.value);
+  const handleName = (e: ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value);
   };
 
-  // const hasEmptyFields = () => {
-  //   return !(hour && dayOfTheWeek && numberOfSpots);
-  // };
+  const handlePrice = (e: ChangeEvent<HTMLInputElement>) => {
+    setPrice(e.target.value);
+  };
 
-  // const clearFields = () => {
-  //   setSelectedUsers([]);
-  //   setDayOfTheWeek("");
-  //   setHour(null);
-  //   setNumberOfSpots("");
-  // };
+  const handleDescription = (e: ChangeEvent<HTMLInputElement>) => {
+    setDescription(e.target.value);
+  };
 
-  // const sendRequestCreateSchedule = async () => {
-  //   const schedule: FixedSchedule = {
-  //     id: crypto.randomUUID(),
-  //     week_day: dayOfTheWeek as DayOfTheWeek,
-  //     hour_of_the_day: getHourAsString(hour),
-  //     number_of_spots: numberOfSpots,
-  //     users_list: getEmailsList(selectedUsers)
-  //   };
+  const handleClassesPerWeek = (e: ChangeEvent<HTMLInputElement>) => {
+    setClassesPerWeek(e.target.value);
+  };
 
-  //   const message = await createSchedule(schedule);
-  //   setAlert(message.text, message.type);
+  const hasEmptyFields = () => {
+    return !(name && price && classesPerWeek && description);
+  };
 
-  //   if (message.type === AlertColors.SUCCESS) {
-  //     clearFields();
-  //     fetchSchedules();
-  //   }
-  // };
+  const clearFields = () => {
+    setName("");
+    setPrice("");
+    setDescription("");
+    setClassesPerWeek("");
+  };
+
+  const sendRequestCreateSchedule = async () => {
+    const plan: Plan = {
+      id: crypto.randomUUID(),
+      price: Number(price),
+      classes_per_week: Number(classesPerWeek),
+      name,
+      description
+    };
+    const message = await createPlan(plan);
+    setAlert(message.text, message.type);
+    if (message.type === AlertColors.SUCCESS) {
+      clearFields();
+      fetchPlans();
+    }
+  };
 
   const handleCreateButton = () => {
-    // if (hasEmptyFields()) {
-    //   setAlert(missingFields, AlertColors.ERROR);
-    // } else {
-    //   sendRequestCreateSchedule();
-    // }
+    if (hasEmptyFields()) {
+      setAlert(missingFields, AlertColors.ERROR);
+    } else {
+      sendRequestCreateSchedule();
+    }
   };
 
   return (
@@ -57,30 +73,32 @@ export function AddPlanForm() {
       <InputBox>
         <TextField
           sx={{ flex: 1 }}
-          label='Number of spots'
-          value={numberOfSpots}
-          onChange={handleNumberOfSpots}
+          label='Name'
+          value={name}
+          onChange={handleName}
         />
 
         <TextField
           sx={{ flex: 1 }}
-          label='Number of spots'
-          value={numberOfSpots}
-          onChange={handleNumberOfSpots}
+          label='Price'
+          value={price}
+          onChange={handlePrice}
         />
 
         <TextField
           sx={{ flex: 1 }}
-          label='Number of spots'
-          value={numberOfSpots}
-          onChange={handleNumberOfSpots}
+          label='Number of classes per week'
+          value={classesPerWeek}
+          onChange={handleClassesPerWeek}
         />
+      </InputBox>
 
+      <InputBox>
         <TextField
           sx={{ flex: 1 }}
-          label='Number of spots'
-          value={numberOfSpots}
-          onChange={handleNumberOfSpots}
+          label='Description'
+          value={description}
+          onChange={handleDescription}
         />
       </InputBox>
 
