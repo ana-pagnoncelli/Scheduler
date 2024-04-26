@@ -1,8 +1,8 @@
 import React from "react";
 import { Typography } from "@mui/material";
 import { AvailablePlanApp, AvailablePlanBox } from "./styles";
-import { AvailablePlansTable } from "./AvailablePlansTable/AvailablePlansTable";
 import { AddPlan } from "./AddPlan/AddPlan";
+import { AvailablePlansTable } from "./AvailablePlansTable";
 
 export function AvailablePlansAdmin() {
   return (
