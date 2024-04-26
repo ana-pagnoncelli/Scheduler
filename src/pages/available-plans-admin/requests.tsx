@@ -3,7 +3,8 @@ import { Plan } from "./types";
 import {
   AlertColors,
   AlertMessage,
-  planCreated
+  planCreated,
+  planDeleted
 } from "../../components/AlertPopup";
 
 export const getPlans = async (): Promise<Plan[]> => {
@@ -22,6 +23,24 @@ export const getPlans = async (): Promise<Plan[]> => {
   return plans;
 };
 
+export const deletePlan = async (planId: string) => {
+  let message: AlertMessage = {
+    text: "",
+    type: AlertColors.SUCCESS
+  };
+
+  await axios
+    .delete(`/plans/${planId}`)
+    .then(() => {
+      message = { text: planDeleted, type: AlertColors.SUCCESS };
+    })
+    .catch((err) => {
+      message = { text: err.response.data.message, type: AlertColors.ERROR };
+    });
+
+  return message;
+};
+
 export const createPlan = async (plan: Plan) => {
   let message: AlertMessage = {
     text: "",
@@ -35,7 +54,6 @@ export const createPlan = async (plan: Plan) => {
     })
     .catch((err) => {
       message = { text: err.response.data.message, type: AlertColors.ERROR };
-      console.log(err);
     });
 
   return message;

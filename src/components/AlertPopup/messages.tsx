@@ -18,6 +18,10 @@ export const scheduleAlreadyExists =
 export const scheduleCreated = "The schedule was successfully created";
 export const scheduleDeleted = "The schedule was successfully deleted";
 
-export const errorMessage = "Error. Try again later.";
-
+// plan
+export const planAlreadyExists =
+  "This plan already exists. Please, change the name.";
+export const planDeleted = "The plan was successfully deleted";
 export const planCreated = "The plan was successfully created";
+
+export const errorMessage = "Error. Try again later.";

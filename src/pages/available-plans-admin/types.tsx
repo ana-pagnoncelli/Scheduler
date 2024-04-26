@@ -9,3 +9,7 @@ export type Plan = {
 export type AvailablePlansTableRowProps = {
   plan: Plan;
 };
+
+export type DeletePlanProps = {
+  plan: Plan;
+};
