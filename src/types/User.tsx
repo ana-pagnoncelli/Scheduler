@@ -3,4 +3,5 @@ export type User = {
   email: string;
   admin: boolean;
   password?: string;
+  plan?: string;
 };

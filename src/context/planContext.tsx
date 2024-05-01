@@ -4,7 +4,7 @@ import { getPlans } from "../pages/available-plans-admin/requests";
 
 type PlanContextType = {
   plans: Plan[];
-  fetchPlans: () => void;
+  fetchPlans: (forceUpdate?: boolean) => void;
 };
 
 const initialValue = {
@@ -21,13 +21,13 @@ type PlanProviderProps = {
 export function PlanProvider({ children }: PlanProviderProps) {
   const [plans, setPlans] = useState<Plan[]>([]);
 
-  const fetchPlans = () => {
+  const fetchPlans = (forceUpdate?: boolean) => {
     const callGetPlans = async () => {
       const newPlans: Plan[] = await getPlans();
       setPlans(newPlans);
     };
 
-    callGetPlans();
+    if (plans.length === 0 || forceUpdate) callGetPlans();
   };
 
   const PlansValue = useMemo(

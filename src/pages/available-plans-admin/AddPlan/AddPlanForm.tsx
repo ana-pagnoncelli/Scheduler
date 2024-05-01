@@ -55,7 +55,7 @@ export function AddPlanForm() {
     setAlert(message.text, message.type);
     if (message.type === AlertColors.SUCCESS) {
       clearFields();
-      fetchPlans();
+      fetchPlans(true);
     }
   };
 

@@ -35,7 +35,7 @@ export function DeletePlan({ plan }: DeletePlanProps) {
       setAlert(message.text, message.type);
 
       if (message.type === AlertColors.SUCCESS) {
-        fetchPlans();
+        fetchPlans(true);
       }
     };
     callDeletePlan();

@@ -10,6 +10,7 @@ import {
   AvailablePlansAdmin
 } from "./pages";
 import { Logout } from "./pages/logout";
+import { ManageClients } from "./pages/manage-clients/ManageClients";
 
 export default function Router() {
   const routes = useRoutes([
@@ -17,6 +18,7 @@ export default function Router() {
     { path: "available-plans", element: <AvailablePlansClient /> },
     { path: "available-plans-admin", element: <AvailablePlansAdmin /> },
     { path: "schedule-admin", element: <ScheduleAdmin /> },
+    { path: "manage-clients", element: <ManageClients /> },
     { path: "logout", element: <Logout /> },
     { path: "home", element: <Home /> },
     { path: "profile", element: <Profile /> },

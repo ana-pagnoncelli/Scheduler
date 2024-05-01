@@ -58,6 +58,11 @@ export const itemsWithAdmin = () => {
       name: "Manage Plans",
       icon: <InboxIcon />,
       path: "/available-plans-admin"
+    },
+    {
+      name: "Manage Clients",
+      icon: <InboxIcon />,
+      path: "/manage-clients"
     }
   ];
 

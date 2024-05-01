@@ -1,0 +1,1 @@
+export { ManageClientsTable } from "./ManageClientsTable";

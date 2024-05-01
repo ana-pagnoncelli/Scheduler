@@ -4,7 +4,6 @@ import {
   scheduleCreated,
   scheduleDeleted
 } from "../../components/AlertPopup/messages";
-import { User } from "../../types/User";
 import { AlertColors, AlertMessage } from "../../components/AlertPopup";
 
 export const getSchedules = async (): Promise<FixedSchedule[]> => {
@@ -57,20 +56,4 @@ export const createSchedule = async (schedule: FixedSchedule) => {
     });
 
   return message;
-};
-
-export const getUsers = async (): Promise<User[]> => {
-  let users: User[] = [];
-
-  await axios
-    .get(`/users/`)
-    .then((response) => {
-      users = response.data;
-      console.log("users", response.data);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-
-  return users;
 };
