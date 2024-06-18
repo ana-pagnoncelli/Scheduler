@@ -4,10 +4,8 @@ import {
   IconButton,
   Dialog,
   DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Button
+  Button,
+  Typography
 } from "@mui/material";
 import { deletePlan } from "../requests";
 import { DeletePlanProps } from "../types";
@@ -15,6 +13,7 @@ import { AlertColors } from "../../../components/AlertPopup";
 import { useAlert } from "../../../hooks/useAlert";
 import { usePlans } from "../../../hooks/usePlan";
 import { planToHtml } from "../functions";
+import { DeletePlanBox } from "../styles";
 
 export function DeletePlan({ plan }: DeletePlanProps) {
   const { fetchPlans } = usePlans();
@@ -53,27 +52,27 @@ export function DeletePlan({ plan }: DeletePlanProps) {
         aria-labelledby='delete-plan-dialog-title'
         aria-describedby='delete-plan-dialog-description'
       >
-        <DialogTitle id='delete-plan-dialog-title'>
-          Delete this plan?
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id='delete-plan-dialog-description'>
+        <DeletePlanBox>
+          <Typography variant='h5' id='delete-plan-dialog-title'>
+            Delete this plan?
+          </Typography>
+          <Typography variant='body1' id='delete-plan-dialog-title'>
             {planToHtml(plan)}
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button
-            variant='contained'
-            color='error'
-            onClick={handleDeletePlan}
-            autoFocus
-          >
-            Delete
-          </Button>
-          <Button variant='outlined' color='success' onClick={handleClose}>
-            Cancel
-          </Button>
-        </DialogActions>
+          </Typography>
+          <DialogActions>
+            <Button
+              variant='contained'
+              color='error'
+              onClick={handleDeletePlan}
+              autoFocus
+            >
+              Delete
+            </Button>
+            <Button variant='outlined' color='success' onClick={handleClose}>
+              Cancel
+            </Button>
+          </DialogActions>
+        </DeletePlanBox>
       </Dialog>
     </>
   );

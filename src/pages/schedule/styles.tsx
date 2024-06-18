@@ -28,3 +28,7 @@ export const buttonStyleSecondaryColor = {
   backgroundColor: SECONDARY_COLOR,
   color: "white"
 };
+
+export const DeleteScheduleBox = styled(BaseBox)({
+  margin: "auto 20px"
+});
