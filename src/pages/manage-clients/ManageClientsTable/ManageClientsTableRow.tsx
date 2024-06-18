@@ -1,6 +1,7 @@
 import React from "react";
-import TableCell from "@mui/material/TableCell";
-import TableRow from "@mui/material/TableRow";
+import { IconButton, TableRow, TableCell } from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { ManageClientsTableRowProps } from "./types";
 
 export function ManageClientsTableRow({ client }: ManageClientsTableRowProps) {
@@ -8,7 +9,14 @@ export function ManageClientsTableRow({ client }: ManageClientsTableRowProps) {
     <TableRow key={client.email}>
       <TableCell align='center'>{client.email}</TableCell>
       <TableCell align='center'>{client.plan}</TableCell>
-      <TableCell align='center'>actions</TableCell>
+      <TableCell align='center'>
+        <IconButton aria-label='delete'>
+          <EditIcon />
+        </IconButton>
+        <IconButton aria-label='delete'>
+          <DeleteIcon />
+        </IconButton>
+      </TableCell>
     </TableRow>
   );
 }
