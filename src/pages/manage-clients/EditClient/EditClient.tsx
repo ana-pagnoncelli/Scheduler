@@ -1,16 +1,15 @@
-import * as React from "react";
+import React, { ChangeEvent, useState } from "react";
 import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import { IconButton } from "@mui/material";
+import { IconButton, Typography } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
+import { EditClientBox } from "../styles";
+import { buttonStyleSecondaryColor } from "../../styles";
+import { SelectPlan } from "./SelectPlan";
 
 export function EditClient() {
-  const [open, setOpen] = React.useState(false);
+  const [planName, setPlanName] = useState("");
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -18,6 +17,10 @@ export function EditClient() {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handlePlanName = (e: ChangeEvent<HTMLInputElement>) => {
+    setPlanName(e.target.value);
   };
 
   return (
@@ -40,28 +43,13 @@ export function EditClient() {
         //   }
         // }}
       >
-        <DialogTitle>Subscribe</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            To subscribe to this website, please enter your email address here.
-            We will send updates occasionally.
-          </DialogContentText>
-          <TextField
-            autoFocus
-            required
-            margin='dense'
-            id='name'
-            name='email'
-            label='Email Address'
-            type='email'
-            fullWidth
-            variant='standard'
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button type='submit'>Subscribe</Button>
-        </DialogActions>
+        <EditClientBox>
+          <Typography variant='h5'>Edit Client Name</Typography>
+          <SelectPlan planName={planName} handlePlanName={handlePlanName} />
+          <Button variant='contained' style={buttonStyleSecondaryColor}>
+            Save
+          </Button>
+        </EditClientBox>
       </Dialog>
     </>
   );
