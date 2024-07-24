@@ -10,7 +10,7 @@ export function ManageClientsTableRow({ client }: ManageClientsTableRowProps) {
       <TableCell align='center'>{client.email}</TableCell>
       <TableCell align='center'>{client.plan}</TableCell>
       <TableCell align='center'>
-        <EditClient />
+        <EditClient client={client} />
         <IconButton aria-label='delete'>
           <DeleteIcon />
         </IconButton>

@@ -6,8 +6,16 @@ import EditIcon from "@mui/icons-material/Edit";
 import { EditClientBox } from "../styles";
 import { buttonStyleSecondaryColor } from "../../styles";
 import { SelectPlan } from "./SelectPlan";
+import { User } from "../../../types/User";
+import { updateUser } from "../../../requests.tsx/User";
+import { useClients } from "../../../hooks/useClients";
 
-export function EditClient() {
+type EditClientProps = {
+  client: User;
+};
+
+export function EditClient({ client }: EditClientProps) {
+  const { fetchClients } = useClients();
   const [planName, setPlanName] = useState("");
   const [open, setOpen] = useState(false);
 
@@ -23,30 +31,27 @@ export function EditClient() {
     setPlanName(e.target.value);
   };
 
+  const handleSaveButton = () => {
+    const clientUpdated = { ...client, plan: planName };
+    updateUser(clientUpdated);
+    handleClose();
+    fetchClients(true);
+  };
+
   return (
     <>
       <IconButton aria-label='edit' onClick={handleClickOpen}>
         <EditIcon />
       </IconButton>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        // PaperProps={{
-        //   component: "form",
-        //   onSubmit: (event: React.FormEvent<HTMLFormElement>) => {
-        //     event.preventDefault();
-        //     const formData = new FormData(event.currentTarget);
-        //     const formJson = Object.fromEntries((formData as any).entries());
-        //     const email = formJson.email;
-        //     console.log(email);
-        //     handleClose();
-        //   }
-        // }}
-      >
+      <Dialog open={open} onClose={handleClose}>
         <EditClientBox>
-          <Typography variant='h5'>Edit Client Name</Typography>
+          <Typography variant='h5'>Edit Client Plan</Typography>
           <SelectPlan planName={planName} handlePlanName={handlePlanName} />
-          <Button variant='contained' style={buttonStyleSecondaryColor}>
+          <Button
+            variant='contained'
+            style={buttonStyleSecondaryColor}
+            onClick={handleSaveButton}
+          >
             Save
           </Button>
         </EditClientBox>

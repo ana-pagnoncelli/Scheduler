@@ -11,5 +11,6 @@ export const EditClientBox = styled(BaseBox)({
 });
 
 export const ManageClientApp = styled(BaseApp)({
-  height: "100vh"
+  minHeight: "100vh",
+  maxHeight: "5000px"
 });

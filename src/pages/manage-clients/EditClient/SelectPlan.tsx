@@ -16,9 +16,9 @@ export function SelectPlan({ planName, handlePlanName }: SelectPlanProps) {
 
   return (
     <TextField
-      id='outlined-select-day'
+      id='outlined-select-plan'
       select
-      label='Select day'
+      label='Select plan'
       value={planName}
       variant='outlined'
       onChange={handlePlanName}

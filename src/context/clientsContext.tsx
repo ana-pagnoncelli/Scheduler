@@ -25,6 +25,7 @@ export function ClientProvider({ children }: ClientProviderProps) {
     const callGetClients = async () => {
       const newClients: User[] = await getUsers();
       setClients(newClients);
+      console.log(newClients);
     };
 
     if (clients.length === 0 || forceUpdate) callGetClients();
