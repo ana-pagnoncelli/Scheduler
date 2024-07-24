@@ -32,3 +32,16 @@ export const updateUser = async (user: User): Promise<User | null> => {
 
   return updateUserResponse;
 };
+
+export const deleteUser = async (user: User) => {
+  const deleteUserUrl = `/users/${user.email}`;
+
+  await axios
+    .delete(deleteUserUrl)
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};

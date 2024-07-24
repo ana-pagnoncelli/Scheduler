@@ -1,22 +1,20 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import { IconButton, Typography } from "@mui/material";
-import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { EditClientBox } from "../styles";
 import { buttonStyleSecondaryColor } from "../../styles";
-import { SelectPlan } from "./SelectPlan";
 import { User } from "../../../types/User";
-import { updateUser } from "../../../requests.tsx/User";
+import { deleteUser } from "../../../requests.tsx/User";
 import { useClients } from "../../../hooks/useClients";
 
-type EditClientProps = {
+type DeleteClientProps = {
   client: User;
 };
 
-export function EditClient({ client }: EditClientProps) {
+export function DeleteClient({ client }: DeleteClientProps) {
   const { fetchClients } = useClients();
-  const [planName, setPlanName] = useState("");
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -27,13 +25,8 @@ export function EditClient({ client }: EditClientProps) {
     setOpen(false);
   };
 
-  const handlePlanName = (e: ChangeEvent<HTMLInputElement>) => {
-    setPlanName(e.target.value);
-  };
-
   const handleSaveButton = () => {
-    const clientUpdated = { ...client, plan: planName };
-    updateUser(clientUpdated);
+    deleteUser(client);
     handleClose();
     fetchClients(true);
   };
@@ -41,18 +34,19 @@ export function EditClient({ client }: EditClientProps) {
   return (
     <>
       <IconButton aria-label='edit' onClick={handleClickOpen}>
-        <EditIcon />
+        <DeleteIcon />
       </IconButton>
       <Dialog open={open} onClose={handleClose}>
         <EditClientBox>
-          <Typography variant='h5'>Edit {client.email} plan</Typography>
-          <SelectPlan planName={planName} handlePlanName={handlePlanName} />
+          <Typography variant='h5'>
+            Are you sure you want to delete the client {client.email}?
+          </Typography>
           <Button
             variant='contained'
             style={buttonStyleSecondaryColor}
             onClick={handleSaveButton}
           >
-            Save
+            Delete client
           </Button>
         </EditClientBox>
       </Dialog>
