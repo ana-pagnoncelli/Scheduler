@@ -1,7 +1,15 @@
 import React, { useContext } from "react";
 import { Typography } from "@mui/material";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import Avatar from "@mui/material/Avatar";
+import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
+import WatchLaterIcon from "@mui/icons-material/WatchLater";
+import PlaceIcon from "@mui/icons-material/Place";
 import { UserContext } from "../../context/userContext";
-import { HomeApp, HomeBox } from "./styles";
+import { HomeApp, HomeBox, InformationBox } from "./styles";
 
 export function Home() {
   const user = useContext(UserContext);
@@ -11,36 +19,65 @@ export function Home() {
   return (
     <HomeApp>
       <HomeBox>
-        <Typography variant='h3'>Home</Typography>
+        <Typography variant='h3'>Pilates</Typography>
         <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
-          dolor purus non enim praesent elementum facilisis leo vel. Risus at
-          ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum
-          quisque non tellus. Convallis convallis tellus id interdum velit
-          laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-          adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-          integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
-          eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-          quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
-          vivamus at augue. At augue eget arcu dictum varius duis at consectetur
-          lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-          faucibus et molestie ac.
+          O Pilates tem por objetivo desenvolver o controle do próprio corpo,
+          através de movimentos que estimulem o corpo e a mente. Além disso,
+          oferece uma vasta gama de benefícios, desde o fortalecimento muscular
+          e melhora da postura até o aumento da flexibilidade e redução do
+          estresse. Além disso, ajuda na recuperação de lesões e pode ser
+          benéfico para pessoas de todas as idades, incluindo grávidas e idosos.
         </Typography>
         <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-          ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
-          elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
-          sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
-          mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis
-          risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas
-          purus viverra accumsan in. In hendrerit gravida rutrum quisque non
-          tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant
-          morbi tristique senectus et. Adipiscing elit duis tristique
-          sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
+          E com o objetivo de ajudar as pessoas a entederem o próprio corpo,
+          tratarem lesões e melhorarem a qualidade de vida, a professora
+          Michelle Esquia, com mais de 20 anos de experiência, fundou seu espaço
+          no Caixeiros viajantes, onde atende a mais de 5 anos.
         </Typography>
+
+        <InformationBox>
+          <Typography variant='h3'>Information</Typography>
+          <List
+            sx={{
+              width: "100%",
+              maxWidth: 360
+            }}
+          >
+            <ListItem>
+              <ListItemAvatar>
+                <Avatar>
+                  <PlaceIcon />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText
+                primary='Location'
+                secondary='Caixeiros Viajantes'
+              />
+            </ListItem>
+            <ListItem>
+              <ListItemAvatar>
+                <Avatar>
+                  <SelfImprovementIcon />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText
+                primary='Pilates teacher'
+                secondary='Michelle Esquia'
+              />
+            </ListItem>
+            <ListItem>
+              <ListItemAvatar>
+                <Avatar>
+                  <WatchLaterIcon />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText
+                primary='Opening hours'
+                secondary='Monday to Friday from 7 am to 6 pm'
+              />
+            </ListItem>
+          </List>
+        </InformationBox>
       </HomeBox>
     </HomeApp>
   );

@@ -68,7 +68,7 @@ export function Header() {
             onClick={redirectToHomePage}
             sx={{ flexGrow: 1 }}
           >
-            Scheduler Header
+            Pilates Scheduler
           </Typography>
           {loginButton()}
         </Toolbar>

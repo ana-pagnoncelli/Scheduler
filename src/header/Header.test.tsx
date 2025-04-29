@@ -13,6 +13,6 @@ const renderHeader = () => {
 
 test("renders header", () => {
   renderHeader();
-  const linkElement = screen.getByText("Scheduler Header");
+  const linkElement = screen.getByText("Pilates Scheduler");
   expect(linkElement).toBeInTheDocument();
 });
