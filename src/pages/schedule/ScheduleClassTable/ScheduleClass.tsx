@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   Typography,
@@ -12,77 +12,28 @@ import {
 } from "@mui/material";
 
 import { ScheduleClassTableRowDay } from "./ScheduleClassTableRowDay";
-import { ScheduleDay } from "../types";
+import { DateWithWeekDay, DayOfTheWeek, ScheduleDay } from "../types";
 import { tableHeadItemStyle, tableHeadStyle } from "../../styles";
-
-const scheduleList: ScheduleDay[] = [
-  {
-    day: "2021-03-02",
-    numberOfSpots: "2",
-    availableSpots: "2",
-    hours: [
-      {
-        hour: "13",
-        numberOfSpots: "2",
-        availableSpots: "2"
-      },
-      {
-        hour: "14",
-        numberOfSpots: "2",
-        availableSpots: "1"
-      },
-      {
-        hour: "15",
-        numberOfSpots: "2",
-        availableSpots: "0"
-      },
-      {
-        hour: "16",
-        numberOfSpots: "2",
-        availableSpots: "1"
-      },
-      {
-        hour: "17",
-        numberOfSpots: "2",
-        availableSpots: "2"
-      }
-    ]
-  },
-  {
-    day: "2021-03-03",
-    numberOfSpots: "2",
-    availableSpots: "2",
-    hours: [
-      {
-        hour: "13",
-        numberOfSpots: "2",
-        availableSpots: "2"
-      },
-      {
-        hour: "14",
-        numberOfSpots: "2",
-        availableSpots: "1"
-      },
-      {
-        hour: "15",
-        numberOfSpots: "2",
-        availableSpots: "0"
-      },
-      {
-        hour: "16",
-        numberOfSpots: "2",
-        availableSpots: "1"
-      },
-      {
-        hour: "17",
-        numberOfSpots: "2",
-        availableSpots: "2"
-      }
-    ]
-  }
-];
+import { getSchedulesForAListOfDays } from "../requests";
 
 export function ScheduleClass() {
+  const listOfDays: DateWithWeekDay[] = [
+    { week_day: DayOfTheWeek.MONDAY, date: "2023-04-20" },
+    { week_day: DayOfTheWeek.TUESDAY, date: "2023-04-21" }
+  ];
+
+  const [schedulesForAListOfDays, setSchedulesForAListOfDays] = useState<
+    ScheduleDay[]
+  >([]);
+
+  useEffect(() => {
+    const fetchSchedules = async () => {
+      setSchedulesForAListOfDays(await getSchedulesForAListOfDays(listOfDays));
+    };
+
+    fetchSchedules();
+  }, []);
+
   return (
     <>
       <Typography variant='h3'>Schedule a Class </Typography>
@@ -103,7 +54,7 @@ export function ScheduleClass() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {scheduleList.map((scheduleDay) => (
+            {schedulesForAListOfDays.map((scheduleDay) => (
               <ScheduleClassTableRowDay
                 key={scheduleDay.day}
                 scheduleDay={scheduleDay}

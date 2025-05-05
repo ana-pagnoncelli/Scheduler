@@ -33,6 +33,11 @@ export type FixedSchedule = {
   users_list: string[];
 };
 
+export type DateWithWeekDay = {
+  week_day: DayOfTheWeek;
+  date: string;
+};
+
 export type FixedSchedulesByDay = {
   availableSpots: number;
   numberOfSpots: number;

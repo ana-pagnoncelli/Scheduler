@@ -1,5 +1,5 @@
 import axios from "axios";
-import { FixedSchedule } from "./types";
+import { DateWithWeekDay, FixedSchedule, ScheduleDay } from "./types";
 import {
   scheduleCreated,
   scheduleDeleted
@@ -11,6 +11,24 @@ export const getSchedules = async (): Promise<FixedSchedule[]> => {
 
   await axios
     .get(`/schedules/all`)
+    .then((response) => {
+      schedules = response.data;
+      console.log(schedules);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
+  return schedules;
+};
+
+export const getSchedulesForAListOfDays = async (
+  listOfDays: DateWithWeekDay[]
+): Promise<ScheduleDay[]> => {
+  let schedules: ScheduleDay[] = [];
+
+  await axios
+    .post(`/variableSchedules/get/forAListOfDays/`, listOfDays)
     .then((response) => {
       schedules = response.data;
       console.log(schedules);
