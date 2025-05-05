@@ -7,9 +7,12 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import SelfImprovementIcon from "@mui/icons-material/SelfImprovement";
 import WatchLaterIcon from "@mui/icons-material/WatchLater";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
+import PetsIcon from "@mui/icons-material/Pets";
 import PlaceIcon from "@mui/icons-material/Place";
 import { UserContext } from "../../context/userContext";
-import { HomeApp, HomeBox, InformationBox } from "./styles";
+import { HomeApp, HomeBox, InformationBox, InformationListBox } from "./styles";
 
 export function Home() {
   const user = useContext(UserContext);
@@ -37,46 +40,88 @@ export function Home() {
 
         <InformationBox>
           <Typography variant='h3'>Information</Typography>
-          <List
-            sx={{
-              width: "100%",
-              maxWidth: 360
-            }}
-          >
-            <ListItem>
-              <ListItemAvatar>
-                <Avatar>
-                  <PlaceIcon />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText
-                primary='Location'
-                secondary='Caixeiros Viajantes'
-              />
-            </ListItem>
-            <ListItem>
-              <ListItemAvatar>
-                <Avatar>
-                  <SelfImprovementIcon />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText
-                primary='Pilates teacher'
-                secondary='Michelle Esquia'
-              />
-            </ListItem>
-            <ListItem>
-              <ListItemAvatar>
-                <Avatar>
-                  <WatchLaterIcon />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText
-                primary='Opening hours'
-                secondary='Monday to Friday from 7 am to 6 pm'
-              />
-            </ListItem>
-          </List>
+          <InformationListBox>
+            <List
+              sx={{
+                width: "100%",
+                maxWidth: 360,
+                flex: 1
+              }}
+            >
+              <ListItem>
+                <ListItemAvatar>
+                  <Avatar>
+                    <SelfImprovementIcon />
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText
+                  primary='Pilates teacher'
+                  secondary='Michelle Esquia'
+                />
+              </ListItem>
+              <ListItem>
+                <ListItemAvatar>
+                  <Avatar>
+                    <PlaceIcon />
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText
+                  primary='Location'
+                  secondary='Caixeiros Viajantes, Porto Alegre'
+                />
+              </ListItem>
+
+              <ListItem>
+                <ListItemAvatar>
+                  <Avatar>
+                    <WatchLaterIcon />
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText
+                  primary='Opening hours'
+                  secondary='Monday to Friday from 7 am to 6 pm'
+                />
+              </ListItem>
+            </List>
+            <List
+              sx={{
+                width: "100%",
+                maxWidth: 360,
+                flex: 2
+              }}
+            >
+              <ListItem>
+                <ListItemAvatar>
+                  <Avatar>
+                    <PhoneAndroidIcon />
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText primary='Phone' secondary='+51999897541' />
+              </ListItem>
+              <ListItem
+                component='a'
+                href='https://www.instagram.com/michelleesquia/'
+              >
+                <ListItemAvatar>
+                  <Avatar>
+                    <InstagramIcon />
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText
+                  primary='Instagram'
+                  secondary='https://www.instagram.com/michelleesquia/'
+                />
+              </ListItem>
+              <ListItem>
+                <ListItemAvatar>
+                  <Avatar>
+                    <PetsIcon />
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText primary='Pet Friendly' secondary='Yes' />
+              </ListItem>
+            </List>
+          </InformationListBox>
         </InformationBox>
       </HomeBox>
     </HomeApp>

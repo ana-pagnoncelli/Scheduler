@@ -10,8 +10,13 @@ export const HomeApp = styled(BaseApp)({
   minHeight: "100vh"
 });
 
-export const BenefitsText = styled(BaseApp)({
-  textAlign: "left"
+export const InformationListBox = styled(Box)({
+  display: "flex",
+  flexDirection: "row",
+  gap: "20px",
+  justifyContent: "space-between",
+  alignItems: "center",
+  marginTop: "20px"
 });
 
 export const InformationBox = styled(Box)({

@@ -105,7 +105,7 @@ export function Profile() {
           <TextField label='Age' value={age} onChange={handleAge} />
           <TextField label='Phone' value={phone} onChange={handlePhone} />
           <TextField label='Gender' value={gender} onChange={handleGender} />
-          <TextField label='Plan' value={plan} onChange={handlePlan} />
+          <TextField label='Plan' value={plan} onChange={handlePlan} disabled />
         </ProfileForm>
         <Button
           variant='contained'
