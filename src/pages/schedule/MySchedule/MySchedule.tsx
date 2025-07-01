@@ -32,7 +32,7 @@ export function MySchedule() {
               <CalendarMonthIcon />
             </Avatar>
           </ListItemAvatar>
-          <ListItemText primary='Fixed schedules' secondary='Jan 7, 2014' />
+          <ListItemText primary='Fixed schedules' secondary='Monday, Tuesday' />
         </ListItem>
         <ListItem>
           <ListItemAvatar>
@@ -40,10 +40,7 @@ export function MySchedule() {
               <RestoreIcon />
             </Avatar>
           </ListItemAvatar>
-          <ListItemText
-            primary='Number of classes to recover'
-            secondary='July 20, 2014'
-          />
+          <ListItemText primary='Number of classes to recover' secondary='2' />
         </ListItem>
       </List>
     </ScheduleBox>
