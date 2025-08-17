@@ -1,38 +1,69 @@
-import React from "react";
-import { Typography } from "@mui/material";
+import React, { useContext, useEffect } from "react";
+import { Typography, Button, Box, Container, Paper } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../context/userContext";
 
 export function Logout() {
+  const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+
+    setUser("", false);
+
+    navigate("/");
+  };
+
+  useEffect(() => {
+    handleLogout();
+  }, []);
+
   return (
-    <>
-      <h1>This is the logout page</h1>
-      <Typography paragraph>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus
-        non enim praesent elementum facilisis leo vel. Risus at ultrices mi
-        tempus imperdiet. Semper risus in hendrerit gravida rutrum quisque non
-        tellus. Convallis convallis tellus id interdum velit laoreet id donec
-        ultrices. Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl
-        suscipit adipiscing bibendum est ultricies integer quis. Cursus euismod
-        quis viverra nibh cras. Metus vulputate eu scelerisque felis imperdiet
-        proin fermentum leo. Mauris commodo quis imperdiet massa tincidunt. Cras
-        tincidunt lobortis feugiat vivamus at augue. At augue eget arcu dictum
-        varius duis at consectetur lorem. Velit sed ullamcorper morbi tincidunt.
-        Lorem donec massa sapien faucibus et molestie ac.
-      </Typography>
-      <Typography paragraph>
-        Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-        ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar elementum
-        integer enim neque volutpat ac tincidunt. Ornare suspendisse sed nisi
-        lacus sed viverra tellus. Purus sit amet volutpat consequat mauris.
-        Elementum eu facilisis sed odio morbi. Euismod lacinia at quis risus sed
-        vulputate odio. Morbi tincidunt ornare massa eget egestas purus viverra
-        accumsan in. In hendrerit gravida rutrum quisque non tellus orci ac.
-        Pellentesque nec nam aliquam sem et tortor. Habitant morbi tristique
-        senectus et. Adipiscing elit duis tristique sollicitudin nibh sit.
-        Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra
-        maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin
-        aliquam ultrices sagittis orci a.
-      </Typography>
-    </>
+    <Container maxWidth='sm'>
+      <Box
+        sx={{
+          marginTop: 8,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center"
+        }}
+      >
+        <Paper
+          elevation={3}
+          sx={{
+            padding: 4,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            width: "100%"
+          }}
+        >
+          <Typography variant='h4' component='h1' gutterBottom>
+            Logging Out...
+          </Typography>
+
+          <Typography
+            variant='body1'
+            color='text.secondary'
+            align='center'
+            sx={{ mb: 3 }}
+          >
+            You are being logged out. If you are not redirected automatically,
+            please click the button below.
+          </Typography>
+
+          <Button
+            variant='contained'
+            color='primary'
+            size='large'
+            onClick={handleLogout}
+            sx={{ mt: 2 }}
+          >
+            Logout Now
+          </Button>
+        </Paper>
+      </Box>
+    </Container>
   );
 }

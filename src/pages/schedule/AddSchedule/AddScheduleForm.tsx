@@ -6,7 +6,7 @@ import { getEmailsList, getHourAsString } from "./logic";
 import { createSchedule } from "../requests";
 import { missingFields } from "../../../components/AlertPopup/messages";
 import { User } from "../../../types/User";
-import { SelectUsers } from "./SelectUsers";
+import { SelectUsers } from "./selectUsers";
 import { SelectDayOfTheWeek } from "./SelectDayOfTheWeek";
 import { useAlert } from "../../../hooks/useAlert";
 import { AlertColors } from "../../../components/AlertPopup";
