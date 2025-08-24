@@ -33,6 +33,12 @@ export type FixedSchedule = {
   users_list: string[];
 };
 
+export type MyScheduleType = {
+  nextClass: string;
+  fixedSchedulesDays: string[];
+  numberOfClassesToRecover: string;
+};
+
 export type DateWithWeekDay = {
   week_day: DayOfTheWeek;
   date: string;

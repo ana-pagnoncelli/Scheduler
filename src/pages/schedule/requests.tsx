@@ -1,5 +1,11 @@
 import axios from "axios";
-import { DateWithWeekDay, FixedSchedule, ScheduleDay } from "./types";
+import {
+  DateWithWeekDay,
+  DayOfTheWeek,
+  FixedSchedule,
+  MyScheduleType,
+  ScheduleDay
+} from "./types";
 import {
   scheduleCreated,
   scheduleDeleted
@@ -74,4 +80,20 @@ export const createSchedule = async (schedule: FixedSchedule) => {
     });
 
   return message;
+};
+
+export const getMySchedule = async (email: string) => {
+  let mySchedule: MyScheduleType | null = null;
+
+  await axios
+    .post(`users/my-schedule/${email}`, {
+      week_day: DayOfTheWeek.SUNDAY,
+      date: "2025-08-24"
+    })
+    .then((response) => {
+      mySchedule = response.data;
+      console.log(mySchedule);
+    });
+
+  return mySchedule;
 };
