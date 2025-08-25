@@ -6,6 +6,7 @@ export type ScheduleHour = {
   hour: string;
   numberOfSpots: string;
   availableSpots: string;
+  usersList: string[];
 };
 
 export type ScheduleDay = {
