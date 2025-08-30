@@ -15,12 +15,10 @@ import { ScheduleClassTableRowDay } from "./ScheduleClassTableRowDay";
 import { DateWithWeekDay, DayOfTheWeek, ScheduleDay } from "../types";
 import { tableHeadItemStyle, tableHeadStyle } from "../../styles";
 import { getSchedulesForAListOfDays } from "../requests";
+import { dateWithWeekDayForNext7Days } from "../../../utils/date";
 
 export function ScheduleClass() {
-  const listOfDays: DateWithWeekDay[] = [
-    { week_day: DayOfTheWeek.MONDAY, date: "2023-04-20" },
-    { week_day: DayOfTheWeek.TUESDAY, date: "2023-04-21" }
-  ];
+  const listOfDays = dateWithWeekDayForNext7Days();
 
   const [schedulesForAListOfDays, setSchedulesForAListOfDays] = useState<
     ScheduleDay[]

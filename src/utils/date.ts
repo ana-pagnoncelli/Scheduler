@@ -1,4 +1,6 @@
-export function getWeekDay(date: Date) {
+import { DateWithWeekDay, DayOfTheWeek } from "../pages/schedule/types";
+
+export function getWeekDay(date: Date): DayOfTheWeek {
   const weekday = [
     "SUNDAY",
     "MONDAY",
@@ -7,11 +9,11 @@ export function getWeekDay(date: Date) {
     "THURSDAY",
     "FRIDAY",
     "SATURDAY"
-  ];
+  ] as DayOfTheWeek[];
   return weekday[date.getDay()];
 }
 
-export function getCurrentDate(date: Date, separator = "") {
+export function getCurrentDate(date: Date, separator = ""): string {
   let day = date.getDate();
   let month = date.getMonth() + 1;
   let year = date.getFullYear();
@@ -21,7 +23,7 @@ export function getCurrentDate(date: Date, separator = "") {
   }${separator}${day < 10 ? `0${day}` : `${day}`}`;
 }
 
-export function dateWithWeekDayForNext7Days() {
+export function dateWithWeekDayForNext7Days(): DateWithWeekDay[] {
   const dates = [];
   const currentDate = new Date();
   for (let i = 0; i < 7; i++) {
@@ -31,7 +33,7 @@ export function dateWithWeekDayForNext7Days() {
     dates.push({
       week_day: getWeekDay(date),
       date: getCurrentDate(date)
-    });
+    } as DateWithWeekDay);
   }
   return dates;
 }
