@@ -134,13 +134,13 @@ describe('Date Utility Functions', () => {
 
     it('should return correct dates for next 7 days', () => {
       const result = dateWithWeekDayForNext7Days();
-      expect(result[0].date).toBe('20240115'); // 2024-01-15
-      expect(result[1].date).toBe('20240116'); // 2024-01-16
-      expect(result[2].date).toBe('20240117'); // 2024-01-17
-      expect(result[3].date).toBe('20240118'); // 2024-01-18
-      expect(result[4].date).toBe('20240119'); // 2024-01-19
-      expect(result[5].date).toBe('20240120'); // 2024-01-20
-      expect(result[6].date).toBe('20240121'); // 2024-01-21
+      expect(result[0].date).toBe('2024-01-15'); // 2024-01-15
+      expect(result[1].date).toBe('2024-01-16'); // 2024-01-16
+      expect(result[2].date).toBe('2024-01-17'); // 2024-01-17
+      expect(result[3].date).toBe('2024-01-18'); // 2024-01-18
+      expect(result[4].date).toBe('2024-01-19'); // 2024-01-19
+      expect(result[5].date).toBe('2024-01-20'); // 2024-01-20
+      expect(result[6].date).toBe('2024-01-21'); // 2024-01-21
     });
 
     it('should handle month boundary correctly', () => {

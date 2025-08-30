@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 
 import { ScheduleClassTableRowDay } from "./ScheduleClassTableRowDay";
-import { DateWithWeekDay, DayOfTheWeek, ScheduleDay } from "../types";
+import { ScheduleDay } from "../types";
 import { tableHeadItemStyle, tableHeadStyle } from "../../styles";
 import { getSchedulesForAListOfDays } from "../requests";
 import { dateWithWeekDayForNext7Days } from "../../../utils/date";

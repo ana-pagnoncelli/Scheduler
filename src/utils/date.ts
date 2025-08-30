@@ -14,9 +14,9 @@ export function getWeekDay(date: Date): DayOfTheWeek {
 }
 
 export function getCurrentDate(date: Date, separator = ""): string {
-  let day = date.getDate();
-  let month = date.getMonth() + 1;
-  let year = date.getFullYear();
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
 
   return `${year}${separator}${
     month < 10 ? `0${month}` : `${month}`
@@ -26,13 +26,13 @@ export function getCurrentDate(date: Date, separator = ""): string {
 export function dateWithWeekDayForNext7Days(): DateWithWeekDay[] {
   const dates = [];
   const currentDate = new Date();
-  for (let i = 0; i < 7; i++) {
+  for (let i = 0; i < 7; i += 1) {
     const date = new Date(currentDate);
     date.setDate(currentDate.getDate() + i);
 
     dates.push({
       week_day: getWeekDay(date),
-      date: getCurrentDate(date)
+      date: getCurrentDate(date, "-")
     } as DateWithWeekDay);
   }
   return dates;
