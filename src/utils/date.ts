@@ -23,6 +23,11 @@ export function getCurrentDate(date: Date, separator = ""): string {
   }${separator}${day < 10 ? `0${day}` : `${day}`}`;
 }
 
+export function todayDate(): string {
+  const date = new Date();
+  return getCurrentDate(date, "-");
+}
+
 export function dateWithWeekDayForNext7Days(): DateWithWeekDay[] {
   const dates = [];
   const currentDate = new Date();

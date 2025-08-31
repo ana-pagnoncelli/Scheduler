@@ -12,6 +12,7 @@ import { ScheduleBox } from "../styles";
 import { getMySchedule } from "../requests";
 import { UserContext } from "../../../context/userContext";
 import { MyScheduleType } from "../types";
+import { todayDate } from "../../../utils/date";
 
 export function MySchedule() {
   const { email } = useContext(UserContext);
@@ -19,7 +20,7 @@ export function MySchedule() {
 
   useEffect(() => {
     const fetchMySchedule = async () => {
-      const myScheduleResponse = await getMySchedule(email);
+      const myScheduleResponse = await getMySchedule(email, todayDate());
       if (myScheduleResponse) setMySchedule(myScheduleResponse);
     };
 
