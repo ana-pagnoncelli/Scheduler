@@ -5,17 +5,17 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { ScheduleHour } from "../types";
+import { ScheduleDay, ScheduleHour } from "../types";
 import { ScheduleClassTableRowHour } from "./ScheduleClassTableRowHour";
 import { tableInnerHeadStyle } from "../styles";
 
 type ScheduleClassTableHourProps = {
-  scheduleHours: ScheduleHour[];
+  scheduleDay: ScheduleDay;
   open: boolean;
 };
 
 export function ScheduleClassTableHour({
-  scheduleHours,
+  scheduleDay,
   open
 }: ScheduleClassTableHourProps) {
   return (
@@ -33,7 +33,7 @@ export function ScheduleClassTableHour({
               </TableRow>
             </TableHead>
             <TableBody>
-              {scheduleHours.map((scheduleHour) => (
+              {scheduleDay.hours.map((scheduleHour: ScheduleHour) => (
                 <ScheduleClassTableRowHour
                   key={scheduleHour.hour}
                   scheduleHour={scheduleHour}

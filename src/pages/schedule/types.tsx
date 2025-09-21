@@ -83,3 +83,9 @@ export type SelectHourProps = {
   setHour: React.Dispatch<React.SetStateAction<Dayjs | null>>;
   hour: Dayjs | null;
 };
+
+export type CancelScheduleInfo = {
+  hour: string;
+  day: string;
+  userEmail: string;
+};

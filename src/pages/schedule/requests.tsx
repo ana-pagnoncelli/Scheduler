@@ -1,11 +1,13 @@
 import axios from "axios";
 import {
+  CancelScheduleInfo,
   DateWithWeekDay,
   FixedSchedule,
   MyScheduleType,
   ScheduleDay
 } from "./types";
 import {
+  scheduleCancelled,
   scheduleCreated,
   scheduleDeleted
 } from "../../components/AlertPopup/messages";
@@ -92,4 +94,22 @@ export const getMySchedule = async (email: string, referenceDate: string) => {
     });
 
   return mySchedule;
+};
+
+export const cancelSchedule = async (cancelSheduleInfo: CancelScheduleInfo) => {
+  let message: AlertMessage = {
+    text: "",
+    type: AlertColors.SUCCESS
+  };
+
+  await axios
+    .post(`/canceledSchedules/`, cancelSheduleInfo)
+    .then(() => {
+      message = { text: scheduleCancelled, type: AlertColors.SUCCESS };
+    })
+    .catch((err) => {
+      message = { text: err.response.data.message, type: AlertColors.ERROR };
+    });
+
+  return message;
 };

@@ -34,7 +34,7 @@ export function ScheduleClassTableRowDay({
         <TableCell align='center'>{scheduleDay.numberOfSpots}</TableCell>
         <TableCell align='center'>{scheduleDay.availableSpots}</TableCell>
       </TableRow>
-      <ScheduleClassTableHour open={open} scheduleHours={scheduleDay.hours} />
+      <ScheduleClassTableHour open={open} scheduleDay={scheduleDay} />
     </>
   );
 }
