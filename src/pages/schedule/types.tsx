@@ -3,6 +3,7 @@ import { Dayjs } from "dayjs";
 import { User } from "../../types/User";
 
 export type ScheduleHour = {
+  day: string;
   hour: string;
   numberOfSpots: string;
   availableSpots: string;

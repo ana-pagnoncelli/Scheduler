@@ -1,28 +1,64 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import { Button } from "@mui/material";
-import { ScheduleHour } from "../types";
+import { CancelScheduleInfo, ScheduleHour } from "../types";
 import { tableInnerItemStyle } from "../styles";
 import { UserContext } from "../../../context/userContext";
+import { cancelScheduleRequest } from "../requests";
+import { useAlert } from "../../../hooks/useAlert";
+import { AlertColors } from "../../../components/AlertPopup";
 
 type ScheduleClassTableRowHourProps = {
+  day: string;
   scheduleHour: ScheduleHour;
 };
 
 export function ScheduleClassTableRowHour({
+  day,
   scheduleHour
 }: ScheduleClassTableRowHourProps) {
   const { email } = useContext(UserContext);
+  const { setAlert } = useAlert();
+  const [isUserInSchedule, setIsUserInSchedule] = useState(false);
+  const [numberOfSpots, setNumberOfSpots] = useState(
+    scheduleHour.numberOfSpots
+  );
+  const [availableSpots, setAvailableSpots] = useState(
+    scheduleHour.availableSpots
+  );
 
-  const isUserInList = scheduleHour.usersList.includes(email);
+  useEffect(() => {
+    setIsUserInSchedule(scheduleHour.usersList.includes(email));
+    setNumberOfSpots(scheduleHour.numberOfSpots);
+    setAvailableSpots(scheduleHour.availableSpots);
+  }, [scheduleHour.usersList, email]);
 
   const canSchedule = () => {
-    return scheduleHour.availableSpots > "0" && !isUserInList;
+    return scheduleHour.availableSpots > "0" && !isUserInSchedule;
   };
 
   const canCancel = () => {
-    return isUserInList;
+    return isUserInSchedule;
+  };
+
+  const updateScheduleAfterCancel = () => {
+    setAvailableSpots(availableSpots + 1);
+    setIsUserInSchedule(false);
+  };
+
+  const cancelSchedule = async () => {
+    const cancelScheduleInfo: CancelScheduleInfo = {
+      day,
+      hour: scheduleHour.hour,
+      userEmail: email
+    };
+    const message = await cancelScheduleRequest(cancelScheduleInfo);
+    setAlert(message.text, message.type);
+
+    if (message.type === AlertColors.SUCCESS) {
+      updateScheduleAfterCancel();
+    }
   };
 
   return (
@@ -30,15 +66,20 @@ export function ScheduleClassTableRowHour({
       <TableCell component='th' scope='row'>
         {scheduleHour.hour}
       </TableCell>
-      <TableCell align='center'>{scheduleHour.numberOfSpots}</TableCell>
-      <TableCell align='center'>{scheduleHour.availableSpots}</TableCell>
+      <TableCell align='center'>{numberOfSpots}</TableCell>
+      <TableCell align='center'>{availableSpots}</TableCell>
       <TableCell align='center'>
         <Button variant='contained' color='success' disabled={!canSchedule()}>
           Schedule
         </Button>
       </TableCell>
       <TableCell align='center'>
-        <Button variant='outlined' color='error' disabled={!canCancel()}>
+        <Button
+          variant='outlined'
+          color='error'
+          disabled={!canCancel()}
+          onClick={cancelSchedule}
+        >
           Cancel
         </Button>
       </TableCell>

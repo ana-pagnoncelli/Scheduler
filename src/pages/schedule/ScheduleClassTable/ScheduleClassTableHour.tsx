@@ -36,6 +36,7 @@ export function ScheduleClassTableHour({
               {scheduleDay.hours.map((scheduleHour: ScheduleHour) => (
                 <ScheduleClassTableRowHour
                   key={scheduleHour.hour}
+                  day={scheduleDay.day}
                   scheduleHour={scheduleHour}
                 />
               ))}

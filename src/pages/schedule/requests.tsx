@@ -96,7 +96,9 @@ export const getMySchedule = async (email: string, referenceDate: string) => {
   return mySchedule;
 };
 
-export const cancelSchedule = async (cancelSheduleInfo: CancelScheduleInfo) => {
+export const cancelScheduleRequest = async (
+  cancelSheduleInfo: CancelScheduleInfo
+) => {
   let message: AlertMessage = {
     text: "",
     type: AlertColors.SUCCESS
