@@ -90,3 +90,9 @@ export type CancelScheduleInfo = {
   day: string;
   userEmail: string;
 };
+
+export type VariableScheduleInfo = {
+  hour: string;
+  day: string;
+  userEmail: string;
+};

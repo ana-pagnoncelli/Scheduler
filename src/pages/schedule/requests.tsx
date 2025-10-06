@@ -4,7 +4,8 @@ import {
   DateWithWeekDay,
   FixedSchedule,
   MyScheduleType,
-  ScheduleDay
+  ScheduleDay,
+  VariableScheduleInfo
 } from "./types";
 import {
   scheduleCancelled,
@@ -108,6 +109,26 @@ export const cancelScheduleRequest = async (
     .post(`/canceledSchedules/`, cancelSheduleInfo)
     .then(() => {
       message = { text: scheduleCancelled, type: AlertColors.SUCCESS };
+    })
+    .catch((err) => {
+      message = { text: err.response.data.message, type: AlertColors.ERROR };
+    });
+
+  return message;
+};
+
+export const createVariableScheduleRequest = async (
+  variableSheduleInfo: VariableScheduleInfo
+) => {
+  let message: AlertMessage = {
+    text: "",
+    type: AlertColors.SUCCESS
+  };
+
+  await axios
+    .post(`/variableSchedules/`, variableSheduleInfo)
+    .then(() => {
+      message = { text: scheduleCreated, type: AlertColors.SUCCESS };
     })
     .catch((err) => {
       message = { text: err.response.data.message, type: AlertColors.ERROR };

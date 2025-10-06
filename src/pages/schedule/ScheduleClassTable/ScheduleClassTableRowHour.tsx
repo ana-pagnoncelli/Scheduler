@@ -2,10 +2,17 @@ import React, { useContext, useEffect, useState } from "react";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import { Button } from "@mui/material";
-import { CancelScheduleInfo, ScheduleHour } from "../types";
+import {
+  CancelScheduleInfo,
+  ScheduleHour,
+  VariableScheduleInfo
+} from "../types";
 import { tableInnerItemStyle } from "../styles";
 import { UserContext } from "../../../context/userContext";
-import { cancelScheduleRequest } from "../requests";
+import {
+  cancelScheduleRequest,
+  createVariableScheduleRequest
+} from "../requests";
 import { useAlert } from "../../../hooks/useAlert";
 import { AlertColors } from "../../../components/AlertPopup";
 
@@ -28,6 +35,7 @@ export function ScheduleClassTableRowHour({
     scheduleHour.availableSpots
   );
 
+  // TODO check if this is needed
   useEffect(() => {
     setIsUserInSchedule(scheduleHour.usersList.includes(email));
     setNumberOfSpots(scheduleHour.numberOfSpots);
@@ -43,7 +51,7 @@ export function ScheduleClassTableRowHour({
   };
 
   const updateScheduleAfterCancel = () => {
-    setAvailableSpots(availableSpots + 1);
+    setAvailableSpots((parseInt(availableSpots, 10) + 1).toString());
     setIsUserInSchedule(false);
   };
 
@@ -61,6 +69,25 @@ export function ScheduleClassTableRowHour({
     }
   };
 
+  const updateScheduleAfterCreate = () => {
+    setAvailableSpots((parseInt(availableSpots, 10) - 1).toString());
+    setIsUserInSchedule(true);
+  };
+
+  const createVariableSchedule = async () => {
+    const variableScheduleInfo: VariableScheduleInfo = {
+      day,
+      hour: scheduleHour.hour,
+      userEmail: email
+    };
+    const message = await createVariableScheduleRequest(variableScheduleInfo);
+    setAlert(message.text, message.type);
+
+    if (message.type === AlertColors.SUCCESS) {
+      updateScheduleAfterCreate();
+    }
+  };
+
   return (
     <TableRow key={scheduleHour.hour} style={tableInnerItemStyle}>
       <TableCell component='th' scope='row'>
@@ -69,7 +96,12 @@ export function ScheduleClassTableRowHour({
       <TableCell align='center'>{numberOfSpots}</TableCell>
       <TableCell align='center'>{availableSpots}</TableCell>
       <TableCell align='center'>
-        <Button variant='contained' color='success' disabled={!canSchedule()}>
+        <Button
+          variant='contained'
+          color='success'
+          disabled={!canSchedule()}
+          onClick={createVariableSchedule}
+        >
           Schedule
         </Button>
       </TableCell>
