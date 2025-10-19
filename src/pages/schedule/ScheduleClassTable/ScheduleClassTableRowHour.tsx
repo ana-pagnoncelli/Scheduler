@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import { Button } from "@mui/material";
@@ -28,22 +28,12 @@ export function ScheduleClassTableRowHour({
   const { email } = useContext(UserContext);
   const { setAlert } = useAlert();
   const [isUserInSchedule, setIsUserInSchedule] = useState(false);
-  const [numberOfSpots, setNumberOfSpots] = useState(
-    scheduleHour.numberOfSpots
-  );
   const [availableSpots, setAvailableSpots] = useState(
     scheduleHour.availableSpots
   );
 
-  // TODO check if this is needed
-  useEffect(() => {
-    setIsUserInSchedule(scheduleHour.usersList.includes(email));
-    setNumberOfSpots(scheduleHour.numberOfSpots);
-    setAvailableSpots(scheduleHour.availableSpots);
-  }, [scheduleHour.usersList, email]);
-
   const canSchedule = () => {
-    return scheduleHour.availableSpots > "0" && !isUserInSchedule;
+    return availableSpots > "0" && !isUserInSchedule;
   };
 
   const canCancel = () => {
@@ -93,7 +83,7 @@ export function ScheduleClassTableRowHour({
       <TableCell component='th' scope='row'>
         {scheduleHour.hour}
       </TableCell>
-      <TableCell align='center'>{numberOfSpots}</TableCell>
+      <TableCell align='center'>{scheduleHour.numberOfSpots}</TableCell>
       <TableCell align='center'>{availableSpots}</TableCell>
       <TableCell align='center'>
         <Button
