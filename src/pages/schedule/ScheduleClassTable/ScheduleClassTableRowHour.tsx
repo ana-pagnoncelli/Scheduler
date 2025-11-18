@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import { Button } from "@mui/material";
@@ -15,6 +15,7 @@ import {
 } from "../requests";
 import { useAlert } from "../../../hooks/useAlert";
 import { AlertColors } from "../../../components/AlertPopup";
+import { useMySchedule } from "../../../hooks/useMySchedule";
 
 type ScheduleClassTableRowHourProps = {
   day: string;
@@ -27,6 +28,7 @@ export function ScheduleClassTableRowHour({
 }: ScheduleClassTableRowHourProps) {
   const { email } = useContext(UserContext);
   const { setAlert } = useAlert();
+  const { fetchMySchedule } = useMySchedule();
   const [isUserInSchedule, setIsUserInSchedule] = useState(false);
   const [availableSpots, setAvailableSpots] = useState(
     scheduleHour.availableSpots
@@ -43,6 +45,7 @@ export function ScheduleClassTableRowHour({
   const updateScheduleAfterCancel = () => {
     setAvailableSpots((parseInt(availableSpots, 10) + 1).toString());
     setIsUserInSchedule(false);
+    fetchMySchedule(email);
   };
 
   const cancelSchedule = async () => {
@@ -62,6 +65,7 @@ export function ScheduleClassTableRowHour({
   const updateScheduleAfterCreate = () => {
     setAvailableSpots((parseInt(availableSpots, 10) - 1).toString());
     setIsUserInSchedule(true);
+    fetchMySchedule(email);
   };
 
   const createVariableSchedule = async () => {
@@ -77,6 +81,10 @@ export function ScheduleClassTableRowHour({
       updateScheduleAfterCreate();
     }
   };
+
+  useEffect(() => {
+    setIsUserInSchedule(scheduleHour.usersList.includes(email));
+  }, [scheduleHour]);
 
   return (
     <TableRow key={scheduleHour.hour} style={tableInnerItemStyle}>

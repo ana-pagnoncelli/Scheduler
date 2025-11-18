@@ -4,6 +4,7 @@ import { UserProvider } from "./context/userContext";
 import { ScheduleProvider } from "./context/scheduleContext";
 import { PlanProvider } from "./context/planContext";
 import { ClientProvider } from "./context/clientsContext";
+import { MyScheduleProvider } from "./context/myScheduleContext";
 
 type AppProviderProps = {
   children: ReactNode;
@@ -15,7 +16,9 @@ export function AppProvider({ children }: AppProviderProps) {
       <ScheduleProvider>
         <PlanProvider>
           <ClientProvider>
-            <UserProvider>{children}</UserProvider>
+            <MyScheduleProvider>
+              <UserProvider>{children}</UserProvider>
+            </MyScheduleProvider>
           </ClientProvider>
         </PlanProvider>
       </ScheduleProvider>

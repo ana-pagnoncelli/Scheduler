@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import Typography from "@mui/material/Typography";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -9,22 +9,15 @@ import AutoAwesomeIcon from "@mui/icons-material/AutoAwesome";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import RestoreIcon from "@mui/icons-material/Restore";
 import { ScheduleBox } from "../styles";
-import { getMySchedule } from "../requests";
 import { UserContext } from "../../../context/userContext";
-import { MyScheduleType } from "../types";
-import { todayDate } from "../../../utils/date";
+import { useMySchedule } from "../../../hooks/useMySchedule";
 
 export function MySchedule() {
   const { email } = useContext(UserContext);
-  const [mySchedule, setMySchedule] = useState<MyScheduleType | null>(null);
+  const { mySchedule, fetchMySchedule } = useMySchedule();
 
   useEffect(() => {
-    const fetchMySchedule = async () => {
-      const myScheduleResponse = await getMySchedule(email, todayDate());
-      if (myScheduleResponse) setMySchedule(myScheduleResponse);
-    };
-
-    if (email) fetchMySchedule();
+    fetchMySchedule(email);
   }, []);
 
   return (
