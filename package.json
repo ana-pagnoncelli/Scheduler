@@ -2,7 +2,7 @@
   "name": "scheduler",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:6060",
+  "proxy": "https://orca-app-aiokj.ondigitalocean.app/scheduler-backend",
   "dependencies": {
     "@babel/preset-typescript": "^7.21.0",
     "@emotion/react": "^11.14.0",
